@@ -26,12 +26,12 @@
 <meta property="og:url" content="https://developer.steem.io/tutorials-javascript/steemconnect" />
 <meta property="og:site_name" content="Steem Developer" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-05-02T12:47:26-07:00" />
+<meta property="article:published_time" content="2018-05-10T17:25:26-05:00" />
 <script type="application/ld+json">
 {"@context": "http://schema.org",
 "@type": "BlogPosting",
 "headline": "SteemConnect",
-"datePublished": "2018-05-02T12:47:26-07:00",
+"datePublished": "2018-05-10T17:25:26-05:00",
 "description": "Tutorial is about Authorization on Steem and usage of SteemConnect",
 "url": "https://developer.steem.io/tutorials-javascript/steemconnect"}</script>
 <!-- End Jekyll SEO tag -->
@@ -43,14 +43,14 @@
 		<header>
 			<h1>
 				
-					<a href="#top"><img src="/images/logotype_white.svg" height="40" alt="Steem Developer logo"></a>
+					<a href="/"><img src="/images/logotype_white.svg" height="40" alt="Steem Developer logo"></a>
 				
-				<a href="#top" class="logo-link"></a>
+				<a href="/" class="logo-link"></a>
 				<button type="button" class="open-nav" id="open-nav"></button>
 			</h1>
 
 			
-				<form action="/search" method="get">
+				<form action="/search/" method="get">
 					<input type="text" name="q" id="search-input" placeholder="Search">
 					<input type="submit" value="Search" style="display: none;">
 				</form>
@@ -69,7 +69,7 @@
 					
 					
 						
-						<li><a href="/#introduction-welcome">Welcome to our API</a></li>
+						<li><a href="/#introduction-welcome">Welcome to Steem</a></li>
 						
 					
 				
@@ -197,6 +197,10 @@
 						<li><a href="/apidefinitions/#apidefinitions-block-api">Block Api</a></li>
 						
 					
+						
+						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops">Broadcast Ops</a></li>
+						
+					
 				
 			
 		</ul>
@@ -310,7 +314,7 @@ The purpose of this is to allow any application to request permission from user 
 
 <h2 id="overview">Overview</h2>
 
-<p>Steemconnect is unified authentification system built on top of Steem and is built in a collaboration of Busy.org and Steemit Inc.
+<p>Steemconnect is unified authentication system built on top of Steem and is built in a collaboration of Busy.org and Steemit Inc.
 Steemconnect is a layer to ensure easy access and setup for all application developers as well as a secure way for users to interact with Steem apps.</p>
 
 <p>Setting up Steemconnect in your app is straight-forward process and never been this easy.</p>
@@ -323,44 +327,36 @@ Steemconnect is a layer to ensure easy access and setup for all application deve
 <h2 id="step-i">Step I</h2>
 
 <ol>
-  <li>Visit <a href="https://steemconnect.com/dashboard">Steemconnect Dashboard</a> and login with your Steem credentials</li>
+  <li>
+    <p>Visit <a href="https://steemconnect.com/dashboard">Steemconnect Dashboard</a> and login with your Steem credentials
+<img src="https://github.com/steemit/devportal-tutorials-js/blob/master/tutorials/02_steemconnect/images/steemconnect_login.png?raw=true" alt="steemconnect_login" /></p>
+  </li>
+  <li>
+    <p>You will see an Applications and Developers section, in Developers section click on <code class="highlighter-rouge">My Apps</code>
+<img src="https://github.com/steemit/devportal-tutorials-js/blob/master/tutorials/02_steemconnect/images/steemconnect_dashboard.png?raw=true" alt="steemconnect_dashboard" />
+<img src="https://github.com/steemit/devportal-tutorials-js/blob/master/tutorials/02_steemconnect/images/steemconnect_new_app.png?raw=true" alt="steemconnect_new_app" /></p>
+  </li>
+  <li>
+    <p>Create a New App using Steemconnect, which will help you create new Steem account for your application. Let’s call it <code class="highlighter-rouge">demo-app</code> for this tutorial purpose.
+<img src="https://github.com/steemit/devportal-tutorials-js/blob/master/tutorials/02_steemconnect/images/steemconnect_account_create.png?raw=true" alt="steemconnect_account_create" /></p>
+
+    <p>An account creation fee will be deducted from your balance, make sure you have enough funds to complete the account creation. Next step is to login with the account which has enough STEEM to pay for the account creation fee.</p>
+
+    <p><img src="https://github.com/steemit/devportal-tutorials-js/blob/master/tutorials/02_steemconnect/images/steemconnect_signin.png?raw=true" alt="steemconnect_signin" /></p>
+  </li>
+  <li>
+    <p>Give your app name, description, icon image link, website (if available) and Redirect URI(s)
+ <img src="https://github.com/steemit/devportal-tutorials-js/blob/master/tutorials/02_steemconnect/images/steemconnect_myapps.png?raw=true" alt="steemconnect_myapps" /></p>
+  </li>
 </ol>
-
-<p><img src="https://steemitimages.com/DQmRpjPgR3BTtFCrL553AxZ6CDswPRdbNAAo9CMRxoCdBZV/Screen%20Shot%202018-03-20%20at%2012.31.37.png" alt="steemconnect_login" /></p>
-
-<ol>
-  <li>You will see an Applications and Developers section, in Developers section click on <code class="highlighter-rouge">My Apps</code></li>
-</ol>
-
-<p><img src="https://steemitimages.com/DQmZub5Tt8ZuqpDqYYFCP89ypjeFbePWd63Gud9pouSA34S/Screen%20Shot%202018-03-20%20at%2012.31.58.png" alt="steemconnect_dashboard" /></p>
-
-<p><img src="https://steemitimages.com/DQmaShy9S6wRMzUMfiULebdB7KsrdTpQn4HNgaWtfFyVL3E/Screen%20Shot%202018-03-20%20at%2012.32.15.png" alt="steemconnect_new_app" /></p>
-
-<ol>
-  <li>Create a New App using Steemconnect, which will help you create new Steem account for your application. Let’s call it <code class="highlighter-rouge">demo-app</code> for this tutorial purpose.</li>
-</ol>
-
-<p><img src="https://steemitimages.com/DQmcQvuYJ5wo9xwxmYUHtCkvazfhLHEjwKi8GaNGyZnNSQh/Screen%20Shot%202018-03-20%20at%2012.32.28.png" alt="steemconnect_account_create" /></p>
-
-<p>An account creation fee will be deducted from your balance, make sure you have enough funds to complete the account creation. Next step is to login with the account which has enough STEEM to pay for the account creation fee.</p>
-
-<p><img src="https://steemitimages.com/DQmUtrbpujdNRft5hdEgzMPbGZfgLvXJyRZH9WzKfAWp93p/Screen%20Shot%202018-03-20%20at%2012.32.57.png" alt="" /></p>
-
-<ol>
-  <li>Give your app name, description, icon image link, website (if available) and Redirect URI(s)</li>
-</ol>
-
-<p><img src="https://steemitimages.com/DQmYkbHUFC6iorEJv6iCC2CB6oG1TigEE9SxuQrZAkTEYJW/FireShot%20Capture%206%20-%20SteemConnect%20-%20https___v2.steemconnect.com_apps_%40demo-app_edit.png" alt="steemconnect_myapps" /></p>
 
 <p>Redirect URI(s) will be used within your application to forward user after authentication is successful. This is typical backend web development, we hope you know how to set this up.</p>
 
-<ul>
-  <li>Disclaimer: All images/screenshots of user interface may change as Steemconnect evolves</li>
-</ul>
+<p>* <em>Disclaimer: All images/screenshots of user interface may change as Steemconnect evolves</em></p>
 
 <h2 id="step-ii">Step II</h2>
 
-<p>Once you have setup your account for the new application, you can setup your application with Steemconnect authentification and API processes.</p>
+<p>Once you have setup your account for the new application, you can setup your application with Steemconnect authentication and API processes.</p>
 
 <h3 id="install">Install</h3>
 <p>To do that, you will need to install <code class="highlighter-rouge">sc2-sdk</code> nodejs package with <code class="highlighter-rouge">npm i sc2-sdk</code>.
@@ -426,10 +422,9 @@ Within the application you can initialize Steemconnect</p>
   <p>In order to logout, you can use the <code class="highlighter-rouge">revokeToken</code> function from <code class="highlighter-rouge">sc2-sdk</code>.</p>
 </blockquote>
 
-<h2 id="source-code-">Source code <a href="getting-started#setup_node_js"><img src="/images/look.svg" width="16" height="16" /></a></h2>
+<h2 id="source-code-">Source code <a href="/tutorials-javascript/getting-started"><img src="/images/look.svg" width="16" height="16" /></a></h2>
 
 <p>To try this application visit <a href="https://github.com/steemit/devportal-tutorials-js">Devportal tutorials repo</a>, find <a href="https://github.com/steemit/devportal-tutorials-js/tree/master/tutorials/02_steemconnect">Steemconnect tutorial</a> and follow <strong>To run</strong> section in README.</p>
-
 
 	</section>
 
