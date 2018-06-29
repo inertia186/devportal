@@ -62,7 +62,9 @@ module Scrape
               #{rewrite_relative_links(rewrite_images body, include_name)}
 
               ---
-              
+              #{rewrite_images body, include_name}
+              ---
+              #{links title, include_name}
               
             DONE
             
