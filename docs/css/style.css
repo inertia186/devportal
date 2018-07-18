@@ -395,12 +395,14 @@ header {
     background-image: url(/images/menu.svg);
     background-color: transparent;
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: 50%;
+    background-position: center;
+    padding-right: 0px;
     border: 0;
-    position: absolute;
     border-radius: 2px;
     cursor: pointer;
-    display: none; }
+    height: 60px;
+    width: 60px; }
     header .open-nav:focus {
       outline: none;
       background-color: rgba(0, 0, 0, 0.05); }
@@ -1038,6 +1040,16 @@ header h1 {
 
   header h1 {
     height: 107px; } }
+.footer {
+  background-color: #3E4956;
+  border-top: 1px solid #eeeeee;
+  display: flex;
+  justify-content: center;
+  padding: 10px; }
+  .footer a:hover,
+  .footer a:visited {
+    color: #4BA2F2; }
+
 .main-nav-section .title {
   cursor: pointer;
   width: 100%;
@@ -1053,3 +1065,8 @@ header h1 {
 
 .active, .accordion:hover {
   /*background-color: #ccc;*/ }
+
+.top-of-tutorial-repo-link {
+  text-transform: lowercase; }
+  .top-of-tutorial-repo-link .first-word {
+    text-transform: capitalize; }

@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" >
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Cousine|Inconsolata" rel="stylesheet">
-		
-		<link rel="shortcut icon" type="image/png" href="/favicon.png">
-		
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Cousine|Inconsolata" rel="stylesheet">
+	<link rel="shortcut icon" type="image/png" href="/favicon.png">
 
-		
-		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" href="/css/css/fontawesome-all.min.css">
-		<script src="/js/main.js"></script>
-		
+	
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/css/fontawesome-all.min.css">
+	<script src="/js/main.js"></script>
+	
 
-		<!-- Begin Jekyll SEO tag v2.1.0 -->
+	<!-- Begin Jekyll SEO tag v2.1.0 -->
 <title>Block Api - Steem Developer</title>
 <meta property="og:title" content="Block Api" />
 <meta name="description" content="Used to query values related to the block plugin. These AppBase API methods are still under development and subject to change. block_api.get_block Retrieve a full, signed block of the referenced block, or null if no matching block was found. Parameters: block_num:int block_num (int)   1 Queries the very first block. 8675309 Queries block number 8,675,309. 62396745 Queries block number 62,396,745. Query Parameters JSON {&quot;block_num&quot;: 0} Expected Response JSON { &quot;block&quot;: { &quot;previous&quot;: &quot;&quot;, &quot;timestamp&quot;: &quot;1970-01-01T00:00:00&quot;, &quot;witness&quot;: &quot;&quot;, &quot;transaction_merkle_root&quot;: &quot;&quot;, &quot;extensions&quot;: [], &quot;witness_signature&quot;: &quot;&quot;, &quot;transactions&quot;: [], &quot;block_id&quot;: &quot;&quot;, &quot;signing_key&quot;: &quot;&quot;, &quot;transaction_ids&quot;: [] } } Example curl curl -s --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;, &quot;method&quot;:&quot;block_api.get_block&quot;, &quot;params&quot;:{&quot;block_num&quot;:1}, &quot;id&quot;:1}&#39; https://api.steemit.com curl -s --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;, &quot;method&quot;:&quot;block_api.get_block&quot;, &quot;params&quot;:{&quot;block_num&quot;:8675309}, &quot;id&quot;:1}&#39; https://api.steemit.com curl -s --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;, &quot;method&quot;:&quot;block_api.get_block&quot;, &quot;params&quot;:{&quot;block_num&quot;:62396745}, &quot;id&quot;:1}&#39; https://api.steemit.com block_api.get_block_header Retrieve a block header of the referenced block, or null if no matching block was found. Parameters: block_num:int - Height of the block whose header should be returned block_num (int)   1 Queries the block headers for the very first block. 8675309 Queries block headers for block number 8,675,309. 62396745 Queries block headers for block number 62,396,745. Query Parameters JSON {&quot;block_num&quot;: 0} Expected Response JSON { &quot;header&quot;: { &quot;previous&quot;: &quot;&quot;, &quot;timestamp&quot;: &quot;1970-01-01T00:00:00&quot;, &quot;witness&quot;: &quot;&quot;, &quot;transaction_merkle_root&quot;: &quot;&quot;, &quot;extensions&quot;: [] } } Example curl curl -s --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;, &quot;method&quot;:&quot;block_api.get_block_header&quot;, &quot;params&quot;:{&quot;block_num&quot;:1}, &quot;id&quot;:1}&#39; https://api.steemit.com curl -s --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;, &quot;method&quot;:&quot;block_api.get_block_header&quot;, &quot;params&quot;:{&quot;block_num&quot;:8675309}, &quot;id&quot;:1}&#39; https://api.steemit.com curl -s --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;, &quot;method&quot;:&quot;block_api.get_block_header&quot;, &quot;params&quot;:{&quot;block_num&quot;:62396745}, &quot;id&quot;:1}&#39; https://api.steemit.com" />
@@ -26,37 +24,34 @@
 <meta property="og:url" content="https://developer.steem.io/apidefinitions/block-api" />
 <meta property="og:site_name" content="Steem Developer" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-07-03T16:28:31-05:00" />
+<meta property="article:published_time" content="2018-07-18T16:19:24-05:00" />
 <script type="application/ld+json">
 {"@context": "http://schema.org",
 "@type": "BlogPosting",
 "headline": "Block Api",
-"datePublished": "2018-07-03T16:28:31-05:00",
+"datePublished": "2018-07-18T16:19:24-05:00",
 "description": "Used to query values related to the block plugin. These AppBase API methods are still under development and subject to change. block_api.get_block Retrieve a full, signed block of the referenced block, or null if no matching block was found. Parameters: block_num:int block_num (int)   1 Queries the very first block. 8675309 Queries block number 8,675,309. 62396745 Queries block number 62,396,745. Query Parameters JSON {&quot;block_num&quot;: 0} Expected Response JSON { &quot;block&quot;: { &quot;previous&quot;: &quot;&quot;, &quot;timestamp&quot;: &quot;1970-01-01T00:00:00&quot;, &quot;witness&quot;: &quot;&quot;, &quot;transaction_merkle_root&quot;: &quot;&quot;, &quot;extensions&quot;: [], &quot;witness_signature&quot;: &quot;&quot;, &quot;transactions&quot;: [], &quot;block_id&quot;: &quot;&quot;, &quot;signing_key&quot;: &quot;&quot;, &quot;transaction_ids&quot;: [] } } Example curl curl -s --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;, &quot;method&quot;:&quot;block_api.get_block&quot;, &quot;params&quot;:{&quot;block_num&quot;:1}, &quot;id&quot;:1}&#39; https://api.steemit.com curl -s --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;, &quot;method&quot;:&quot;block_api.get_block&quot;, &quot;params&quot;:{&quot;block_num&quot;:8675309}, &quot;id&quot;:1}&#39; https://api.steemit.com curl -s --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;, &quot;method&quot;:&quot;block_api.get_block&quot;, &quot;params&quot;:{&quot;block_num&quot;:62396745}, &quot;id&quot;:1}&#39; https://api.steemit.com block_api.get_block_header Retrieve a block header of the referenced block, or null if no matching block was found. Parameters: block_num:int - Height of the block whose header should be returned block_num (int)   1 Queries the block headers for the very first block. 8675309 Queries block headers for block number 8,675,309. 62396745 Queries block headers for block number 62,396,745. Query Parameters JSON {&quot;block_num&quot;: 0} Expected Response JSON { &quot;header&quot;: { &quot;previous&quot;: &quot;&quot;, &quot;timestamp&quot;: &quot;1970-01-01T00:00:00&quot;, &quot;witness&quot;: &quot;&quot;, &quot;transaction_merkle_root&quot;: &quot;&quot;, &quot;extensions&quot;: [] } } Example curl curl -s --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;, &quot;method&quot;:&quot;block_api.get_block_header&quot;, &quot;params&quot;:{&quot;block_num&quot;:1}, &quot;id&quot;:1}&#39; https://api.steemit.com curl -s --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;, &quot;method&quot;:&quot;block_api.get_block_header&quot;, &quot;params&quot;:{&quot;block_num&quot;:8675309}, &quot;id&quot;:1}&#39; https://api.steemit.com curl -s --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;, &quot;method&quot;:&quot;block_api.get_block_header&quot;, &quot;params&quot;:{&quot;block_num&quot;:62396745}, &quot;id&quot;:1}&#39; https://api.steemit.com",
 "url": "https://developer.steem.io/apidefinitions/block-api"}</script>
 <!-- End Jekyll SEO tag -->
 
 
-		
-	</head>
-	<body>
-		<header>
-			<h1>
-				
-					<a href="/"><img src="/images/logotype_white.svg" height="40" alt="Steem Developer logo"></a>
-				
-				<a href="/" class="logo-link"></a>
-				<button type="button" class="open-nav" id="open-nav"></button>
-			</h1>
+	
+</head>
+<body>
+<header>
+	<h1>
+		<button type="button" class="open-nav" id="open-nav"></button>
+		<a href="/"  class="logo-link"><img src="/images/logotype_white.svg" height="40" alt="Steem Developer logo"></a>
+	</h1>
 
-			
-				<form action="/search/" method="get">
-					<input type="text" name="q" id="search-input" placeholder="Search">
-					<input type="submit" value="Search" style="display: none;">
-				</form>
-			
+	
+	<form action="/search/" method="get">
+		<input type="text" name="q" id="search-input" placeholder="Search">
+		<input type="submit" value="Search" style="display: none;">
+	</form>
+	
 
-			<div id="sidebar" class="sidebar">
+	<div id="sidebar" class="sidebar">
 	
 	
 	
@@ -285,21 +280,21 @@
 </div>
 
 
-			<!--<p class="copyright">-->
-				<!--<a href="https://steemit.com.com/">-->
-				  <!--steemit-->
-				<!--</a>-->
-			<!--</p>-->
-			<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-		</header>
-		<div class="main" id="top">
-			<div class="hero">
-				<h1 class="hero__h1">Steem Developer Portal </h1>
-				
-				<img class="hero__img" src="/images/hero.png">
-				
-			</div>
-			
+	<!--<p class="copyright">-->
+	<!--<a href="https://steemit.com.com/">-->
+	<!--steemit-->
+	<!--</a>-->
+	<!--</p>-->
+	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+</header>
+<div class="main" id="top">
+	<div class="hero">
+		<h1 class="hero__h1">Steem Developer Portal </h1>
+		
+		<img class="hero__img" src="/images/hero.png">
+		
+	</div>
+	
 <p>Used to query values related to the block plugin. <strong>These AppBase API methods are still under development and subject to change.</strong></p>
 
 <ul style="float: right; list-style: none;">
@@ -448,13 +443,16 @@
 <hr />
 
 
-		</div>
-		<script>
-			document.getElementById("open-nav").addEventListener("click", function () {
-				document.body.classList.toggle("nav-open");
-			});
-		</script>
-	</body>
+</div>
+<div class="footer">
+	<a href="#">Back to top</a>
+</div>
+<script>
+    document.getElementById("open-nav").addEventListener("click", function () {
+        document.body.classList.toggle("nav-open");
+    });
+</script>
+</body>
 </html>
 
 

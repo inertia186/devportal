@@ -1,62 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" >
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Cousine|Inconsolata" rel="stylesheet">
-		
-		<link rel="shortcut icon" type="image/png" href="/favicon.png">
-		
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Cousine|Inconsolata" rel="stylesheet">
+	<link rel="shortcut icon" type="image/png" href="/favicon.png">
 
-		
-		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" href="/css/css/fontawesome-all.min.css">
-		<script src="/js/main.js"></script>
-		
+	
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/css/fontawesome-all.min.css">
+	<script src="/js/main.js"></script>
+	
 
-		<!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>Blog Feed - Steem Developer</title>
-<meta property="og:title" content="Blog Feed" />
+	<!-- Begin Jekyll SEO tag v2.1.0 -->
+<title>JS: Blog Feed - Steem Developer</title>
+<meta property="og:title" content="JS: Blog Feed" />
 <meta name="description" content="By the end of this tutorial you should know how to fetch most recent five posts from particular user on Steem" />
 <meta property="og:description" content="By the end of this tutorial you should know how to fetch most recent five posts from particular user on Steem" />
 <link rel="canonical" href="https://developer.steem.io/tutorials-javascript/blog_feed" />
 <meta property="og:url" content="https://developer.steem.io/tutorials-javascript/blog_feed" />
 <meta property="og:site_name" content="Steem Developer" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-07-03T16:28:31-05:00" />
+<meta property="article:published_time" content="2018-07-18T16:19:24-05:00" />
 <script type="application/ld+json">
 {"@context": "http://schema.org",
 "@type": "BlogPosting",
-"headline": "Blog Feed",
-"datePublished": "2018-07-03T16:28:31-05:00",
+"headline": "JS: Blog Feed",
+"datePublished": "2018-07-18T16:19:24-05:00",
 "description": "By the end of this tutorial you should know how to fetch most recent five posts from particular user on Steem",
 "url": "https://developer.steem.io/tutorials-javascript/blog_feed"}</script>
 <!-- End Jekyll SEO tag -->
 
 
-		
-	</head>
-	<body>
-		<header>
-			<h1>
-				
-					<a href="/"><img src="/images/logotype_white.svg" height="40" alt="Steem Developer logo"></a>
-				
-				<a href="/" class="logo-link"></a>
-				<button type="button" class="open-nav" id="open-nav"></button>
-			</h1>
+	
+</head>
+<body>
+<header>
+	<h1>
+		<button type="button" class="open-nav" id="open-nav"></button>
+		<a href="/"  class="logo-link"><img src="/images/logotype_white.svg" height="40" alt="Steem Developer logo"></a>
+	</h1>
 
-			
-				<form action="/search/" method="get">
-					<input type="text" name="q" id="search-input" placeholder="Search">
-					<input type="submit" value="Search" style="display: none;">
-				</form>
-			
+	
+	<form action="/search/" method="get">
+		<input type="text" name="q" id="search-input" placeholder="Search">
+		<input type="submit" value="Search" style="display: none;">
+	</form>
+	
 
-			<div id="sidebar" class="sidebar">
+	<div id="sidebar" class="sidebar">
 	
 	
 	
@@ -285,24 +280,24 @@
 </div>
 
 
-			<!--<p class="copyright">-->
-				<!--<a href="https://steemit.com.com/">-->
-				  <!--steemit-->
-				<!--</a>-->
-			<!--</p>-->
-			<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-		</header>
-		<div class="main" id="top">
-			<div class="hero">
-				<h1 class="hero__h1">Steem Developer Portal </h1>
-				
-				<img class="hero__img" src="/images/hero.png">
-				
-			</div>
-			<section id="tutorials-javascript-blog-feed" class="row tutorials-javascript-blog-feed">
+	<!--<p class="copyright">-->
+	<!--<a href="https://steemit.com.com/">-->
+	<!--steemit-->
+	<!--</a>-->
+	<!--</p>-->
+	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+</header>
+<div class="main" id="top">
+	<div class="hero">
+		<h1 class="hero__h1">Steem Developer Portal </h1>
+		
+		<img class="hero__img" src="/images/hero.png">
+		
+	</div>
+	<section id="tutorials-javascript-blog-feed" class="row tutorials-javascript-blog-feed">
 	<h3>
 		<a id="tutorials-javascript-blog-feed">
-			Blog Feed
+			JS: Blog Feed
 			
 		</a>
 	</h3>
@@ -310,7 +305,10 @@
 		<p class="description">By the end of this tutorial you should know how to fetch most recent five posts from particular user on Steem</p>
 	
 
-	<p>This tutorial pulls a list of the most recent five user’s posts from the blockchain and displays them in simple list. Also some notes about usage of <code class="highlighter-rouge">client.database.getDiscussions</code> API.</p>
+	<p><span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of <a href="https://github.com/steemit/devportal-tutorials-js/tree/master/tutorials/01_blog_feed">Blog Feed</a> can be downloaded as part of the <a href="https://github.com/steemit/devportal-tutorials-js">JS tutorials repository</a>.</span>
+<br /></p>
+
+<p>This tutorial pulls a list of the most recent five user’s posts from the blockchain and displays them in simple list. Also some notes about usage of <code class="highlighter-rouge">client.database.getDiscussions</code> API.</p>
 
 <h2 id="intro">Intro</h2>
 
@@ -465,15 +463,20 @@ const client = new Client('https://api.steemit.com');
   <li>After a few moments, the server should be running at <a href="http://localhost:3000/">http://localhost:3000/</a></li>
 </ol>
 
+<hr />
+
 </section>
 
-		</div>
-		<script>
-			document.getElementById("open-nav").addEventListener("click", function () {
-				document.body.classList.toggle("nav-open");
-			});
-		</script>
-	</body>
+</div>
+<div class="footer">
+	<a href="#">Back to top</a>
+</div>
+<script>
+    document.getElementById("open-nav").addEventListener("click", function () {
+        document.body.classList.toggle("nav-open");
+    });
+</script>
+</body>
 </html>
 
 

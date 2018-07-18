@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" >
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Cousine|Inconsolata" rel="stylesheet">
-		
-		<link rel="shortcut icon" type="image/png" href="/favicon.png">
-		
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Cousine|Inconsolata" rel="stylesheet">
+	<link rel="shortcut icon" type="image/png" href="/favicon.png">
 
-		
-		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" href="/css/css/fontawesome-all.min.css">
-		<script src="/js/main.js"></script>
-		
+	
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/css/fontawesome-all.min.css">
+	<script src="/js/main.js"></script>
+	
 
-		<!-- Begin Jekyll SEO tag v2.1.0 -->
+	<!-- Begin Jekyll SEO tag v2.1.0 -->
 <title>API Docs - API Definitions - Steem Developer</title>
 <meta property="og:title" content="API Docs - API Definitions" />
 <meta name="description" content="Steem Developer Documentation." />
@@ -34,26 +32,23 @@
 <!-- End Jekyll SEO tag -->
 
 
-		
-	</head>
-	<body>
-		<header>
-			<h1>
-				
-					<a href="/"><img src="/images/logotype_white.svg" height="40" alt="Steem Developer logo"></a>
-				
-				<a href="/" class="logo-link"></a>
-				<button type="button" class="open-nav" id="open-nav"></button>
-			</h1>
+	
+</head>
+<body>
+<header>
+	<h1>
+		<button type="button" class="open-nav" id="open-nav"></button>
+		<a href="/"  class="logo-link"><img src="/images/logotype_white.svg" height="40" alt="Steem Developer logo"></a>
+	</h1>
 
-			
-				<form action="/search/" method="get">
-					<input type="text" name="q" id="search-input" placeholder="Search">
-					<input type="submit" value="Search" style="display: none;">
-				</form>
-			
+	
+	<form action="/search/" method="get">
+		<input type="text" name="q" id="search-input" placeholder="Search">
+		<input type="submit" value="Search" style="display: none;">
+	</form>
+	
 
-			<div id="sidebar" class="sidebar">
+	<div id="sidebar" class="sidebar">
 	
 	
 	
@@ -282,21 +277,21 @@
 </div>
 
 
-			<!--<p class="copyright">-->
-				<!--<a href="https://steemit.com.com/">-->
-				  <!--steemit-->
-				<!--</a>-->
-			<!--</p>-->
-			<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-		</header>
-		<div class="main" id="top">
-			<div class="hero">
-				<h1 class="hero__h1">Steem Developer Portal  - API Definitions</h1>
-				
-				<img class="hero__img" src="/images/hero.png">
-				
-			</div>
-			<section class="row">
+	<!--<p class="copyright">-->
+	<!--<a href="https://steemit.com.com/">-->
+	<!--steemit-->
+	<!--</a>-->
+	<!--</p>-->
+	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+</header>
+<div class="main" id="top">
+	<div class="hero">
+		<h1 class="hero__h1">Steem Developer Portal  - API Definitions</h1>
+		
+		<img class="hero__img" src="/images/hero.png">
+		
+	</div>
+	<section class="row">
   <section class="row">
 	  <blockquote class="warning">
 		  While the <code>condenser_api.*</code> calls are ready for use, all other appbase methods are currently works in progress and may change, or be unsuitable for production use.
@@ -476,6 +471,8 @@
     </tr>
   </tbody>
 </table>
+
+<p>See: <a href="/tutorials-recipes/forum-market-bandwidth">Forum/Market Bandwidth</a></p>
 
 <h5 id="condenser_api.get_account_bandwidth-parameter_json">Query Parameters JSON <a href="#condenser_api.get_account_bandwidth-parameter_json"><i class="fas fa-link fa-sm"></i></a></h5>
 <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">[</span><span class="s2">"steemit"</span><span class="p">,</span><span class="w"> </span><span class="s2">"forum"</span><span class="p">]</span><span class="w">
@@ -2039,7 +2036,7 @@
 
 </ul>
 <h4 id="condenser_api.get_dynamic_global_properties">condenser_api.get_dynamic_global_properties <a href="#condenser_api.get_dynamic_global_properties"><i class="fas fa-link fa-xs"></i></a></h4>
-<p>Returns the current dynamic global properties.</p>
+<p>Returns the current dynamic global properties.  See: <a href="/tutorials-recipes/understanding-dynamic-global-properties">Understanding Dynamic Global Properties</a></p>
 <h5 id="condenser_api.get_dynamic_global_properties-parameter_json">Query Parameters JSON <a href="#condenser_api.get_dynamic_global_properties-parameter_json"><i class="fas fa-link fa-sm"></i></a></h5>
 <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">[]</span><span class="w">
 </span></code></pre>
@@ -4936,7 +4933,7 @@ There is no blockchain enforced validation on json_metadata, but the community h
 
 </ul>
 <h4 id="database_api.get_dynamic_global_properties">database_api.get_dynamic_global_properties <a href="#database_api.get_dynamic_global_properties"><i class="fas fa-link fa-xs"></i></a></h4>
-<p>Returns the current dynamic global properties.</p>
+<p>Returns the current dynamic global properties.  See: <a href="/tutorials-recipes/understanding-dynamic-global-properties">Understanding Dynamic Global Properties</a></p>
 <h5 id="database_api.get_dynamic_global_properties-parameter_json">Query Parameters JSON <a href="#database_api.get_dynamic_global_properties-parameter_json"><i class="fas fa-link fa-sm"></i></a></h5>
 <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{}</span><span class="w">
 </span></code></pre>
@@ -7211,7 +7208,7 @@ still under development and subject to change.</strong></p>
 
 </ul>
 <h4 id="witness_api.get_account_bandwidth">witness_api.get_account_bandwidth <a href="#witness_api.get_account_bandwidth"><i class="fas fa-link fa-xs"></i></a></h4>
-<p>Returns the available bandwidth of an account.</p>
+<p>Returns the available bandwidth of an account.  See: <a href="/tutorials-recipes/forum-market-bandwidth">Forum/Market Bandwidth</a></p>
 <h5 id="witness_api.get_account_bandwidth-parameter_json">Query Parameters JSON <a href="#witness_api.get_account_bandwidth-parameter_json"><i class="fas fa-link fa-sm"></i></a></h5>
 <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"post"</span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -9828,13 +9825,16 @@ their decisions to invest in the platform.</p>
 	
 
 
-		</div>
-		<script>
-			document.getElementById("open-nav").addEventListener("click", function () {
-				document.body.classList.toggle("nav-open");
-			});
-		</script>
-	</body>
+</div>
+<div class="footer">
+	<a href="#">Back to top</a>
+</div>
+<script>
+    document.getElementById("open-nav").addEventListener("click", function () {
+        document.body.classList.toggle("nav-open");
+    });
+</script>
+</body>
 </html>
 
 

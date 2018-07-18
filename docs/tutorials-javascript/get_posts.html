@@ -1,62 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" >
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Cousine|Inconsolata" rel="stylesheet">
-		
-		<link rel="shortcut icon" type="image/png" href="/favicon.png">
-		
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Cousine|Inconsolata" rel="stylesheet">
+	<link rel="shortcut icon" type="image/png" href="/favicon.png">
 
-		
-		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" href="/css/css/fontawesome-all.min.css">
-		<script src="/js/main.js"></script>
-		
+	
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/css/fontawesome-all.min.css">
+	<script src="/js/main.js"></script>
+	
 
-		<!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>Get Posts - Steem Developer</title>
-<meta property="og:title" content="Get Posts" />
+	<!-- Begin Jekyll SEO tag v2.1.0 -->
+<title>JS: Get Posts - Steem Developer</title>
+<meta property="og:title" content="JS: Get Posts" />
 <meta name="description" content="Query for the most recent posts having a specific tag using a Steem filter" />
 <meta property="og:description" content="Query for the most recent posts having a specific tag using a Steem filter" />
 <link rel="canonical" href="https://developer.steem.io/tutorials-javascript/get_posts" />
 <meta property="og:url" content="https://developer.steem.io/tutorials-javascript/get_posts" />
 <meta property="og:site_name" content="Steem Developer" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-07-03T16:28:31-05:00" />
+<meta property="article:published_time" content="2018-07-18T16:19:24-05:00" />
 <script type="application/ld+json">
 {"@context": "http://schema.org",
 "@type": "BlogPosting",
-"headline": "Get Posts",
-"datePublished": "2018-07-03T16:28:31-05:00",
+"headline": "JS: Get Posts",
+"datePublished": "2018-07-18T16:19:24-05:00",
 "description": "Query for the most recent posts having a specific tag using a Steem filter",
 "url": "https://developer.steem.io/tutorials-javascript/get_posts"}</script>
 <!-- End Jekyll SEO tag -->
 
 
-		
-	</head>
-	<body>
-		<header>
-			<h1>
-				
-					<a href="/"><img src="/images/logotype_white.svg" height="40" alt="Steem Developer logo"></a>
-				
-				<a href="/" class="logo-link"></a>
-				<button type="button" class="open-nav" id="open-nav"></button>
-			</h1>
+	
+</head>
+<body>
+<header>
+	<h1>
+		<button type="button" class="open-nav" id="open-nav"></button>
+		<a href="/"  class="logo-link"><img src="/images/logotype_white.svg" height="40" alt="Steem Developer logo"></a>
+	</h1>
 
-			
-				<form action="/search/" method="get">
-					<input type="text" name="q" id="search-input" placeholder="Search">
-					<input type="submit" value="Search" style="display: none;">
-				</form>
-			
+	
+	<form action="/search/" method="get">
+		<input type="text" name="q" id="search-input" placeholder="Search">
+		<input type="submit" value="Search" style="display: none;">
+	</form>
+	
 
-			<div id="sidebar" class="sidebar">
+	<div id="sidebar" class="sidebar">
 	
 	
 	
@@ -285,24 +280,24 @@
 </div>
 
 
-			<!--<p class="copyright">-->
-				<!--<a href="https://steemit.com.com/">-->
-				  <!--steemit-->
-				<!--</a>-->
-			<!--</p>-->
-			<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-		</header>
-		<div class="main" id="top">
-			<div class="hero">
-				<h1 class="hero__h1">Steem Developer Portal </h1>
-				
-				<img class="hero__img" src="/images/hero.png">
-				
-			</div>
-			<section id="tutorials-javascript-get-posts" class="row tutorials-javascript-get-posts">
+	<!--<p class="copyright">-->
+	<!--<a href="https://steemit.com.com/">-->
+	<!--steemit-->
+	<!--</a>-->
+	<!--</p>-->
+	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+</header>
+<div class="main" id="top">
+	<div class="hero">
+		<h1 class="hero__h1">Steem Developer Portal </h1>
+		
+		<img class="hero__img" src="/images/hero.png">
+		
+	</div>
+	<section id="tutorials-javascript-get-posts" class="row tutorials-javascript-get-posts">
 	<h3>
 		<a id="tutorials-javascript-get-posts">
-			Get Posts
+			JS: Get Posts
 			
 		</a>
 	</h3>
@@ -310,7 +305,10 @@
 		<p class="description">Query for the most recent posts having a specific tag using a Steem filter</p>
 	
 
-	<p>This tutorial pulls a list of the posts from different tags or filters and displays them.
+	<p><span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of <a href="https://github.com/steemit/devportal-tutorials-js/tree/master/tutorials/04_get_posts">Get Posts</a> can be downloaded as part of the <a href="https://github.com/steemit/devportal-tutorials-js">JS tutorials repository</a>.</span>
+<br /></p>
+
+<p>This tutorial pulls a list of the posts from different tags or filters and displays them.
 Tags and filters are different. It’s important to understand them.</p>
 
 <h2 id="intro">Intro</h2>
@@ -337,7 +335,7 @@ application.</p>
 
 <h4 id="1-ui-">1. UI <a name="UI"></a></h4>
 
-<p>The source HTML for our UI can be found in <a href="./public/index.html">public/index.html</a></p>
+<p>The source HTML for our UI can be found in <a href="https://github.com/steemit/devportal-tutorials-js/blob/master/tutorials/04_get_posts/public/index.html">public/index.html</a></p>
 
 <p>There are three input components to the UI.</p>
 
@@ -492,7 +490,7 @@ iterates over the entries response, and constructs html from it.</p>
 </span></code></pre>
 </div>
 
-<p><strong>And that’s all there is to getting top-level posts.</strong> <em>See <a href="../07_get_post_comments">Get post comments</a> for getting comments</em></p>
+<p><strong>And that’s all there is to getting top-level posts.</strong> <em>See <a href="get_post_comments">Get post comments</a> for getting comments</em></p>
 
 <h3 id="to-run-the-tutorial">To Run the tutorial</h3>
 
@@ -504,15 +502,20 @@ iterates over the entries response, and constructs html from it.</p>
   <li>After a few moments, the server should be running at <a href="http://localhost:3000/">http://localhost:3000/</a></li>
 </ol>
 
+<hr />
+
 </section>
 
-		</div>
-		<script>
-			document.getElementById("open-nav").addEventListener("click", function () {
-				document.body.classList.toggle("nav-open");
-			});
-		</script>
-	</body>
+</div>
+<div class="footer">
+	<a href="#">Back to top</a>
+</div>
+<script>
+    document.getElementById("open-nav").addEventListener("click", function () {
+        document.body.classList.toggle("nav-open");
+    });
+</script>
+</body>
 </html>
 
 
