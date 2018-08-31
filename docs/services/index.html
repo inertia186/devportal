@@ -540,6 +540,8 @@ A full breakdown of OAuth2 and how it applies to SteemIt and SteemConnect can be
   <li><a href="#benefits-of-jussi">Benefits of jussi</a>
     <ul>
       <li><a href="#time-to-live">TTL</a></li>
+      <li><a href="#multiple-routes">Multiple Routes</a></li>
+      <li><a href="#retry">Retry</a></li>
       <li><a href="#json-rpc-batch">json-rpc batch</a></li>
     </ul>
   </li>
@@ -603,6 +605,10 @@ docker run -itp 9000:8080 <span class="s2">"</span><span class="nv">$USER</span>
          </span><span class="nt">"timeouts"</span><span class="p">:[</span><span class="w">
             </span><span class="p">[</span><span class="s2">"steemd"</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">],</span><span class="w">
             </span><span class="p">[</span><span class="s2">"steemd.network_broadcast_api"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">]</span><span class="w">
+         </span><span class="p">],</span><span class="w">
+         </span><span class="nt">"retries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">[</span><span class="s2">"steemd"</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">],</span><span class="w">
+            </span><span class="p">[</span><span class="s2">"steemd.network_broadcast_api"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">]</span><span class="w">
          </span><span class="p">]</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -644,6 +650,8 @@ docker run -itp 9000:8080 <span class="s2">"</span><span class="nv">$USER</span>
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>curl -s --data <span class="s1">'{"jsonrpc":"2.0", "method":"foo.bar", "params":["baz"], "id":1}'</span> http://localhost:9000
 </code></pre>
 </div>
+
+<p><strong>Note:</strong> if you set <code class="highlighter-rouge">translate_to_appbase</code> as <code class="highlighter-rouge">true</code>, jussi will do the translation for you and that specific endpoint will work with libraries that don’t yet support appbase.</p>
 
 <h3 id="benefits-of-jussi">Benefits of jussi<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -825,6 +833,38 @@ docker run -itp 9000:8080 <span class="s2">"</span><span class="nv">$USER</span>
 </ul>
 
 <p>If you have a local copy of jussi (see: <a href="#installation">Installation</a>), you can change these defaults by modifying <code class="highlighter-rouge">DEV_config.json</code>.</p>
+
+<h4 id="multiple-routes">Multiple Routes<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h4>
+
+<p>Each <code class="highlighter-rouge">urls</code> key can have multiple endpoints for each namespace.  For example:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"urls"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">[</span><span class="s2">"appbase"</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://api.steemitdev.com"</span><span class="p">]</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>… can also be expressed as:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"urls"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">[</span><span class="s2">"appbase"</span><span class="p">,</span><span class="s2">"https://api.steemitdev.com"</span><span class="p">],</span><span class="w">
+    </span><span class="p">[</span><span class="s2">"appbase.condenser_api.get_account_history"</span><span class="p">,</span><span class="s2">"https://api-for-account-history.steemitdev.com"</span><span class="p">],</span><span class="w">
+    </span><span class="p">[</span><span class="s2">"appbase.condenser_api.get_ops_in_block"</span><span class="p">,</span><span class="s2">"https://api-for-get-ops-in-block.steemitdev.com"</span><span class="p">]</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>In these examples, the methods <code class="highlighter-rouge">get_account_history</code> and <code class="highlighter-rouge">get_ops_in_block</code> route to a dedicated API endpoint, while the rest of the <code class="highlighter-rouge">appbase</code> namespace routes to a common endpoint.</p>
+
+<h4 id="retry">Retry<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h4>
+
+<p>Adding a <code class="highlighter-rouge">retries</code> element defines the number of retry attempts, where <code class="highlighter-rouge">0</code> (or absent) means no retry.  The maximum number of retries is <code class="highlighter-rouge">3</code>.</p>
+
+<p>Note that retrying broadcast methods is not recommended, which is why the example explicitly sets <code class="highlighter-rouge">steemd.network_broadcast_api</code> to <code class="highlighter-rouge">0</code>.</p>
 
 <h4 id="json-rpc-batch">json-rpc batch<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h4>
 
@@ -1049,6 +1089,12 @@ Definitions:
 			<h1 id="definition">Definition</h1>
 
 <p>Imagehoster is a Steem-powered image hosting and proxying service. Any image uploaded to, or proxied through, your Imagehoster has a copy stored within it. This means that the image continues to be available even if 3rd party sites go down or change their URLs. For as long as your instance of imagehoster is running the image will be available, anytime you need it.</p>
+
+<p>The purpose of this tool is to provide a way to host and proxy images used by <a href="https://github.com/steemit/condenser#condenser">condenser</a> to help maintain the privacy of the authors and general users accessing the images.</p>
+
+<p>Using ImageHoster will help limit access to IP addresses of the general user.  It will also strip <a href="https://en.wikipedia.org/wiki/Exif">image metadata</a> related to the author’s geographical location.  It also helps to verify that the original author uploaded the image they intended.</p>
+
+<p>The ability to upload images on steemit.com was originally added in January, 2017.  Please note that this tool <strong>does not</strong> store any image data on the blockchain.</p>
 
 <p>Detaied information on Imagehoster can be found in its <a href="https://github.com/steemit/imagehoster/blob/master/README.md">repository</a></p>
 

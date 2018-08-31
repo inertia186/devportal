@@ -1328,7 +1328,7 @@
 
 </ul>
 <h4 id="condenser_api.get_config">condenser_api.get_config <a href="#condenser_api.get_config"><i class="fas fa-link fa-xs"></i></a></h4>
-<p>Returns information about compile-time constants.</p>
+<p>Returns information about compile-time constants.  See: <a href="/tutorials-recipes/understanding-configuration-values">Understanding Configuration Values</a></p>
 <h5 id="condenser_api.get_config-parameter_json">Query Parameters JSON <a href="#condenser_api.get_config-parameter_json"><i class="fas fa-link fa-sm"></i></a></h5>
 <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">[]</span><span class="w">
 </span></code></pre>
@@ -4884,7 +4884,7 @@ There is no blockchain enforced validation on json_metadata, but the community h
 
 </ul>
 <h4 id="database_api.get_config">database_api.get_config <a href="#database_api.get_config"><i class="fas fa-link fa-xs"></i></a></h4>
-<p>Returns information about compile-time constants.</p>
+<p>Returns information about compile-time constants.  See: <a href="/tutorials-recipes/understanding-configuration-values">Understanding Configuration Values</a></p>
 <h5 id="database_api.get_config-parameter_json">Query Parameters JSON <a href="#database_api.get_config-parameter_json"><i class="fas fa-link fa-sm"></i></a></h5>
 <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{}</span><span class="w">
 </span></code></pre>
@@ -5241,6 +5241,37 @@ There is no blockchain enforced validation on json_metadata, but the community h
 <h5 id="database_api.get_transaction_hex-curl-examples">Example <code>curl</code> <a href="#database_api.get_transaction_hex-curl-examples"><i class="fas fa-link fa-sm"></i></a></h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>curl -s --data <span class="s1">'{"jsonrpc":"2.0", "method":"database_api.get_transaction_hex", "params":{"trx":{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[{"type":"pow_operation","value":{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"sbd_interest_rate":1000}}}],"extensions":[],"signatures":[]}}, "id":1}'</span> https://api.steemit.com
+</code></pre>
+</div>
+
+<hr />
+
+<ul style="float: right; list-style: none;">
+
+<li class="success"><strong><small>Since: HF20</small></strong></li>
+
+
+
+</ul>
+<h4 id="database_api.get_version">database_api.get_version <a href="#database_api.get_version"><i class="fas fa-link fa-xs"></i></a></h4>
+<p>Returns the compile time versions of blockchain, steem, FC. Also returns the boot time version of the chain id (<em>may</em> be different from compile time value only when looking at a testnet)</p>
+<h5 id="database_api.get_version-parameter_json">Query Parameters JSON <a href="#database_api.get_version-parameter_json"><i class="fas fa-link fa-sm"></i></a></h5>
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">[]</span><span class="w">
+</span></code></pre>
+</div>
+<h5 id="database_api.get_version-expected_response_json">Expected Response JSON <a href="#database_api.get_version-expected_response_json"><i class="fas fa-link fa-sm"></i></a></h5>
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"blockchain_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"steem_revision"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"fc_revision"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"chain_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h5 id="database_api.get_version-curl-examples">Example <code>curl</code> <a href="#database_api.get_version-curl-examples"><i class="fas fa-link fa-sm"></i></a></h5>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>curl -s --data <span class="s1">'{"jsonrpc":"2.0", "method":"database_api.get_version", "params":[], "id":1}'</span> https://api.steemit.com
 </code></pre>
 </div>
 
@@ -8091,7 +8122,7 @@ block production pay.</li>
 <i class="fas fa-link fa-xs"></i></a>
 </h4>
 <p>All accounts with a VFS (Vesting Fund Shares) can vote for or against
-any witness.</p>
+any witness.  See: <a href="/tutorials-recipes/understanding-configuration-values#steem_max_account_witness_votes"><code class="highlighter-rouge">STEEM_MAX_ACCOUNT_WITNESS_VOTES</code></a></p>
 
 <p>If a proxy is specified then all existing votes are removed.</p>
 

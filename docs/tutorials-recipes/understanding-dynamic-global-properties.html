@@ -24,12 +24,12 @@
 <meta property="og:url" content="https://developer.steem.io/tutorials-recipes/understanding-dynamic-global-properties" />
 <meta property="og:site_name" content="Steem Developer" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-07-20T12:56:08-05:00" />
+<meta property="article:published_time" content="2018-08-31T09:53:03-05:00" />
 <script type="application/ld+json">
 {"@context": "http://schema.org",
 "@type": "BlogPosting",
 "headline": "Understanding Dynamic Global Properties",
-"datePublished": "2018-07-20T12:56:08-05:00",
+"datePublished": "2018-08-31T09:53:03-05:00",
 "description": "Maintains global state information",
 "url": "https://developer.steem.io/tutorials-recipes/understanding-dynamic-global-properties"}</script>
 <!-- End Jekyll SEO tag -->
@@ -306,7 +306,8 @@
 		</a>
 	</h3>
 	
-		<p class="description">Maintains global state information</p>
+		<span class="description"><p>Maintains global state information</p>
+</span>
 	
 
 	<h3 id="intro">Intro</h3>
@@ -328,9 +329,7 @@
       <li><a href="#num_pow_witnesses">num_pow_witnesses</a></li>
       <li><a href="#virtual_supply">virtual_supply</a></li>
       <li><a href="#current_supply">current_supply</a></li>
-      <li><a href="#confidential_supply">confidential_supply</a></li>
       <li><a href="#current_sbd_supply">current_sbd_supply</a></li>
-      <li><a href="#confidential_sbd_supply">confidential_sbd_supply</a></li>
       <li><a href="#total_vesting_fund_steem">total_vesting_fund_steem</a></li>
       <li><a href="#total_vesting_shares">total_vesting_shares</a></li>
       <li><a href="#total_reward_fund_steem">total_reward_fund_steem</a></li>
@@ -390,11 +389,7 @@
   <li>example: <code class="highlighter-rouge">blocktrades</code></li>
 </ul>
 
-<h3 id="total_pow"><code class="highlighter-rouge">total_pow</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
-
-<ul style="float: right; list-style: none;">
-<li class="warning"><strong><small>Deprecated</small></strong></li>
-</ul>
+<h3 id="total_pow-deprecated"><code class="highlighter-rouge">total_pow</code> <span class="warn deprecated">Deprecated</span><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
 <p>The total POW accumulated, aka the sum of <code class="highlighter-rouge">num_pow_witness</code> at the time new POW is added.</p>
 
@@ -402,11 +397,7 @@
   <li>example: <code class="highlighter-rouge">514415</code></li>
 </ul>
 
-<h3 id="num_pow_witnesses"><code class="highlighter-rouge">num_pow_witnesses</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
-
-<ul style="float: right; list-style: none;">
-<li class="warning"><strong><small>Deprecated</small></strong></li>
-</ul>
+<h3 id="num_pow_witnesses-deprecated"><code class="highlighter-rouge">num_pow_witnesses</code> <span class="warn deprecated">Deprecated</span><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
 <p>The current count of how many pending POW witnesses there are, determines the difficulty of doing pow.</p>
 
@@ -454,9 +445,11 @@
   <li>example: <code class="highlighter-rouge">0.000 SBD</code></li>
 </ul>
 
-<h3 id="total_vesting_fund_steem"><code class="highlighter-rouge">total_vesting_fund_steem</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
+<h3 id="total_vesting_fund_steem-deprecated"><code class="highlighter-rouge">total_vesting_fund_steem</code> <span class="warn deprecated">Deprecated</span><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
-<p>STEEM that is invested in STEEM POWER (powered up).</p>
+<p><em>Now deprecated way to get STEEM that is invested in STEEM POWER (powered up).</em></p>
+
+<p>Use <a href="/apidefinitions/#condenser_api.get_reward_fund"><code class="highlighter-rouge">condenser_api.get_reward_fund</code></a> instead.</p>
 
 <ul>
   <li>example: <code class="highlighter-rouge">192713261.007 STEEM</code></li>
@@ -478,9 +471,11 @@
   <li>example: <code class="highlighter-rouge">0.000 STEEM</code></li>
 </ul>
 
-<h3 id="total_reward_shares2"><code class="highlighter-rouge">total_reward_shares2</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
+<h3 id="total_reward_shares2-deprecated-"><code class="highlighter-rouge">total_reward_shares2</code> <span class="warn deprecated">Deprecated</span> <a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
-<p>Number of shares in the pool.</p>
+<p><em>Now deprecated way to get the number of shares in the pool.</em></p>
+
+<p>Use <a href="/apidefinitions/#condenser_api.get_reward_fund"><code class="highlighter-rouge">condenser_api.get_reward_fund</code></a> instead.</p>
 
 <ul>
   <li>example: <code class="highlighter-rouge">0</code></li>
@@ -565,6 +560,8 @@
 <p>Fields not covered in this recipe are:</p>
 
 <ul>
+  <li><code class="highlighter-rouge">confidential_supply</code></li>
+  <li><code class="highlighter-rouge">confidential_sbd_supply</code></li>
   <li><code class="highlighter-rouge">pending_rewarded_vesting_shares</code></li>
   <li><code class="highlighter-rouge">pending_rewarded_vesting_steem</code></li>
   <li><code class="highlighter-rouge">sbd_print_rate</code></li>

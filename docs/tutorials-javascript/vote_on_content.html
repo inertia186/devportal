@@ -18,19 +18,19 @@
 	<!-- Begin Jekyll SEO tag v2.1.0 -->
 <title>JS: Vote On Content - Steem Developer</title>
 <meta property="og:title" content="JS: Vote On Content" />
-<meta name="description" content="Create a weighted up or down vote on a comment or post and send it to Steem" />
-<meta property="og:description" content="Create a weighted up or down vote on a comment or post and send it to Steem" />
+<meta name="description" content="Create a weighted up or down vote on a comment/post." />
+<meta property="og:description" content="Create a weighted up or down vote on a comment/post." />
 <link rel="canonical" href="https://developer.steem.io/tutorials-javascript/vote_on_content" />
 <meta property="og:url" content="https://developer.steem.io/tutorials-javascript/vote_on_content" />
 <meta property="og:site_name" content="Steem Developer" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-07-20T12:56:08-05:00" />
+<meta property="article:published_time" content="2018-08-31T09:53:03-05:00" />
 <script type="application/ld+json">
 {"@context": "http://schema.org",
 "@type": "BlogPosting",
 "headline": "JS: Vote On Content",
-"datePublished": "2018-07-20T12:56:08-05:00",
-"description": "Create a weighted up or down vote on a comment or post and send it to Steem",
+"datePublished": "2018-08-31T09:53:03-05:00",
+"description": "Create a weighted up or down vote on a comment/post.",
 "url": "https://developer.steem.io/tutorials-javascript/vote_on_content"}</script>
 <!-- End Jekyll SEO tag -->
 
@@ -306,7 +306,8 @@
 		</a>
 	</h3>
 	
-		<p class="description">Create a weighted up or down vote on a comment or post and send it to Steem</p>
+		<span class="description"><p><em>Create a weighted up or down vote on a comment/post.</em></p>
+</span>
 	
 
 	<p><span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of <a href="https://github.com/steemit/devportal-tutorials-js/tree/master/tutorials/17_vote_on_content">Vote On Content</a> can be downloaded as part of the <a href="https://github.com/steemit/devportal-tutorials-js">JS tutorials repository</a>.</span>
@@ -350,24 +351,25 @@ required for the voting operation:</p>
 
 <p>As usual, we have a <code class="highlighter-rouge">public/app.js</code> file which holds the Javascript segment of the tutorial. In the first few lines we define the configured library and packages:</p>
 
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">dsteem</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'dsteem'</span><span class="p">);</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Client</span><span class="p">,</span> <span class="nx">PrivateKey</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'dsteem'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Testnet</span> <span class="nx">as</span> <span class="nx">NetConfig</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'../../configuration'</span><span class="p">;</span> <span class="c1">//A Steem Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Steem blockchain.</span>
 
-<span class="kr">const</span> <span class="nx">addressPrefix</span> <span class="o">=</span> <span class="s1">'STX'</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">chainId</span> <span class="o">=</span>
-    <span class="s1">'79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673'</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">apiUrl</span> <span class="o">=</span> <span class="s1">'https://testnet.steem.vc'</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">opts</span> <span class="o">=</span> <span class="p">{</span> <span class="p">...</span><span class="nx">NetConfig</span><span class="p">.</span><span class="nx">net</span> <span class="p">};</span>
 
-<span class="kr">const</span> <span class="nx">opts</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">addressPrefix</span><span class="p">,</span>
-    <span class="nx">chainId</span><span class="p">,</span>
-<span class="p">};</span>
-
-<span class="kr">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">dsteem</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s1">'https://testnet.steem.vc'</span><span class="p">,</span> <span class="nx">opts</span><span class="p">);</span>
+<span class="c1">//connect to a steem node, testnet in this case</span>
+<span class="kr">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">(</span><span class="nx">NetConfig</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span> <span class="nx">opts</span><span class="p">);</span>
 </code></pre>
 </div>
 
-<p>Above, we have <code class="highlighter-rouge">dsteem</code> pointing to the test network with the proper chainId, addressPrefix, and endpoint.<br />
-Because this tutorial modifies the blockchain, we will use a testnet and a predefined account to demonstrate voting.</p>
+<p>Above, we have <code class="highlighter-rouge">dsteem</code> pointing to the test network with the proper chainId, addressPrefix, and endpoint by importing from the <code class="highlighter-rouge">configuration.js</code> file. Because this tutorial is interactive, we will not publish test content to the main network. Instead, we’re using the testnet and a predefined account which is imported once the application loads, to demonstrate voting on content.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">account</span> <span class="o">=</span> <span class="nx">NetConfig</span><span class="p">.</span><span class="nx">accounts</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'username'</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">account</span><span class="p">.</span><span class="nx">address</span><span class="p">;</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'postingKey'</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">account</span><span class="p">.</span><span class="nx">privPosting</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre>
+</div>
 
 <h4 id="2-create-new-post">2. Create new post<a name="createpost"></a></h4>
 
@@ -530,7 +532,7 @@ user some meaningful UI feedback if they put in a bad posting key. The important
   <li><code class="highlighter-rouge">cd tutorials/17_vote_on_content</code></li>
   <li><code class="highlighter-rouge">npm i</code></li>
   <li><code class="highlighter-rouge">npm run dev-server</code> or <code class="highlighter-rouge">npm run start</code></li>
-  <li>After a few moments, the server should be running at http://localhost:3000/</li>
+  <li>After a few moments, the server should be running at <a href="http://localhost:3000/">http://localhost:3000/</a></li>
 </ol>
 
 <hr />

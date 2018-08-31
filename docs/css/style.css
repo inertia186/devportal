@@ -1070,3 +1070,13 @@ header h1 {
   text-transform: lowercase; }
   .top-of-tutorial-repo-link .first-word {
     text-transform: capitalize; }
+
+.warn.deprecated {
+  background: #FD0;
+  font-weight: bold;
+  font-size: small;
+  display: inline-block;
+  margin-left: 5px;
+  padding: 5px;
+  position: relative;
+  top: -3px; }

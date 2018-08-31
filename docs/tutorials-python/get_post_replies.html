@@ -18,19 +18,19 @@
 	<!-- Begin Jekyll SEO tag v2.1.0 -->
 <title>PY: Get Post Replies - Steem Developer</title>
 <meta property="og:title" content="PY: Get Post Replies" />
-<meta name="description" content="This tutorial pulls a list of replies on selected post from the blockchain" />
-<meta property="og:description" content="This tutorial pulls a list of replies on selected post from the blockchain" />
+<meta name="description" content="Fetch comments made on each content or post using Python." />
+<meta property="og:description" content="Fetch comments made on each content or post using Python." />
 <link rel="canonical" href="https://developer.steem.io/tutorials-python/get_post_replies" />
 <meta property="og:url" content="https://developer.steem.io/tutorials-python/get_post_replies" />
 <meta property="og:site_name" content="Steem Developer" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-07-20T12:56:08-05:00" />
+<meta property="article:published_time" content="2018-08-31T09:53:03-05:00" />
 <script type="application/ld+json">
 {"@context": "http://schema.org",
 "@type": "BlogPosting",
 "headline": "PY: Get Post Replies",
-"datePublished": "2018-07-20T12:56:08-05:00",
-"description": "This tutorial pulls a list of replies on selected post from the blockchain",
+"datePublished": "2018-08-31T09:53:03-05:00",
+"description": "Fetch comments made on each content or post using Python.",
 "url": "https://developer.steem.io/tutorials-python/get_post_replies"}</script>
 <!-- End Jekyll SEO tag -->
 
@@ -306,7 +306,8 @@
 		</a>
 	</h3>
 	
-		<p class="description">This tutorial pulls a list of replies on selected post from the blockchain</p>
+		<span class="description"><p>Fetch comments made on each content or post using Python.</p>
+</span>
 	
 
 	<p><span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of <a href="https://github.com/steemit/devportal-tutorials-py/tree/master/tutorials/04_get_post_replies">Get Post Replies</a> can be downloaded as part of the <a href="https://github.com/steemit/devportal-tutorials-py">PY tutorials repository</a>.</span>
@@ -315,8 +316,6 @@
 <p>This tutorial will explain and show you how to access the <strong>Steem</strong> blockchain using the <a href="https://github.com/steemit/steem-python">steem-python</a> library to fetch list of posts and get replies info on selected post.</p>
 
 <h2 id="intro">Intro</h2>
-
-<p>All python tutorials will be in Python3 and developers following these tutorials should have sufficient knowlegde to use pip/pip3 package manager. Your development environment should be set up properly to test these tutorials.</p>
 
 <p>Steem python library has built-in function to get active voters information if post with author and permlink as an argument. Since we don’t have predefined post or author/permlink. We will fetch post list from previous tutorial and give option to choose one post to get its active voters. <code class="highlighter-rouge">get_content_replies</code> function fetches list of replies on content. Note that <code class="highlighter-rouge">get_discussions_by_hot</code> filter is used for fetching 5 posts and after selection of post tutorial uses <code class="highlighter-rouge">author</code> and <code class="highlighter-rouge">permlink</code> of the post to fetch replies.</p>
 
@@ -492,6 +491,7 @@
 <h3 id="to-run-the-tutorial">To Run the tutorial</h3>
 
 <ol>
+  <li><a href="https://github.com/steemit/devportal-tutorials-py/tree/master/tutorials/00_getting_started#dev-requirements">review dev requirements</a></li>
   <li>clone this repo</li>
   <li><code class="highlighter-rouge">cd tutorials/04_get_post_replies</code></li>
   <li><code class="highlighter-rouge">pip install -r requirements.txt</code></li>

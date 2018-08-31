@@ -24,12 +24,12 @@
 <meta property="og:url" content="https://developer.steem.io/services/imageHoster" />
 <meta property="og:site_name" content="Steem Developer" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-07-20T12:56:08-05:00" />
+<meta property="article:published_time" content="2018-08-31T09:53:03-05:00" />
 <script type="application/ld+json">
 {"@context": "http://schema.org",
 "@type": "BlogPosting",
 "headline": "ImageHoster",
-"datePublished": "2018-07-20T12:56:08-05:00",
+"datePublished": "2018-08-31T09:53:03-05:00",
 "description": "Definition",
 "url": "https://developer.steem.io/services/imageHoster"}</script>
 <!-- End Jekyll SEO tag -->
@@ -301,6 +301,12 @@
 	<h1 id="definition">Definition</h1>
 
 <p>Imagehoster is a Steem-powered image hosting and proxying service. Any image uploaded to, or proxied through, your Imagehoster has a copy stored within it. This means that the image continues to be available even if 3rd party sites go down or change their URLs. For as long as your instance of imagehoster is running the image will be available, anytime you need it.</p>
+
+<p>The purpose of this tool is to provide a way to host and proxy images used by <a href="https://github.com/steemit/condenser#condenser">condenser</a> to help maintain the privacy of the authors and general users accessing the images.</p>
+
+<p>Using ImageHoster will help limit access to IP addresses of the general user.  It will also strip <a href="https://en.wikipedia.org/wiki/Exif">image metadata</a> related to the author’s geographical location.  It also helps to verify that the original author uploaded the image they intended.</p>
+
+<p>The ability to upload images on steemit.com was originally added in January, 2017.  Please note that this tool <strong>does not</strong> store any image data on the blockchain.</p>
 
 <p>Detaied information on Imagehoster can be found in its <a href="https://github.com/steemit/imagehoster/blob/master/README.md">repository</a></p>
 
