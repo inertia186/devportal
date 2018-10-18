@@ -15,23 +15,20 @@
 	<script src="/js/main.js"></script>
 	
 
-	<!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>PY: Edit Content Patching - Steem Developer</title>
+	<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>PY: Edit Content Patching | Steem Developer</title>
+<meta name="generator" content="Jekyll v3.8.4" />
 <meta property="og:title" content="PY: Edit Content Patching" />
+<meta property="og:locale" content="en_US" />
 <meta name="description" content="How to edit post content with diff_match_patch using Python." />
 <meta property="og:description" content="How to edit post content with diff_match_patch using Python." />
-<link rel="canonical" href="https://developer.steem.io/tutorials-python/edit_content_patching" />
-<meta property="og:url" content="https://developer.steem.io/tutorials-python/edit_content_patching" />
+<link rel="canonical" href="https://developers.steem.io/tutorials-python/edit_content_patching" />
+<meta property="og:url" content="https://developers.steem.io/tutorials-python/edit_content_patching" />
 <meta property="og:site_name" content="Steem Developer" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-25T13:58:36-05:00" />
+<meta property="article:published_time" content="2018-10-18T14:29:07-05:00" />
 <script type="application/ld+json">
-{"@context": "http://schema.org",
-"@type": "BlogPosting",
-"headline": "PY: Edit Content Patching",
-"datePublished": "2018-09-25T13:58:36-05:00",
-"description": "How to edit post content with diff_match_patch using Python.",
-"url": "https://developer.steem.io/tutorials-python/edit_content_patching"}</script>
+{"description":"How to edit post content with diff_match_patch using Python.","@type":"BlogPosting","url":"https://developers.steem.io/tutorials-python/edit_content_patching","headline":"PY: Edit Content Patching","dateModified":"2018-10-18T14:29:07-05:00","datePublished":"2018-10-18T14:29:07-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://developers.steem.io/tutorials-python/edit_content_patching"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -169,11 +166,11 @@
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
 						
 					
 						
@@ -214,6 +211,10 @@
 					
 						
 						<li><a href="/apidefinitions/#apidefinitions-block-api">Block Api</a></li>
+						
+					
+						
+						<li><a href="/apidefinitions/#apidefinitions-debug-node-api">Debug Node Api</a></li>
 						
 					
 						
@@ -350,7 +351,7 @@
 
 <p>We import the libraries and connect to the <code class="highlighter-rouge">testnet</code>.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">steembase</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">steembase</span>
 <span class="kn">import</span> <span class="nn">steem</span>
 <span class="kn">from</span> <span class="nn">diff_match_patch</span> <span class="kn">import</span> <span class="n">diff_match_patch</span>
 
@@ -358,8 +359,7 @@
     <span class="s">'chain_id'</span><span class="p">:</span> <span class="s">'79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673'</span><span class="p">,</span>
     <span class="s">'prefix'</span><span class="p">:</span> <span class="s">'STX'</span><span class="p">,</span> <span class="s">'steem_symbol'</span><span class="p">:</span> <span class="s">'STEEM'</span><span class="p">,</span> <span class="s">'sbd_symbol'</span><span class="p">:</span> <span class="s">'SBD'</span><span class="p">,</span> <span class="s">'vests_symbol'</span><span class="p">:</span> <span class="s">'VESTS'</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Because this tutorial alters the blockchain we connect to a testnet so we don’t create spam on the production server.</p>
 
@@ -367,21 +367,20 @@
 
 <p>We require the <code class="highlighter-rouge">private posting key</code> of the user in order for the transfer to be committed to the blockchain. This is why we are using a testnet. The values are supplied via the terminal/console before we initialise the steem class. There are some demo accounts available but we encourage you to create your own accounts on this testnet and create balances you can claim; it’s good practice.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#capture user information</span>
-<span class="n">username</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Enter username: '</span><span class="p">)</span> <span class="c">#demo account: cdemo</span>
-<span class="n">wif</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Enter private POSTING key: '</span><span class="p">)</span> <span class="c">#demo account: 5JEZ1EiUjFKfsKP32b15Y7jybjvHQPhnvCYZ9BW62H1LDUnMvHz</span>
-
-<span class="c">#connect node and private active key</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">steem</span><span class="o">.</span><span class="n">Steem</span><span class="p">(</span><span class="n">nodes</span><span class="o">=</span><span class="p">[</span><span class="s">'https://testnet.steem.vc'</span><span class="p">],</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="n">wif</span><span class="p">])</span>
-</code></pre>
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#capture user information
+</span><span class="n">username</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Enter username: '</span><span class="p">)</span> <span class="c1">#demo account: cdemo
+</span><span class="n">wif</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Enter private POSTING key: '</span><span class="p">)</span> <span class="c1">#demo account: 5JEZ1EiUjFKfsKP32b15Y7jybjvHQPhnvCYZ9BW62H1LDUnMvHz
+</span>
+<span class="c1">#connect node and private active key
+</span><span class="n">client</span> <span class="o">=</span> <span class="n">steem</span><span class="o">.</span><span class="n">Steem</span><span class="p">(</span><span class="n">nodes</span><span class="o">=</span><span class="p">[</span><span class="s">'https://testnet.steem.vc'</span><span class="p">],</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="n">wif</span><span class="p">])</span>
+</code></pre></div></div>
 
 <h4 id="3-post-to-update-">3. Post to update <a name="post"></a></h4>
 
 <p>The user inputs the author and permlink of the post that they wish to edit. It should be noted that a post cannot be patched once it has been archived. We suggest referring to the <code class="highlighter-rouge">submit post</code> tutorial to create a new post before trying the patch process.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#check valid username</span>
-<span class="n">userinfo</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_account</span><span class="p">(</span><span class="n">username</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#check valid username
+</span><span class="n">userinfo</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_account</span><span class="p">(</span><span class="n">username</span><span class="p">)</span>
 <span class="k">if</span><span class="p">(</span><span class="n">userinfo</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">)</span> <span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s">'Oops. Looks like user '</span> <span class="o">+</span> <span class="n">username</span> <span class="o">+</span> <span class="s">' doesn</span><span class="se">\'</span><span class="s">t exist on this chain!'</span><span class="p">)</span>
     <span class="nb">exit</span><span class="p">()</span>
@@ -389,16 +388,15 @@
 <span class="n">post_author</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Please enter the AUTHOR of the post you want to edit: '</span><span class="p">)</span>
 <span class="n">post_permlink</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Please enter the PERMLINK of the post you want to edit: '</span><span class="p">)</span>
 
-<span class="c">#get details of selected post</span>
-<span class="n">details</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_content</span><span class="p">(</span><span class="n">post_author</span><span class="p">,</span> <span class="n">post_permlink</span><span class="p">)</span>
+<span class="c1">#get details of selected post
+</span><span class="n">details</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_content</span><span class="p">(</span><span class="n">post_author</span><span class="p">,</span> <span class="n">post_permlink</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span> <span class="o">+</span> <span class="s">'Title: '</span> <span class="o">+</span> <span class="n">details</span><span class="p">[</span><span class="s">'title'</span><span class="p">])</span>
 <span class="n">o_body</span> <span class="o">=</span> <span class="n">details</span><span class="p">[</span><span class="s">'body'</span><span class="p">]</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Body:'</span> <span class="o">+</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span> <span class="o">+</span> <span class="n">o_body</span> <span class="o">+</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
 
 <span class="n">n_body</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Please enter new post content:'</span> <span class="o">+</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The user also inputs the updated text in the console/terminal. This will then give us the two text fields to compare.</p>
 
@@ -406,50 +404,47 @@
 
 <p>The module is initiated and the new post text is checked for validity.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#initialise the diff match patch module</span>
-<span class="n">dmp</span> <span class="o">=</span> <span class="n">diff_match_patch</span><span class="p">()</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#initialise the diff match patch module
+</span><span class="n">dmp</span> <span class="o">=</span> <span class="n">diff_match_patch</span><span class="p">()</span>
 
-<span class="c">#Check for null input</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">n_body</span> <span class="o">==</span> <span class="s">''</span><span class="p">)</span> <span class="p">:</span>
+<span class="c1">#Check for null input
+</span><span class="k">if</span> <span class="p">(</span><span class="n">n_body</span> <span class="o">==</span> <span class="s">''</span><span class="p">)</span> <span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span> <span class="o">+</span> <span class="s">'No new post body supplied. Operation aborted'</span><span class="p">)</span>
     <span class="nb">exit</span><span class="p">()</span>
 <span class="k">else</span> <span class="p">:</span>
-    <span class="c"># Check for equality</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">o_body</span> <span class="o">==</span> <span class="n">n_body</span><span class="p">)</span> <span class="p">:</span>
+    <span class="c1"># Check for equality
+</span>    <span class="k">if</span> <span class="p">(</span><span class="n">o_body</span> <span class="o">==</span> <span class="n">n_body</span><span class="p">)</span> <span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span> <span class="o">+</span> <span class="s">'No changes made to post body. Operation aborted'</span><span class="p">)</span>
         <span class="nb">exit</span><span class="p">()</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The <code class="highlighter-rouge">diff</code> is calculated and a test is done to check the <code class="highlighter-rouge">diff</code> length against the total length of the new text to determine if it will be better to patch or just replace the text field. The value to be sent to the blockchain is then assigned to the <code class="highlighter-rouge">new_body</code> parameter.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#check for differences in the text field</span>
-<span class="n">diff</span> <span class="o">=</span> <span class="n">dmp</span><span class="o">.</span><span class="n">diff_main</span><span class="p">(</span><span class="n">o_body</span><span class="p">,</span> <span class="n">n_body</span><span class="p">)</span>
-<span class="c">#Reduce the number of edits by eliminating semantically trivial equalities.</span>
-<span class="n">dmp</span><span class="o">.</span><span class="n">diff_cleanupSemantic</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
-<span class="c">#check patch length</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">dmp</span><span class="o">.</span><span class="n">diff_levenshtein</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">o_body</span><span class="p">))</span> <span class="p">:</span>
-    <span class="c">#create patch</span>
-    <span class="n">patch</span> <span class="o">=</span> <span class="n">dmp</span><span class="o">.</span><span class="n">patch_make</span><span class="p">(</span><span class="n">o_body</span><span class="p">,</span> <span class="n">diff</span><span class="p">)</span>
-    <span class="c">#create new text based on patch</span>
-    <span class="n">patch_body</span> <span class="o">=</span> <span class="n">dmp</span><span class="o">.</span><span class="n">patch_apply</span><span class="p">(</span><span class="n">patch</span><span class="p">,</span> <span class="n">o_body</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#check for differences in the text field
+</span><span class="n">diff</span> <span class="o">=</span> <span class="n">dmp</span><span class="o">.</span><span class="n">diff_main</span><span class="p">(</span><span class="n">o_body</span><span class="p">,</span> <span class="n">n_body</span><span class="p">)</span>
+<span class="c1">#Reduce the number of edits by eliminating semantically trivial equalities.
+</span><span class="n">dmp</span><span class="o">.</span><span class="n">diff_cleanupSemantic</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
+<span class="c1">#check patch length
+</span><span class="k">if</span> <span class="p">(</span><span class="n">dmp</span><span class="o">.</span><span class="n">diff_levenshtein</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">o_body</span><span class="p">))</span> <span class="p">:</span>
+    <span class="c1">#create patch
+</span>    <span class="n">patch</span> <span class="o">=</span> <span class="n">dmp</span><span class="o">.</span><span class="n">patch_make</span><span class="p">(</span><span class="n">o_body</span><span class="p">,</span> <span class="n">diff</span><span class="p">)</span>
+    <span class="c1">#create new text based on patch
+</span>    <span class="n">patch_body</span> <span class="o">=</span> <span class="n">dmp</span><span class="o">.</span><span class="n">patch_apply</span><span class="p">(</span><span class="n">patch</span><span class="p">,</span> <span class="n">o_body</span><span class="p">)</span>
     <span class="n">new_body</span> <span class="o">=</span> <span class="n">patch_body</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="k">else</span> <span class="p">:</span>
     <span class="n">new_body</span> <span class="o">=</span> <span class="n">n_body</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="5-new-post-commit-">5. New post commit <a name="commit"></a></h4>
 
 <p>The only new parameter is the changed body text. All the other parameters to do a commit is assigned directly from the original post entered by the user.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#commit post to blockchain with all old values and new body text</span>
-<span class="n">client</span><span class="o">.</span><span class="n">commit</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">details</span><span class="p">[</span><span class="s">'title'</span><span class="p">],</span> <span class="n">body</span><span class="o">=</span><span class="n">new_body</span><span class="p">,</span> <span class="n">author</span><span class="o">=</span><span class="n">details</span><span class="p">[</span><span class="s">'author'</span><span class="p">],</span> <span class="n">permlink</span><span class="o">=</span><span class="n">details</span><span class="p">[</span><span class="s">'permlink'</span><span class="p">],</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#commit post to blockchain with all old values and new body text
+</span><span class="n">client</span><span class="o">.</span><span class="n">commit</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">details</span><span class="p">[</span><span class="s">'title'</span><span class="p">],</span> <span class="n">body</span><span class="o">=</span><span class="n">new_body</span><span class="p">,</span> <span class="n">author</span><span class="o">=</span><span class="n">details</span><span class="p">[</span><span class="s">'author'</span><span class="p">],</span> <span class="n">permlink</span><span class="o">=</span><span class="n">details</span><span class="p">[</span><span class="s">'permlink'</span><span class="p">],</span>
     <span class="n">json_metadata</span><span class="o">=</span><span class="n">details</span><span class="p">[</span><span class="s">'json_metadata'</span><span class="p">],</span> <span class="n">reply_identifier</span><span class="o">=</span><span class="p">(</span><span class="n">details</span><span class="p">[</span><span class="s">'parent_author'</span><span class="p">]</span> <span class="o">+</span> <span class="s">'/'</span> <span class="o">+</span> <span class="n">details</span><span class="p">[</span><span class="s">'parent_permlink'</span><span class="p">]))</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span> <span class="o">+</span> <span class="s">'Content of the post has been successfully updated'</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>A simple confirmation is displayed on the screen for a successful commit.</p>
 

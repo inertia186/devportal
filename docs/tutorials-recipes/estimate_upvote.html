@@ -15,23 +15,20 @@
 	<script src="/js/main.js"></script>
 	
 
-	<!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>Estimate the value of an upvote - Steem Developer</title>
+	<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Estimate the value of an upvote | Steem Developer</title>
+<meta name="generator" content="Jekyll v3.8.4" />
 <meta property="og:title" content="Estimate the value of an upvote" />
+<meta property="og:locale" content="en_US" />
 <meta name="description" content="Calculate the approximate value of an upvote on Steem" />
 <meta property="og:description" content="Calculate the approximate value of an upvote on Steem" />
-<link rel="canonical" href="https://developer.steem.io/tutorials-recipes/estimate_upvote" />
-<meta property="og:url" content="https://developer.steem.io/tutorials-recipes/estimate_upvote" />
+<link rel="canonical" href="https://developers.steem.io/tutorials-recipes/estimate_upvote" />
+<meta property="og:url" content="https://developers.steem.io/tutorials-recipes/estimate_upvote" />
 <meta property="og:site_name" content="Steem Developer" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-25T13:58:36-05:00" />
+<meta property="article:published_time" content="2018-10-18T14:29:07-05:00" />
 <script type="application/ld+json">
-{"@context": "http://schema.org",
-"@type": "BlogPosting",
-"headline": "Estimate the value of an upvote",
-"datePublished": "2018-09-25T13:58:36-05:00",
-"description": "Calculate the approximate value of an upvote on Steem",
-"url": "https://developer.steem.io/tutorials-recipes/estimate_upvote"}</script>
+{"description":"Calculate the approximate value of an upvote on Steem","@type":"BlogPosting","url":"https://developers.steem.io/tutorials-recipes/estimate_upvote","headline":"Estimate the value of an upvote","dateModified":"2018-10-18T14:29:07-05:00","datePublished":"2018-10-18T14:29:07-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://developers.steem.io/tutorials-recipes/estimate_upvote"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -169,11 +166,11 @@
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
 						
 					
 						
@@ -214,6 +211,10 @@
 					
 						
 						<li><a href="/apidefinitions/#apidefinitions-block-api">Block Api</a></li>
+						
+					
+						
+						<li><a href="/apidefinitions/#apidefinitions-debug-node-api">Debug Node Api</a></li>
 						
 					
 						
@@ -337,20 +338,19 @@
 
 <p>The response we’re working with will look like:</p>
 
-<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-	</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-	</span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"post"</span><span class="p">,</span><span class="w">
-	</span><span class="nt">"reward_balance"</span><span class="p">:</span><span class="s2">"741222.051 STEEM"</span><span class="p">,</span><span class="w">
-	</span><span class="nt">"recent_claims"</span><span class="p">:</span><span class="s2">"457419472820935017"</span><span class="p">,</span><span class="w">
-	</span><span class="nt">"last_update"</span><span class="p">:</span><span class="s2">"2018-05-23T12:08:36"</span><span class="p">,</span><span class="w">
-	</span><span class="nt">"content_constant"</span><span class="p">:</span><span class="s2">"2000000000000"</span><span class="p">,</span><span class="w">
-	</span><span class="nt">"percent_curation_rewards"</span><span class="p">:</span><span class="mi">2500</span><span class="p">,</span><span class="w">
-	</span><span class="nt">"percent_content_rewards"</span><span class="p">:</span><span class="mi">10000</span><span class="p">,</span><span class="w">
-	</span><span class="nt">"author_reward_curve"</span><span class="p">:</span><span class="s2">"linear"</span><span class="p">,</span><span class="w">
-	</span><span class="nt">"curation_reward_curve"</span><span class="p">:</span><span class="s2">"square_root"</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+	</span><span class="s2">"id"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+	</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"post"</span><span class="p">,</span><span class="w">
+	</span><span class="s2">"reward_balance"</span><span class="p">:</span><span class="s2">"741222.051 STEEM"</span><span class="p">,</span><span class="w">
+	</span><span class="s2">"recent_claims"</span><span class="p">:</span><span class="s2">"457419472820935017"</span><span class="p">,</span><span class="w">
+	</span><span class="s2">"last_update"</span><span class="p">:</span><span class="s2">"2018-05-23T12:08:36"</span><span class="p">,</span><span class="w">
+	</span><span class="s2">"content_constant"</span><span class="p">:</span><span class="s2">"2000000000000"</span><span class="p">,</span><span class="w">
+	</span><span class="s2">"percent_curation_rewards"</span><span class="p">:</span><span class="mi">2500</span><span class="p">,</span><span class="w">
+	</span><span class="s2">"percent_content_rewards"</span><span class="p">:</span><span class="mi">10000</span><span class="p">,</span><span class="w">
+	</span><span class="s2">"author_reward_curve"</span><span class="p">:</span><span class="s2">"linear"</span><span class="p">,</span><span class="w">
+	</span><span class="s2">"curation_reward_curve"</span><span class="p">:</span><span class="s2">"square_root"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+</span></code></pre></div></div>
 
 <h4 id="2-get-account">2. Get Account</h4>
 
@@ -358,44 +358,44 @@
 
 <p>The response example will look like:</p>
 
-<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">[</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9660</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"steemitblog"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"weight_threshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"account_auths"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9660</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"steemitblog"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"weight_threshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"account_auths"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">[</span><span class="w">
           </span><span class="s2">"ned"</span><span class="p">,</span><span class="w">
           </span><span class="mi">1</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="nt">"key_auths"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"key_auths"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">[</span><span class="w">
           </span><span class="s2">"STM65wH1LZ7BfSHcK69SShnqCAH5xdoSZpGkUjmzHJ5GCuxEK9V5G"</span><span class="p">,</span><span class="w">
           </span><span class="mi">1</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"weight_threshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"account_auths"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nt">"key_auths"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"weight_threshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"account_auths"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"key_auths"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">[</span><span class="w">
           </span><span class="s2">"STM65wH1LZ7BfSHcK69SShnqCAH5xdoSZpGkUjmzHJ5GCuxEK9V5G"</span><span class="p">,</span><span class="w">
           </span><span class="mi">1</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"posting"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"weight_threshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"account_auths"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"posting"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"weight_threshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"account_auths"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">[</span><span class="w">
           </span><span class="s2">"ned"</span><span class="p">,</span><span class="w">
           </span><span class="mi">1</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="nt">"key_auths"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"key_auths"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">[</span><span class="w">
           </span><span class="s2">"STM4yfYEjUoey4PLrKhnKFo1XKQZtZ77fWLnbGTr2mAUaSt2Sx9W4"</span><span class="p">,</span><span class="w">
           </span><span class="mi">1</span><span class="w">
@@ -414,76 +414,75 @@
         </span><span class="p">]</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"memo_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STM5FeHFtL8J453DUi98LKwkqXBH5iwxf9xCqYs6QwPibPru3RNq3"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"json_metadata"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"proxy"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"last_owner_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-17T18:19:18"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"last_account_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-17T18:19:18"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-24T18:54:24"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"mined"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"recovery_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"steem"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"last_account_recovery"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-19T19:48:54"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"reset_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"null"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"comment_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lifetime_vote_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"post_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">154</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"can_vote"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"voting_power"</span><span class="p">:</span><span class="w"> </span><span class="mi">9800</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"last_vote_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-22T20:10:45"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"810.371 STEEM"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"savings_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000 STEEM"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"sbd_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4613.426 SBD"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"sbd_seconds"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10828300402329"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"sbd_seconds_last_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-22T22:34:24"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"sbd_last_interest_payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-25T18:26:15"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"savings_sbd_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000 SBD"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"savings_sbd_seconds"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"savings_sbd_seconds_last_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01T00:00:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"savings_sbd_last_interest_payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01T00:00:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"savings_withdraw_requests"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"reward_sbd_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"79.490 SBD"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"reward_steem_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000 STEEM"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"reward_vesting_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"608341.169185 VESTS"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"reward_vesting_steem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"293.101 STEEM"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"vesting_shares"</span><span class="p">:</span><span class="w"> </span><span class="s2">"93540695.469156 VESTS"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"delegated_vesting_shares"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000000 VESTS"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"received_vesting_shares"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000000 VESTS"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"vesting_withdraw_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000000 VESTS"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"next_vesting_withdrawal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1969-12-31T23:59:59"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"withdrawn"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"to_withdraw"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"withdraw_routes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"curation_rewards"</span><span class="p">:</span><span class="w"> </span><span class="mi">10288</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"posting_rewards"</span><span class="p">:</span><span class="w"> </span><span class="mi">38917298</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"proxied_vsf_votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"memo_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STM5FeHFtL8J453DUi98LKwkqXBH5iwxf9xCqYs6QwPibPru3RNq3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"json_metadata"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"proxy"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_owner_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-17T18:19:18"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_account_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-17T18:19:18"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-24T18:54:24"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mined"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recovery_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"steem"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_account_recovery"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-19T19:48:54"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reset_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"null"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"comment_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lifetime_vote_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"post_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">154</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"can_vote"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"voting_power"</span><span class="p">:</span><span class="w"> </span><span class="mi">9800</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_vote_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-22T20:10:45"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"810.371 STEEM"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"savings_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000 STEEM"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sbd_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4613.426 SBD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sbd_seconds"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10828300402329"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sbd_seconds_last_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-22T22:34:24"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sbd_last_interest_payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-25T18:26:15"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"savings_sbd_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000 SBD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"savings_sbd_seconds"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"savings_sbd_seconds_last_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01T00:00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"savings_sbd_last_interest_payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01T00:00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"savings_withdraw_requests"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reward_sbd_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"79.490 SBD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reward_steem_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000 STEEM"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reward_vesting_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"608341.169185 VESTS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reward_vesting_steem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"293.101 STEEM"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vesting_shares"</span><span class="p">:</span><span class="w"> </span><span class="s2">"93540695.469156 VESTS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"delegated_vesting_shares"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000000 VESTS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"received_vesting_shares"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000000 VESTS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vesting_withdraw_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000000 VESTS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"next_vesting_withdrawal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1969-12-31T23:59:59"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"withdrawn"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to_withdraw"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"withdraw_routes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"curation_rewards"</span><span class="p">:</span><span class="w"> </span><span class="mi">10288</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"posting_rewards"</span><span class="p">:</span><span class="w"> </span><span class="mi">38917298</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"proxied_vsf_votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="mi">0</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"witnesses_voted_for"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"last_post"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-22T18:59:33"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"last_root_post"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-22T18:59:33"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"average_bandwidth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34722906781"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lifetime_bandwidth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"656153000000"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"last_bandwidth_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-22T20:10:45"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"average_market_bandwidth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1170000000</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lifetime_market_bandwidth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1170000000</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"last_market_bandwidth_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-27T15:10:09"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"vesting_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000 STEEM"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"reputation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"146151592482665"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"transfer_history"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="nt">"market_history"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="nt">"post_history"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="nt">"vote_history"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="nt">"other_history"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="nt">"witness_votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="nt">"tags_usage"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="nt">"guest_bloggers"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="s2">"witnesses_voted_for"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_post"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-22T18:59:33"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_root_post"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-22T18:59:33"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"average_bandwidth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34722906781"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lifetime_bandwidth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"656153000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_bandwidth_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-22T20:10:45"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"average_market_bandwidth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1170000000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lifetime_market_bandwidth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1170000000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_market_bandwidth_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-27T15:10:09"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vesting_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000 STEEM"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reputation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"146151592482665"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"transfer_history"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"market_history"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"post_history"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"vote_history"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"other_history"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"witness_votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"tags_usage"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"guest_bloggers"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre>
-</div>
+</span></code></pre></div></div>
 
 <h4 id="3-feed-history">3. Feed history</h4>
 
@@ -491,24 +490,22 @@
 
 <p>The response example will look like:</p>
 
-<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"base"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.029 SBD"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"quote"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.000 STEEM"</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"base"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.029 SBD"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"quote"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.000 STEEM"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+</span></code></pre></div></div>
 
 <h4 id="4-final-calculation">4. Final calculation</h4>
 
 <p>After getting all these variables, all we have to do is to calculate estimation</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>total_vests = vesting_shares + received_vesting_shares - delegated_vesting_shares
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>total_vests = vesting_shares + received_vesting_shares - delegated_vesting_shares
 final_vest = total_vests * 1e6
 power = (voting_power * weight / 10000) / 50
 rshares = power * final_vest / 10000
 estimate = rshares / recent_claims * reward_balance * sbd_median_price
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>That’s all there is to it.</p>
 

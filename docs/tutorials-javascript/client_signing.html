@@ -15,23 +15,20 @@
 	<script src="/js/main.js"></script>
 	
 
-	<!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>JS: Client Signing - Steem Developer</title>
+	<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>JS: Client Signing | Steem Developer</title>
+<meta name="generator" content="Jekyll v3.8.4" />
 <meta property="og:title" content="JS: Client Signing" />
+<meta property="og:locale" content="en_US" />
 <meta name="description" content="By the end of this tutorial you would know how to sign, verify broadcast transactions locally on Steem." />
 <meta property="og:description" content="By the end of this tutorial you would know how to sign, verify broadcast transactions locally on Steem." />
-<link rel="canonical" href="https://developer.steem.io/tutorials-javascript/client_signing" />
-<meta property="og:url" content="https://developer.steem.io/tutorials-javascript/client_signing" />
+<link rel="canonical" href="https://developers.steem.io/tutorials-javascript/client_signing" />
+<meta property="og:url" content="https://developers.steem.io/tutorials-javascript/client_signing" />
 <meta property="og:site_name" content="Steem Developer" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-25T13:58:36-05:00" />
+<meta property="article:published_time" content="2018-10-18T14:29:07-05:00" />
 <script type="application/ld+json">
-{"@context": "http://schema.org",
-"@type": "BlogPosting",
-"headline": "JS: Client Signing",
-"datePublished": "2018-09-25T13:58:36-05:00",
-"description": "By the end of this tutorial you would know how to sign, verify broadcast transactions locally on Steem.",
-"url": "https://developer.steem.io/tutorials-javascript/client_signing"}</script>
+{"description":"By the end of this tutorial you would know how to sign, verify broadcast transactions locally on Steem.","@type":"BlogPosting","url":"https://developers.steem.io/tutorials-javascript/client_signing","headline":"JS: Client Signing","dateModified":"2018-10-18T14:29:07-05:00","datePublished":"2018-10-18T14:29:07-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://developers.steem.io/tutorials-javascript/client_signing"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -169,11 +166,11 @@
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
 						
 					
 						
@@ -214,6 +211,10 @@
 					
 						
 						<li><a href="/apidefinitions/#apidefinitions-block-api">Block Api</a></li>
+						
+					
+						
+						<li><a href="/apidefinitions/#apidefinitions-debug-node-api">Debug Node Api</a></li>
 						
 					
 						
@@ -343,13 +344,12 @@
 
 <p>Testnet and Production networks only differ with few settings which helps developers to switch their application from testnet to production. One of these settings is <code class="highlighter-rouge">addressPrefix</code> - string that is defined and will be in front of every public address on that chain/network. Another one is <code class="highlighter-rouge">chainId</code> - id of that network. By defining those parameters we are selecting Testnet and connecting to publicly available server with help of <code class="highlighter-rouge">dsteem</code> library. First few lines of code in <code class="highlighter-rouge">public/app.js</code> gives you example of connection to different networks, testnet and production.</p>
 
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">opts</span><span class="p">.</span><span class="nx">addressPrefix</span> <span class="o">=</span> <span class="s1">'TST'</span><span class="p">;</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">opts</span><span class="p">.</span><span class="nx">addressPrefix</span> <span class="o">=</span> <span class="s1">'TST'</span><span class="p">;</span>
 <span class="nx">opts</span><span class="p">.</span><span class="nx">chainId</span> <span class="o">=</span>
     <span class="s1">'46d82ab7d8db682eb1959aed0ada039a6d49afa1602491f93dde9cac3e8e6c32'</span><span class="p">;</span>
 <span class="c1">//connect to server which is connected to the network/testnet</span>
-<span class="kr">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">dsteem</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s1">'https://testnet.steemitdev.com'</span><span class="p">,</span> <span class="nx">opts</span><span class="p">);</span>
-</code></pre>
-</div>
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">dsteem</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s1">'https://testnet.steemitdev.com'</span><span class="p">,</span> <span class="nx">opts</span><span class="p">);</span>
+</code></pre></div></div>
 
 <ul>
   <li><em>Disclaimer: In this tutorial we are using testnet powered by community member (<code class="highlighter-rouge">@almost-digital</code>) and predefined accounts reside on this network only.</em></li>
@@ -365,11 +365,10 @@
 
 <p>We have predefined list of accounts to help you with generate, sign, verify and broadcast transaction on testnet. Select list has posting private key for each account and <code class="highlighter-rouge">onchange</code> selection event we keep account name and credentials in memory. <code class="highlighter-rouge">accountChange</code> function shows example of turning plain posting private key into private key buffer format that is understandable by <strong>dsteem</strong>.</p>
 
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">privateKey</span> <span class="o">=</span> <span class="nx">dsteem</span><span class="p">.</span><span class="nx">PrivateKey</span><span class="p">.</span><span class="nx">fromString</span><span class="p">(</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">privateKey</span> <span class="o">=</span> <span class="nx">dsteem</span><span class="p">.</span><span class="nx">PrivateKey</span><span class="p">.</span><span class="nx">fromString</span><span class="p">(</span>
     <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'account'</span><span class="p">).</span><span class="nx">value</span>
 <span class="p">);</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Account and its credentials should belong to specified testnet/mainnet network to sign/verify/broadcast transactions properly.</p>
 
@@ -391,7 +390,7 @@
 
 <p>Vote operation example</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>op = {
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>op = {
     ref_block_num: head_block_number,
     ref_block_prefix: Buffer.from(head_block_id, 'hex').readUInt32LE(4),
     expiration: new Date(Date.now() + expireTime).toISOString().slice(0, -5),
@@ -403,8 +402,7 @@
     }]],
     extensions: [],
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>First item, operation type, <code class="highlighter-rouge">vote</code> and second item object with <code class="highlighter-rouge">voter</code> - account that is casting vote, <code class="highlighter-rouge">author</code> - author of post vote is being casted to, <code class="highlighter-rouge">permlink</code> - permanent link of the post, <code class="highlighter-rouge">weight</code> - vote weight 10000 being 100%, 1 being 0.01% smallest voting unit.</p>
 

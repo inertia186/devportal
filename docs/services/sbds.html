@@ -15,23 +15,18 @@
 	<script src="/js/main.js"></script>
 	
 
-	<!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>SBDS - Steem Developer</title>
+	<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>SBDS | Steem Developer</title>
+<meta name="generator" content="Jekyll v3.8.4" />
 <meta property="og:title" content="SBDS" />
+<meta property="og:locale" content="en_US" />
 <meta name="description" content="sbds is a tool for easily querying the data of the Steem Blockchain." />
 <meta property="og:description" content="sbds is a tool for easily querying the data of the Steem Blockchain." />
-<link rel="canonical" href="https://developer.steem.io/services/sbds" />
-<meta property="og:url" content="https://developer.steem.io/services/sbds" />
+<link rel="canonical" href="https://developers.steem.io/services/sbds" />
+<meta property="og:url" content="https://developers.steem.io/services/sbds" />
 <meta property="og:site_name" content="Steem Developer" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-25T13:58:36-05:00" />
 <script type="application/ld+json">
-{"@context": "http://schema.org",
-"@type": "BlogPosting",
-"headline": "SBDS",
-"datePublished": "2018-09-25T13:58:36-05:00",
-"description": "sbds is a tool for easily querying the data of the Steem Blockchain.",
-"url": "https://developer.steem.io/services/sbds"}</script>
+{"description":"sbds is a tool for easily querying the data of the Steem Blockchain.","@type":"WebPage","url":"https://developers.steem.io/services/sbds","headline":"SBDS","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -169,11 +164,11 @@
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
 						
 					
 						
@@ -214,6 +209,10 @@
 					
 						
 						<li><a href="/apidefinitions/#apidefinitions-block-api">Block Api</a></li>
+						
+					
+						
+						<li><a href="/apidefinitions/#apidefinitions-debug-node-api">Debug Node Api</a></li>
 						
 					
 						
@@ -308,32 +307,27 @@
 
 <p><strong>Docker Hub</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>docker run -d steemit/sbds
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run -d steemit/sbds
+</code></pre></div></div>
 
 <p><strong>Python 3</strong></p>
-<div class="highlighter-rouge"><pre class="highlight"><code>pip3 install -e git+git@github.com:steemit/sbds.git#egg=sbds
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 install -e git+git@github.com:steemit/sbds.git#egg=sbds
+</code></pre></div></div>
 
 <p><strong>Examples</strong></p>
 
 <p>Stream blocks 1 to 3450000 from our dev S3 bucket</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>sbds checkpoints get-blocks s3://steemit-dev-sbds-checkpoints/gzipped --start 1 --end 3450000
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sbds checkpoints get-blocks s3://steemit-dev-sbds-checkpoints/gzipped --start 1 --end 3450000
+</code></pre></div></div>
 
 <p>Stream blocks 8000000 to the last block from your local copy of our S3 bucket</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>sbds checkpoints get-blocks /home/ubuntu/checkpoints/gzipped --start 8000000
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sbds checkpoints get-blocks /home/ubuntu/checkpoints/gzipped --start 8000000
+</code></pre></div></div>
 
 <p>Stream all blocks from your local copy of our S3 bucket</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sbds checkpoints get-blocks /home/ubuntu/checkpoints/gzipped
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sbds checkpoints get-blocks /home/ubuntu/checkpoints/gzipped
+</code></pre></div></div>
 
 <p><strong>Routes</strong></p>
 

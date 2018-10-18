@@ -15,23 +15,20 @@
 	<script src="/js/main.js"></script>
 	
 
-	<!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>PY: Using Keys Securely - Steem Developer</title>
+	<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>PY: Using Keys Securely | Steem Developer</title>
+<meta name="generator" content="Jekyll v3.8.4" />
 <meta property="og:title" content="PY: Using Keys Securely" />
+<meta property="og:locale" content="en_US" />
 <meta name="description" content="Learn how Steem-Python library handles transaction signing with user’s key and how to securely manage your private keys." />
 <meta property="og:description" content="Learn how Steem-Python library handles transaction signing with user’s key and how to securely manage your private keys." />
-<link rel="canonical" href="https://developer.steem.io/tutorials-python/using_keys_securely" />
-<meta property="og:url" content="https://developer.steem.io/tutorials-python/using_keys_securely" />
+<link rel="canonical" href="https://developers.steem.io/tutorials-python/using_keys_securely" />
+<meta property="og:url" content="https://developers.steem.io/tutorials-python/using_keys_securely" />
 <meta property="og:site_name" content="Steem Developer" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-25T13:58:36-05:00" />
+<meta property="article:published_time" content="2018-10-18T14:29:07-05:00" />
 <script type="application/ld+json">
-{"@context": "http://schema.org",
-"@type": "BlogPosting",
-"headline": "PY: Using Keys Securely",
-"datePublished": "2018-09-25T13:58:36-05:00",
-"description": "Learn how Steem-Python library handles transaction signing with user’s key and how to securely manage your private keys.",
-"url": "https://developer.steem.io/tutorials-python/using_keys_securely"}</script>
+{"description":"Learn how Steem-Python library handles transaction signing with user’s key and how to securely manage your private keys.","@type":"BlogPosting","url":"https://developers.steem.io/tutorials-python/using_keys_securely","headline":"PY: Using Keys Securely","dateModified":"2018-10-18T14:29:07-05:00","datePublished":"2018-10-18T14:29:07-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://developers.steem.io/tutorials-python/using_keys_securely"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -169,11 +166,11 @@
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
 						
 					
 						
@@ -214,6 +211,10 @@
 					
 						
 						<li><a href="/apidefinitions/#apidefinitions-block-api">Block Api</a></li>
+						
+					
+						
+						<li><a href="/apidefinitions/#apidefinitions-debug-node-api">Debug Node Api</a></li>
 						
 					
 						
@@ -332,13 +333,12 @@
 
 <p>In this tutorial we are only using <code class="highlighter-rouge">steem</code> package - steem-python library.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code>  <span class="c"># initialize Steem class</span>
-  <span class="kn">from</span> <span class="nn">steem</span> <span class="kn">import</span> <span class="n">Steem</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1"># initialize Steem class
+</span>  <span class="kn">from</span> <span class="nn">steem</span> <span class="kn">import</span> <span class="n">Steem</span>
 
-  <span class="c"># defining private keys inside source code is not secure way but possible</span>
-  <span class="n">s</span> <span class="o">=</span> <span class="n">Steem</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s">'&lt;private_posting_key&gt;'</span><span class="p">,</span> <span class="s">'&lt;private_active_key&gt;'</span><span class="p">])</span>
-</code></pre>
-</div>
+  <span class="c1"># defining private keys inside source code is not secure way but possible
+</span>  <span class="n">s</span> <span class="o">=</span> <span class="n">Steem</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s">'&lt;private_posting_key&gt;'</span><span class="p">,</span> <span class="s">'&lt;private_active_key&gt;'</span><span class="p">])</span>
+</code></pre></div></div>
 
 <p>Last line from above snippet shows how to define private keys for account that’s going to transact using script.</p>
 
@@ -346,20 +346,18 @@
 
 <p>After defining private keys inside Steem class, we can quickly sign any transaction and broadcast it to the network.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code>  <span class="c"># above will allow accessing Commit methods such as</span>
-  <span class="c"># demo account sending 0.001 STEEM to demo1 account</span>
-
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1"># above will allow accessing Commit methods such as
+</span>  <span class="c1"># demo account sending 0.001 STEEM to demo1 account
+</span>
   <span class="n">s</span><span class="o">.</span><span class="n">commit</span><span class="o">.</span><span class="n">transfer</span><span class="p">(</span><span class="s">'demo'</span><span class="p">,</span><span class="s">'0.001'</span><span class="p">,</span><span class="s">'STEEM'</span><span class="p">,</span><span class="s">'memo text'</span><span class="p">,</span><span class="s">'demo1'</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Above method works but it is not secure way of handling your keys because you have entered your keys within source code that you might leak accidentally. To avoid that, we can use CLI - command line interface <code class="highlighter-rouge">steempy</code>.</p>
 
 <p>You can type following to learn more about <code class="highlighter-rouge">steempy</code> commands:</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code>  <span class="n">steempy</span> <span class="o">-</span><span class="n">h</span>
-</code></pre>
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">steempy</span> <span class="o">-</span><span class="n">h</span>
+</code></pre></div></div>
 
 <p><code class="highlighter-rouge">steempy</code> lets you leverage your <a href="https://bitcoinpaperwallet.com/bip38-password-encrypted-wallets/">BIP38</a> encrypted wallet to perform various actions on your accounts.</p>
 
@@ -375,11 +373,10 @@
 
 <p>That’s it, now that your keys are securely stored on your local machine, you can easily sign transaction from any of your Python scripts by using defined keys.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code>  <span class="c"># if private keys are not defined</span>
-  <span class="c"># accessing Wallet methods are also possible and secure way</span>
-  <span class="n">s</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">get_active_key_for_account</span><span class="p">(</span><span class="s">'demo'</span><span class="p">)</span>
-</code></pre>
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1"># if private keys are not defined
+</span>  <span class="c1"># accessing Wallet methods are also possible and secure way
+</span>  <span class="n">s</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">get_active_key_for_account</span><span class="p">(</span><span class="s">'demo'</span><span class="p">)</span>
+</code></pre></div></div>
 
 <p>Above line fetches private key for user <code class="highlighter-rouge">demo</code> from local machine and signs transaction.</p>
 

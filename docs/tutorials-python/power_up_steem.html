@@ -15,23 +15,20 @@
 	<script src="/js/main.js"></script>
 	
 
-	<!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>PY: Power Up Steem - Steem Developer</title>
+	<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>PY: Power Up Steem | Steem Developer</title>
+<meta name="generator" content="Jekyll v3.8.4" />
 <meta property="og:title" content="PY: Power Up Steem" />
+<meta property="og:locale" content="en_US" />
 <meta name="description" content="How to power up your STEEM to STEEM POWER using Python." />
 <meta property="og:description" content="How to power up your STEEM to STEEM POWER using Python." />
-<link rel="canonical" href="https://developer.steem.io/tutorials-python/power_up_steem" />
-<meta property="og:url" content="https://developer.steem.io/tutorials-python/power_up_steem" />
+<link rel="canonical" href="https://developers.steem.io/tutorials-python/power_up_steem" />
+<meta property="og:url" content="https://developers.steem.io/tutorials-python/power_up_steem" />
 <meta property="og:site_name" content="Steem Developer" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-25T13:58:36-05:00" />
+<meta property="article:published_time" content="2018-10-18T14:29:07-05:00" />
 <script type="application/ld+json">
-{"@context": "http://schema.org",
-"@type": "BlogPosting",
-"headline": "PY: Power Up Steem",
-"datePublished": "2018-09-25T13:58:36-05:00",
-"description": "How to power up your STEEM to STEEM POWER using Python.",
-"url": "https://developer.steem.io/tutorials-python/power_up_steem"}</script>
+{"description":"How to power up your STEEM to STEEM POWER using Python.","@type":"BlogPosting","url":"https://developers.steem.io/tutorials-python/power_up_steem","headline":"PY: Power Up Steem","dateModified":"2018-10-18T14:29:07-05:00","datePublished":"2018-10-18T14:29:07-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://developers.steem.io/tutorials-python/power_up_steem"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -169,11 +166,11 @@
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
 						
 					
 						
@@ -214,6 +211,10 @@
 					
 						
 						<li><a href="/apidefinitions/#apidefinitions-block-api">Block Api</a></li>
+						
+					
+						
+						<li><a href="/apidefinitions/#apidefinitions-debug-node-api">Debug Node Api</a></li>
 						
 					
 						
@@ -350,7 +351,7 @@
 
 <p>We import the libraries and connect to the <code class="highlighter-rouge">testnet</code>.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">steembase</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">steembase</span>
 <span class="kn">import</span> <span class="nn">steem</span>
 <span class="kn">from</span> <span class="nn">steem.amount</span> <span class="kn">import</span> <span class="n">Amount</span>
 <span class="kn">from</span> <span class="nn">pick</span> <span class="kn">import</span> <span class="n">pick</span>
@@ -359,8 +360,7 @@
     <span class="s">'chain_id'</span><span class="p">:</span> <span class="s">'79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673'</span><span class="p">,</span>
     <span class="s">'prefix'</span><span class="p">:</span> <span class="s">'STX'</span><span class="p">,</span> <span class="s">'steem_symbol'</span><span class="p">:</span> <span class="s">'STEEM'</span><span class="p">,</span> <span class="s">'sbd_symbol'</span><span class="p">:</span> <span class="s">'SBD'</span><span class="p">,</span> <span class="s">'vests_symbol'</span><span class="p">:</span> <span class="s">'VESTS'</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Because this tutorial alters the blockchain we connect to a testnet so we don’t create spam on the production server.</p>
 
@@ -368,21 +368,20 @@
 
 <p>We require the <code class="highlighter-rouge">private active key</code> of the user in order for the conversion to be committed to the blockchain. This is why we are using a testnet. The values are supplied via the terminal/console before we initialise the steem class. There are some demo accounts available but we encourage you to create your own accounts on this testnet and create balances you can claim; it’s good practice.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#capture user information</span>
-<span class="n">username</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Enter username: '</span><span class="p">)</span> <span class="c">#demo account: cdemo</span>
-<span class="n">wif</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Enter private ACTIVE key: '</span><span class="p">)</span> <span class="c">#demo account: 5KaNM84WWSqzwKzY82fXPaUW43idbLnPqf5SfjGxLfw6eV2kAP3</span>
-
-<span class="c">#connect node and private active key</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">steem</span><span class="o">.</span><span class="n">Steem</span><span class="p">(</span><span class="n">nodes</span><span class="o">=</span><span class="p">[</span><span class="s">'https://testnet.steem.vc'</span><span class="p">],</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="n">wif</span><span class="p">])</span>
-</code></pre>
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#capture user information
+</span><span class="n">username</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Enter username: '</span><span class="p">)</span> <span class="c1">#demo account: cdemo
+</span><span class="n">wif</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Enter private ACTIVE key: '</span><span class="p">)</span> <span class="c1">#demo account: 5KaNM84WWSqzwKzY82fXPaUW43idbLnPqf5SfjGxLfw6eV2kAP3
+</span>
+<span class="c1">#connect node and private active key
+</span><span class="n">client</span> <span class="o">=</span> <span class="n">steem</span><span class="o">.</span><span class="n">Steem</span><span class="p">(</span><span class="n">nodes</span><span class="o">=</span><span class="p">[</span><span class="s">'https://testnet.steem.vc'</span><span class="p">],</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="n">wif</span><span class="p">])</span>
+</code></pre></div></div>
 
 <h4 id="3-check-balance-">3. Check balance <a name="balance"></a></h4>
 
 <p>In order to give the user enough information to make the conversion we check the current balance of the account using the <code class="highlighter-rouge">get_account</code> function.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#check valid user and get account balance</span>
-<span class="n">userinfo</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_account</span><span class="p">(</span><span class="n">username</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#check valid user and get account balance
+</span><span class="n">userinfo</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_account</span><span class="p">(</span><span class="n">username</span><span class="p">)</span>
 <span class="k">if</span><span class="p">(</span><span class="n">userinfo</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">)</span> <span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s">'Oops. Looks like user '</span> <span class="o">+</span> <span class="n">username</span> <span class="o">+</span> <span class="s">' doesn</span><span class="se">\'</span><span class="s">t exist on this chain!'</span><span class="p">)</span>
     <span class="nb">exit</span><span class="p">()</span>
@@ -391,8 +390,7 @@
 <span class="k">print</span><span class="p">(</span><span class="s">'Available STEEM balance: '</span> <span class="o">+</span> <span class="n">balance</span> <span class="o">+</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
 
 <span class="nb">input</span><span class="p">(</span><span class="s">'Press any key to continue'</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The results of the query are displayed in the console/terminal.</p>
 
@@ -400,16 +398,16 @@
 
 <p>Both the <code class="highlighter-rouge">amount</code> and the <code class="highlighter-rouge">to</code> parameters are assigned via input from the terminal/console. The user is given the option to power up the STEEM to their own account or to another user’s account. The amount has to be greater than zero and no more than the total available STEEM of the user. If you are using one of Steemit’s demo accounts, please leave some STEEM for others to power up! We also check the <code class="highlighter-rouge">to account</code> to make sure it’s a valid account name.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#choice of account</span>
-<span class="n">title</span> <span class="o">=</span> <span class="s">'Please choose an option for an account to transfer to: '</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#choice of account
+</span><span class="n">title</span> <span class="o">=</span> <span class="s">'Please choose an option for an account to transfer to: '</span>
 <span class="n">options</span> <span class="o">=</span> <span class="p">[</span><span class="s">'SELF'</span><span class="p">,</span> <span class="s">'OTHER'</span><span class="p">]</span>
 <span class="n">option</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">pick</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="n">option</span> <span class="o">==</span> <span class="s">'OTHER'</span><span class="p">)</span> <span class="p">:</span>
-    <span class="c">#account to power up to</span>
-    <span class="n">to_account</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Please enter the ACCOUNT to where the STEEM will be transferred: '</span><span class="p">)</span>
-    <span class="c">#check valid username</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_account</span><span class="p">(</span><span class="n">to_account</span><span class="p">)</span>
+    <span class="c1">#account to power up to
+</span>    <span class="n">to_account</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Please enter the ACCOUNT to where the STEEM will be transferred: '</span><span class="p">)</span>
+    <span class="c1">#check valid username
+</span>    <span class="n">result</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_account</span><span class="p">(</span><span class="n">to_account</span><span class="p">)</span>
     <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">result</span><span class="p">)</span> <span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="n">to_account</span> <span class="o">+</span> <span class="s">' doesn</span><span class="se">\'</span><span class="s">t exist on this chain!'</span><span class="p">)</span>
         <span class="nb">exit</span><span class="p">()</span>
@@ -417,17 +415,16 @@
     <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span> <span class="o">+</span> <span class="s">'Power up STEEM to own account'</span> <span class="o">+</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
     <span class="n">to_account</span> <span class="o">=</span> <span class="n">username</span>
 
-<span class="c">#amount to power up</span>
-<span class="n">amount</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">'Please enter the amount of STEEM to power up: '</span><span class="p">))</span>
-</code></pre>
-</div>
+<span class="c1">#amount to power up
+</span><span class="n">amount</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">'Please enter the amount of STEEM to power up: '</span><span class="p">))</span>
+</code></pre></div></div>
 
 <h4 id="5-commit-to-blockchain-">5. Commit to blockchain <a name="commit"></a></h4>
 
 <p>Now that all the parameters have been assigned we can continue with the actual transmission to the blockchain. The output and commit is based on the validity of the amount that has been input.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#parameters: amount, to, account</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">amount</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">:</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#parameters: amount, to, account
+</span><span class="k">if</span> <span class="p">(</span><span class="n">amount</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span> <span class="o">+</span> <span class="s">'No STEEM entered for powering up'</span><span class="p">)</span>
     <span class="nb">exit</span><span class="p">()</span>
 <span class="k">else</span> <span class="p">:</span>
@@ -437,19 +434,17 @@
     <span class="k">else</span> <span class="p">:</span>
         <span class="n">client</span><span class="o">.</span><span class="n">transfer_to_vesting</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">to_account</span><span class="p">,</span> <span class="n">username</span><span class="p">)</span>
         <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span> <span class="o">+</span> <span class="s">' STEEM has been powered up successfully'</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The result of the power up transfer is displayed on the console/terminal.</p>
 
 <p>As an added check we also display the new STEEM balance of the user on the terminal/console</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#get new account balance</span>
-<span class="n">userinfo</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_account</span><span class="p">(</span><span class="n">username</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#get new account balance
+</span><span class="n">userinfo</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_account</span><span class="p">(</span><span class="n">username</span><span class="p">)</span>
 <span class="n">balance</span> <span class="o">=</span> <span class="n">userinfo</span><span class="p">[</span><span class="s">'balance'</span><span class="p">]</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'New STEEM balance: '</span> <span class="o">+</span> <span class="n">balance</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>We encourage users to play around with different values and data types to fully understand how this process works. You can also check the balances and transaction history on the <a href="http://condenser.steem.vc/">testnet portal</a>.</p>
 

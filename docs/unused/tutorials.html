@@ -15,20 +15,18 @@
 	<script src="/js/main.js"></script>
 	
 
-	<!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>Tutorials - Steem Developer</title>
+	<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Tutorials | Steem Developer</title>
+<meta name="generator" content="Jekyll v3.8.4" />
 <meta property="og:title" content="Tutorials" />
+<meta property="og:locale" content="en_US" />
 <meta name="description" content="Steem Developer Documentation." />
 <meta property="og:description" content="Steem Developer Documentation." />
-<link rel="canonical" href="https://developer.steem.io/unused/tutorials" />
-<meta property="og:url" content="https://developer.steem.io/unused/tutorials" />
+<link rel="canonical" href="https://developers.steem.io/unused/tutorials" />
+<meta property="og:url" content="https://developers.steem.io/unused/tutorials" />
 <meta property="og:site_name" content="Steem Developer" />
 <script type="application/ld+json">
-{"@context": "http://schema.org",
-"@type": "WebPage",
-"headline": "Tutorials",
-"description": "Steem Developer Documentation.",
-"url": "https://developer.steem.io/unused/tutorials"}</script>
+{"description":"Steem Developer Documentation.","@type":"WebPage","url":"https://developers.steem.io/unused/tutorials","headline":"Tutorials","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -166,11 +164,11 @@
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
 						
 					
 						
@@ -211,6 +209,10 @@
 					
 						
 						<li><a href="/apidefinitions/#apidefinitions-block-api">Block Api</a></li>
+						
+					
+						
+						<li><a href="/apidefinitions/#apidefinitions-debug-node-api">Debug Node Api</a></li>
 						
 					
 						
@@ -302,10 +304,9 @@
 	<h5 id="steem-py-examples"><strong>steem-py examples</strong></h5>
 <p>Install steem-py:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo apt-get install libffi-dev libssl-dev python-dev python3-pip
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-get install libffi-dev libssl-dev python-dev python3-pip
 $ pip3 install steem
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h5 id="auto-reply-bot">Auto Reply Bot</h5>
 <p>The most easy auto-reply bot can be coded with just a few lines of code:</p>
@@ -320,33 +321,30 @@ This example code shows all comments starting at block 1893850.</p>
 <h5 id="decentralized-exchange">Decentralized Exchange</h5>
 <p>Example for decentralized exchange:</p>
 
-<div title="Auto Reply Bot" class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">steem</span> <span class="kn">import</span> <span class="n">Steem</span>
+<div title="Auto Reply Bot" class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">steem</span> <span class="kn">import</span> <span class="n">Steem</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="n">steem</span> <span class="o">=</span> <span class="n">Steem</span><span class="p">(</span><span class="n">wif</span><span class="o">=</span><span class="s">"&lt;posting-key-for-default-author&gt;"</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">steem</span><span class="o">.</span><span class="n">stream_comments</span><span class="p">():</span>
 <span class="k">if</span> <span class="s">"Anything you want"</span> <span class="ow">in</span> <span class="n">c</span><span class="p">[</span><span class="s">"body"</span><span class="p">]:</span>
     <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">reply</span><span class="p">(</span><span class="s">".. anything you want"</span><span class="p">))</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div title="Block Stream" class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">steem.blockchain</span> <span class="kn">import</span> <span class="n">Blockchain</span>
+<div title="Block Stream" class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">steem.blockchain</span> <span class="kn">import</span> <span class="n">Blockchain</span>
 <span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
 
 <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">blockchain</span><span class="o">.</span><span class="n">blocks</span><span class="p">()</span>
     <span class="n">pprint</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div title="Opereation Stream" class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">steem.blockchain</span> <span class="kn">import</span> <span class="n">Blockchain</span>
+<div title="Opereation Stream" class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">steem.blockchain</span> <span class="kn">import</span> <span class="n">Blockchain</span>
 <span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
 
 <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">blockchain</span><span class="o">.</span><span class="n">ops</span><span class="p">()</span>
     <span class="n">pprint</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div title="Decentralized Exchange" class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<div title="Decentralized Exchange" class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
 <span class="kn">from</span> <span class="nn">steem</span> <span class="kn">import</span> <span class="n">Steem</span>
 <span class="kn">from</span> <span class="nn">steem.dex</span> <span class="kn">import</span> <span class="n">Dex</span>
 
@@ -365,8 +363,7 @@ This example code shows all comments starting at block 1893850.</p>
 <span class="n">pprint</span><span class="p">(</span><span class="n">dex</span><span class="o">.</span><span class="n">get_lowest_ask</span><span class="p">())</span>
 <span class="n">pprint</span><span class="p">(</span><span class="n">dex</span><span class="o">.</span><span class="n">get_higest_bid</span><span class="p">())</span>
 <span class="n">pprint</span><span class="p">(</span><span class="n">dex</span><span class="o">.</span><span class="n">transfer</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s">"SBD"</span><span class="p">,</span> <span class="s">"fabian"</span><span class="p">,</span> <span class="s">"foobar"</span><span class="p">))</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 
 </div>

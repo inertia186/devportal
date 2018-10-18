@@ -15,23 +15,20 @@
 	<script src="/js/main.js"></script>
 	
 
-	<!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>JS: Transfer Steem And Sbd - Steem Developer</title>
+	<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>JS: Transfer Steem And Sbd | Steem Developer</title>
+<meta name="generator" content="Jekyll v3.8.4" />
 <meta property="og:title" content="JS: Transfer Steem And Sbd" />
+<meta property="og:locale" content="en_US" />
 <meta name="description" content="Transfer both STEEM and SBD from one account to another." />
 <meta property="og:description" content="Transfer both STEEM and SBD from one account to another." />
-<link rel="canonical" href="https://developer.steem.io/tutorials-javascript/transfer_steem_and_sbd" />
-<meta property="og:url" content="https://developer.steem.io/tutorials-javascript/transfer_steem_and_sbd" />
+<link rel="canonical" href="https://developers.steem.io/tutorials-javascript/transfer_steem_and_sbd" />
+<meta property="og:url" content="https://developers.steem.io/tutorials-javascript/transfer_steem_and_sbd" />
 <meta property="og:site_name" content="Steem Developer" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-25T13:58:36-05:00" />
+<meta property="article:published_time" content="2018-10-18T14:29:07-05:00" />
 <script type="application/ld+json">
-{"@context": "http://schema.org",
-"@type": "BlogPosting",
-"headline": "JS: Transfer Steem And Sbd",
-"datePublished": "2018-09-25T13:58:36-05:00",
-"description": "Transfer both STEEM and SBD from one account to another.",
-"url": "https://developer.steem.io/tutorials-javascript/transfer_steem_and_sbd"}</script>
+{"description":"Transfer both STEEM and SBD from one account to another.","@type":"BlogPosting","url":"https://developers.steem.io/tutorials-javascript/transfer_steem_and_sbd","headline":"JS: Transfer Steem And Sbd","dateModified":"2018-10-18T14:29:07-05:00","datePublished":"2018-10-18T14:29:07-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://developers.steem.io/tutorials-javascript/transfer_steem_and_sbd"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -169,11 +166,11 @@
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
 						
 					
 						
@@ -214,6 +211,10 @@
 					
 						
 						<li><a href="/apidefinitions/#apidefinitions-block-api">Block Api</a></li>
+						
+					
+						
+						<li><a href="/apidefinitions/#apidefinitions-debug-node-api">Debug Node Api</a></li>
 						
 					
 						
@@ -349,16 +350,15 @@
 
 <p>As usual, we have a <code class="highlighter-rouge">public/app.js</code> file which holds the Javascript segment of the tutorial. In the first few lines we define the configured library and packages:</p>
 
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">dsteem</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'dsteem'</span><span class="p">);</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">dsteem</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'dsteem'</span><span class="p">);</span>
 <span class="c1">//define network parameters</span>
 <span class="kd">let</span> <span class="nx">opts</span> <span class="o">=</span> <span class="p">{};</span>
 <span class="nx">opts</span><span class="p">.</span><span class="nx">addressPrefix</span> <span class="o">=</span> <span class="s1">'STX'</span><span class="p">;</span>
 <span class="nx">opts</span><span class="p">.</span><span class="nx">chainId</span> <span class="o">=</span>
     <span class="s1">'79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673'</span><span class="p">;</span>
 <span class="c1">//connect to a steem node, testnet in this case</span>
-<span class="kr">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">dsteem</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s1">'https://testnet.steem.vc'</span><span class="p">,</span> <span class="nx">opts</span><span class="p">);</span>
-</code></pre>
-</div>
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">dsteem</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s1">'https://testnet.steem.vc'</span><span class="p">,</span> <span class="nx">opts</span><span class="p">);</span>
+</code></pre></div></div>
 
 <p>Above, we have <code class="highlighter-rouge">dsteem</code> pointing to the test network with the proper chainId, addressPrefix, and endpoint.<br />
 Because this tutorial modifies the blockchain, we will use a testnet and predefined accounts to demonstrate the transfer process.</p>
@@ -369,45 +369,43 @@ Because this tutorial modifies the blockchain, we will use a testnet and predefi
 
 <p>The parameter values are allocated as seen below, once the user clicks on the “Transfer” button.</p>
 
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nb">window</span><span class="p">.</span><span class="nx">submitTransfer</span> <span class="o">=</span> <span class="nx">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">window</span><span class="p">.</span><span class="nx">submitTransfer</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="c1">//get all values from the UI</span>
     <span class="c1">//get account name of sender</span>
-    <span class="kr">const</span> <span class="nx">username</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'username'</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">username</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'username'</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
     <span class="c1">//get private active key</span>
-    <span class="kr">const</span> <span class="nx">privateKey</span> <span class="o">=</span> <span class="nx">dsteem</span><span class="p">.</span><span class="nx">PrivateKey</span><span class="p">.</span><span class="nx">fromString</span><span class="p">(</span>
+    <span class="kd">const</span> <span class="nx">privateKey</span> <span class="o">=</span> <span class="nx">dsteem</span><span class="p">.</span><span class="nx">PrivateKey</span><span class="p">.</span><span class="nx">fromString</span><span class="p">(</span>
         <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'privateKey'</span><span class="p">).</span><span class="nx">value</span>
     <span class="p">);</span>
     <span class="c1">//get recipient</span>
-    <span class="kr">const</span> <span class="nx">recipient</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'recipient'</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">recipient</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'recipient'</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
     <span class="c1">//get comments</span>
-    <span class="kr">const</span> <span class="nx">comments</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'comments'</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">comments</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'comments'</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
     <span class="c1">//get transfer amount</span>
-    <span class="kr">const</span> <span class="nx">quantity</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'quantity'</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">quantity</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'quantity'</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
     <span class="c1">//get transfer type</span>
-    <span class="kr">const</span> <span class="nx">type</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'type'</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
-</code></pre>
-</div>
+    <span class="kd">const</span> <span class="nx">type</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'type'</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+</code></pre></div></div>
 
 <h4 id="3-object-creation">3. Object creation<a name="object"></a></h4>
 
 <p>In the <code class="highlighter-rouge">broadcast.transfer</code> operation, the <code class="highlighter-rouge">amount</code> parameter is a combination of the transfer <code class="highlighter-rouge">value</code> and <code class="highlighter-rouge">type</code> which is why we concatenate the two values into a single variable. We then create a <code class="highlighter-rouge">transfer object</code> with the input variables to use within the broadcast operation.</p>
 
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">transfer</span> <span class="o">=</span> <span class="nx">quantity</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="s1">' '</span><span class="p">,</span> <span class="nx">type</span><span class="p">);</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">transfer</span> <span class="o">=</span> <span class="nx">quantity</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="s1">' '</span><span class="p">,</span> <span class="nx">type</span><span class="p">);</span>
 
 <span class="c1">//create transfer object</span>
-<span class="kr">const</span> <span class="nx">transf</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
-<span class="nx">transf</span><span class="p">.</span><span class="nx">from</span> <span class="o">=</span> <span class="nx">username</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">transf</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
+<span class="nx">transf</span><span class="p">.</span><span class="k">from</span> <span class="o">=</span> <span class="nx">username</span><span class="p">;</span>
 <span class="nx">transf</span><span class="p">.</span><span class="nx">to</span> <span class="o">=</span> <span class="nx">recipient</span><span class="p">;</span>
 <span class="nx">transf</span><span class="p">.</span><span class="nx">amount</span> <span class="o">=</span> <span class="nx">transfer</span><span class="p">;</span>
 <span class="nx">transf</span><span class="p">.</span><span class="nx">memo</span> <span class="o">=</span> <span class="nx">comments</span><span class="p">;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="4-broadcast">4. Broadcast<a name="broadcast"></a></h4>
 
 <p>We can complete the <code class="highlighter-rouge">broadcast</code> operation using the created object and the private active key received from the input UI. The result of the transfer is displayed on the UI to confirm whether it was a success or an error occurred. The result is also displayed in the console with the relevant block number or transfer error.</p>
 
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">client</span><span class="p">.</span><span class="nx">broadcast</span><span class="p">.</span><span class="nx">transfer</span><span class="p">(</span><span class="nx">transf</span><span class="p">,</span> <span class="nx">privateKey</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">client</span><span class="p">.</span><span class="nx">broadcast</span><span class="p">.</span><span class="nx">transfer</span><span class="p">(</span><span class="nx">transf</span><span class="p">,</span> <span class="nx">privateKey</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span>
     <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
             <span class="s1">'included in block: '</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">block_num</span><span class="p">,</span>
@@ -429,8 +427,7 @@ Because this tutorial modifies the blockchain, we will use a testnet and predefi
             <span class="nx">error</span><span class="p">.</span><span class="nx">jse_shortmsg</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">);</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="to-run-this-tutorial">To run this tutorial</h3>
 

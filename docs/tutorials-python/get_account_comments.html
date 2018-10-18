@@ -15,23 +15,20 @@
 	<script src="/js/main.js"></script>
 	
 
-	<!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>PY: Get Account Comments - Steem Developer</title>
+	<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>PY: Get Account Comments | Steem Developer</title>
+<meta name="generator" content="Jekyll v3.8.4" />
 <meta property="og:title" content="PY: Get Account Comments" />
+<meta property="og:locale" content="en_US" />
 <meta name="description" content="Fetch list of comments made by account on posts or comments." />
 <meta property="og:description" content="Fetch list of comments made by account on posts or comments." />
-<link rel="canonical" href="https://developer.steem.io/tutorials-python/get_account_comments" />
-<meta property="og:url" content="https://developer.steem.io/tutorials-python/get_account_comments" />
+<link rel="canonical" href="https://developers.steem.io/tutorials-python/get_account_comments" />
+<meta property="og:url" content="https://developers.steem.io/tutorials-python/get_account_comments" />
 <meta property="og:site_name" content="Steem Developer" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-25T13:58:36-05:00" />
+<meta property="article:published_time" content="2018-10-18T14:29:07-05:00" />
 <script type="application/ld+json">
-{"@context": "http://schema.org",
-"@type": "BlogPosting",
-"headline": "PY: Get Account Comments",
-"datePublished": "2018-09-25T13:58:36-05:00",
-"description": "Fetch list of comments made by account on posts or comments.",
-"url": "https://developer.steem.io/tutorials-python/get_account_comments"}</script>
+{"description":"Fetch list of comments made by account on posts or comments.","@type":"BlogPosting","url":"https://developers.steem.io/tutorials-python/get_account_comments","headline":"PY: Get Account Comments","dateModified":"2018-10-18T14:29:07-05:00","datePublished":"2018-10-18T14:29:07-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://developers.steem.io/tutorials-python/get_account_comments"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -169,11 +166,11 @@
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
 						
 					
 						
@@ -214,6 +211,10 @@
 					
 						
 						<li><a href="/apidefinitions/#apidefinitions-block-api">Block Api</a></li>
+						
+					
+						
+						<li><a href="/apidefinitions/#apidefinitions-debug-node-api">Debug Node Api</a></li>
 						
 					
 						
@@ -338,36 +339,34 @@
 
 <p>First we import all three library and initialize Steem class</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code>    <span class="kn">import</span> <span class="nn">pprint</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kn">import</span> <span class="nn">pprint</span>
     <span class="kn">from</span> <span class="nn">pick</span> <span class="kn">import</span> <span class="n">pick</span>
-    <span class="c"># initialize Steem class</span>
-    <span class="kn">from</span> <span class="nn">steem</span> <span class="kn">import</span> <span class="n">Steem</span>
+    <span class="c1"># initialize Steem class
+</span>    <span class="kn">from</span> <span class="nn">steem</span> <span class="kn">import</span> <span class="n">Steem</span>
 
     <span class="n">s</span> <span class="o">=</span> <span class="n">Steem</span><span class="p">()</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="2-post-list-">2. Post list <a name="post-list"></a></h4>
 
 <p>Next we will fetch and make list of accounts and setup <code class="highlighter-rouge">pick</code> properly.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code>    <span class="n">query</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="s">"limit"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="c">#number of posts</span>
-      <span class="s">"tag"</span><span class="p">:</span><span class="s">""</span> <span class="c">#tag of posts</span>
-    <span class="p">}</span>
-    <span class="c">#author list from created post list to randomize account list</span>
-    <span class="n">posts</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">get_discussions_by_created</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">query</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s">"limit"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="c1">#number of posts
+</span>      <span class="s">"tag"</span><span class="p">:</span><span class="s">""</span> <span class="c1">#tag of posts
+</span>    <span class="p">}</span>
+    <span class="c1">#author list from created post list to randomize account list
+</span>    <span class="n">posts</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">get_discussions_by_created</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
 
     <span class="n">title</span> <span class="o">=</span> <span class="s">'Please choose account: '</span>
     <span class="n">options</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="c">#accounts list</span>
-    <span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">posts</span><span class="p">:</span>
+    <span class="c1">#accounts list
+</span>    <span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">posts</span><span class="p">:</span>
       <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">post</span><span class="p">[</span><span class="s">"author"</span><span class="p">])</span>
 
-    <span class="c"># get index and selected account name</span>
-    <span class="n">option</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">pick</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
-</code></pre>
-</div>
+    <span class="c1"># get index and selected account name
+</span>    <span class="n">option</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">pick</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
+</code></pre></div></div>
 
 <p>This will show us list of accounts to select in terminal/command prompt. And after selection we will get account name as a <code class="highlighter-rouge">option</code> variable.</p>
 
@@ -375,15 +374,14 @@
 
 <p>Next we will form another query to get comments list of account</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code>  <span class="n">query2</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">"limit"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="c">#number of comments</span>
-    <span class="s">"start_author"</span><span class="p">:</span><span class="n">option</span> <span class="c">#selected user</span>
-  <span class="p">}</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">query2</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"limit"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="c1">#number of comments
+</span>    <span class="s">"start_author"</span><span class="p">:</span><span class="n">option</span> <span class="c1">#selected user
+</span>  <span class="p">}</span>
 
-  <span class="c"># get comments of selected account</span>
-  <span class="n">comments</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">get_discussions_by_comments</span><span class="p">(</span><span class="n">query2</span><span class="p">)</span>
-</code></pre>
-</div>
+  <span class="c1"># get comments of selected account
+</span>  <span class="n">comments</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">get_discussions_by_comments</span><span class="p">(</span><span class="n">query2</span><span class="p">)</span>
+</code></pre></div></div>
 
 <p>Note that <code class="highlighter-rouge">start_author</code> variable in query should be account name so that <code class="highlighter-rouge">get_discussions_by_comments</code> can provide us corrent information.</p>
 
@@ -391,39 +389,38 @@
 
 <p>Next, we will print result, comments of selected account and details of each comment.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code>  <span class="c"># print comment details for selected account</span>
-  <span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">comments</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1"># print comment details for selected account
+</span>  <span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">comments</span><span class="p">)</span>
   <span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="s">"Selected: "</span><span class="o">+</span><span class="n">option</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The example of result returned from the service is a <code class="highlighter-rouge">JSON</code> object with the following properties:</p>
 
-<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">[{</span><span class="err">'abs_rshares':</span><span class="w"> </span><span class="err">0,</span><span class="w">
-  </span><span class="err">'active':</span><span class="w"> </span><span class="err">'2018-06-21T06:48:57',</span><span class="w">
-  </span><span class="err">'active_votes':</span><span class="w"> </span><span class="err">[],</span><span class="w">
-  </span><span class="err">'allow_curation_rewards':</span><span class="w"> </span><span class="err">True,</span><span class="w">
-  </span><span class="err">'allow_replies':</span><span class="w"> </span><span class="err">True,</span><span class="w">
-  </span><span class="err">'allow_votes':</span><span class="w"> </span><span class="err">True,</span><span class="w">
-  </span><span class="err">'author':</span><span class="w"> </span><span class="err">'rakibmaruf24',</span><span class="w">
-  </span><span class="err">'author_reputation':</span><span class="w"> </span><span class="err">'115387353393',</span><span class="w">
-  </span><span class="err">'author_rewards':</span><span class="w"> </span><span class="err">0,</span><span class="w">
-  </span><span class="err">'beneficiaries':</span><span class="w"> </span><span class="err">[],</span><span class="w">
-  </span><span class="err">'body':</span><span class="w"> </span><span class="nt">"That extra push will take you Back- That's my opinion ."</span><span class="err">,</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[{</span><span class="err">'abs_rshares'</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="err">'active'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">2018-06-21</span><span class="err">T</span><span class="mi">06</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mi">57</span><span class="err">'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'active_votes'</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="err">'allow_curation_rewards'</span><span class="p">:</span><span class="w"> </span><span class="err">True</span><span class="p">,</span><span class="w">
+  </span><span class="err">'allow_replies'</span><span class="p">:</span><span class="w"> </span><span class="err">True</span><span class="p">,</span><span class="w">
+  </span><span class="err">'allow_votes'</span><span class="p">:</span><span class="w"> </span><span class="err">True</span><span class="p">,</span><span class="w">
+  </span><span class="err">'author'</span><span class="p">:</span><span class="w"> </span><span class="err">'rakibmaruf</span><span class="mi">24</span><span class="err">'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'author_reputation'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">115387353393</span><span class="err">'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'author_rewards'</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="err">'beneficiaries'</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="err">'body'</span><span class="p">:</span><span class="w"> </span><span class="s2">"That extra push will take you Back- That's my opinion ."</span><span class="p">,</span><span class="w">
   </span><span class="err">'body_length'</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w">
-  </span><span class="err">'cashout_time'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">2018-06-28</span><span class="err">T</span><span class="mi">06</span><span class="err">:</span><span class="mi">48</span><span class="err">:</span><span class="mi">57</span><span class="err">'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'cashout_time'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">2018-06-28</span><span class="err">T</span><span class="mi">06</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mi">57</span><span class="err">'</span><span class="p">,</span><span class="w">
   </span><span class="err">'category'</span><span class="p">:</span><span class="w"> </span><span class="err">'life'</span><span class="p">,</span><span class="w">
   </span><span class="err">'children'</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="err">'children_abs_rshares'</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="err">'created'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">2018-06-21</span><span class="err">T</span><span class="mi">06</span><span class="err">:</span><span class="mi">48</span><span class="err">:</span><span class="mi">57</span><span class="err">'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'created'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">2018-06-21</span><span class="err">T</span><span class="mi">06</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mi">57</span><span class="err">'</span><span class="p">,</span><span class="w">
   </span><span class="err">'curator_payout_value'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mf">0.000</span><span class="w"> </span><span class="err">SBD'</span><span class="p">,</span><span class="w">
   </span><span class="err">'depth'</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="err">'id'</span><span class="p">:</span><span class="w"> </span><span class="mi">53788647</span><span class="p">,</span><span class="w">
-  </span><span class="err">'json_metadata'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="p">{</span><span class="nt">"tags"</span><span class="p">:[</span><span class="s2">"life"</span><span class="p">],</span><span class="nt">"app"</span><span class="p">:</span><span class="s2">"steemit/0.1"</span><span class="p">}</span><span class="err">'</span><span class="p">,</span><span class="w">
-  </span><span class="err">'last_payout'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">1970-01-01</span><span class="err">T</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="err">'</span><span class="p">,</span><span class="w">
-  </span><span class="err">'last_update'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">2018-06-21</span><span class="err">T</span><span class="mi">06</span><span class="err">:</span><span class="mi">48</span><span class="err">:</span><span class="mi">57</span><span class="err">'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'json_metadata'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="p">{</span><span class="s2">"tags"</span><span class="p">:[</span><span class="s2">"life"</span><span class="p">],</span><span class="s2">"app"</span><span class="p">:</span><span class="s2">"steemit/0.1"</span><span class="p">}</span><span class="err">'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'last_payout'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">1970-01-01</span><span class="err">T</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="err">'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'last_update'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">2018-06-21</span><span class="err">T</span><span class="mi">06</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mi">57</span><span class="err">'</span><span class="p">,</span><span class="w">
   </span><span class="err">'max_accepted_payout'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mf">1000000.000</span><span class="w"> </span><span class="err">SBD'</span><span class="p">,</span><span class="w">
-  </span><span class="err">'max_cashout_time'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">1969-12-31</span><span class="err">T</span><span class="mi">23</span><span class="err">:</span><span class="mi">59</span><span class="err">:</span><span class="mi">59</span><span class="err">'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'max_cashout_time'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">1969-12-31</span><span class="err">T</span><span class="mi">23</span><span class="p">:</span><span class="mi">59</span><span class="p">:</span><span class="mi">59</span><span class="err">'</span><span class="p">,</span><span class="w">
   </span><span class="err">'net_rshares'</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="err">'net_votes'</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="err">'parent_author'</span><span class="p">:</span><span class="w"> </span><span class="err">'blazing'</span><span class="p">,</span><span class="w">
@@ -444,66 +441,65 @@
   </span><span class="err">'total_vote_weight'</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="err">'url'</span><span class="p">:</span><span class="w"> </span><span class="err">'/life/@blazing/that-extra-push-will-take-you-forward#@rakibmaruf</span><span class="mi">24</span><span class="err">/re-blazing-that-extra-push-will-take-you-forward</span><span class="mi">-20180621</span><span class="err">t</span><span class="mi">064855012</span><span class="err">z'</span><span class="p">,</span><span class="w">
   </span><span class="err">'vote_rshares'</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">},</span><span class="w">
- </span><span class="p">{</span><span class="err">'abs_rshares':</span><span class="w"> </span><span class="err">0,</span><span class="w">
-  </span><span class="err">'active':</span><span class="w"> </span><span class="err">'2018-06-01T18:36:06',</span><span class="w">
-  </span><span class="err">'active_votes':</span><span class="w"> </span><span class="err">[{'percent':</span><span class="w"> </span><span class="err">200,</span><span class="w">
-                    </span><span class="err">'reputation':</span><span class="w"> </span><span class="err">'26818436016691',</span><span class="w">
-                    </span><span class="err">'rshares':</span><span class="w"> </span><span class="err">'16086534528',</span><span class="w">
-                    </span><span class="err">'time':</span><span class="w"> </span><span class="err">'2018-06-01T21:42:09',</span><span class="w">
-                    </span><span class="err">'voter':</span><span class="w"> </span><span class="err">'gamer00',</span><span class="w">
-                    </span><span class="err">'weight':</span><span class="w"> </span><span class="err">65289</span><span class="p">},</span><span class="w">
-                   </span><span class="p">{</span><span class="err">'percent':</span><span class="w"> </span><span class="err">800,</span><span class="w">
-                    </span><span class="err">'reputation':</span><span class="w"> </span><span class="err">'7605717819625',</span><span class="w">
-                    </span><span class="err">'rshares':</span><span class="w"> </span><span class="err">'7561308944',</span><span class="w">
-                    </span><span class="err">'time':</span><span class="w"> </span><span class="err">'2018-06-01T18:44:51',</span><span class="w">
-                    </span><span class="err">'voter':</span><span class="w"> </span><span class="err">'markkujantunen',</span><span class="w">
-                    </span><span class="err">'weight':</span><span class="w"> </span><span class="err">90456</span><span class="p">}]</span><span class="err">,</span><span class="w">
-  </span><span class="err">'allow_curation_rewards':</span><span class="w"> </span><span class="err">True,</span><span class="w">
-  </span><span class="err">'allow_replies':</span><span class="w"> </span><span class="err">True,</span><span class="w">
-  </span><span class="err">'allow_votes':</span><span class="w"> </span><span class="err">True,</span><span class="w">
-  </span><span class="err">'author':</span><span class="w"> </span><span class="err">'rakibmaruf</span><span class="mi">24</span><span class="err">',</span><span class="w">
-  </span><span class="err">'author_reputation':</span><span class="w"> </span><span class="err">'</span><span class="mi">115387353393</span><span class="err">',</span><span class="w">
-  </span><span class="err">'author_rewards':</span><span class="w"> </span><span class="mi">29</span><span class="err">,</span><span class="w">
-  </span><span class="err">'beneficiaries':</span><span class="w"> </span><span class="p">[]</span><span class="err">,</span><span class="w">
-  </span><span class="err">'body':</span><span class="w"> </span><span class="s2">"How did it worked ? I don't understand about this brother."</span><span class="err">,</span><span class="w">
-  </span><span class="err">'body_length':</span><span class="w"> </span><span class="mi">58</span><span class="err">,</span><span class="w">
-  </span><span class="err">'cashout_time':</span><span class="w"> </span><span class="err">'</span><span class="mi">1969-12-31</span><span class="err">T</span><span class="mi">23</span><span class="err">:</span><span class="mi">59</span><span class="err">:</span><span class="mi">59</span><span class="err">',</span><span class="w">
-  </span><span class="err">'category':</span><span class="w"> </span><span class="err">'finland',</span><span class="w">
-  </span><span class="err">'children':</span><span class="w"> </span><span class="mi">1</span><span class="err">,</span><span class="w">
-  </span><span class="err">'children_abs_rshares':</span><span class="w"> </span><span class="mi">0</span><span class="err">,</span><span class="w">
-  </span><span class="err">'created':</span><span class="w"> </span><span class="err">'</span><span class="mi">2018-06-01</span><span class="err">T</span><span class="mi">17</span><span class="err">:</span><span class="mi">56</span><span class="err">:</span><span class="mi">15</span><span class="err">',</span><span class="w">
-  </span><span class="err">'curator_payout_value':</span><span class="w"> </span><span class="err">'</span><span class="mf">0.018</span><span class="w"> </span><span class="err">SBD',</span><span class="w">
-  </span><span class="err">'depth':</span><span class="w"> </span><span class="mi">1</span><span class="err">,</span><span class="w">
-  </span><span class="err">'id':</span><span class="w"> </span><span class="mi">51280699</span><span class="err">,</span><span class="w">
-  </span><span class="err">'json_metadata':</span><span class="w"> </span><span class="err">'</span><span class="p">{</span><span class="nt">"tags"</span><span class="p">:[</span><span class="s2">"finland"</span><span class="p">],</span><span class="nt">"app"</span><span class="p">:</span><span class="s2">"steemit/0.1"</span><span class="p">}</span><span class="err">',</span><span class="w">
-  </span><span class="err">'last_payout':</span><span class="w"> </span><span class="err">'</span><span class="mi">2018-06-08</span><span class="err">T</span><span class="mi">17</span><span class="err">:</span><span class="mi">56</span><span class="err">:</span><span class="mi">15</span><span class="err">',</span><span class="w">
-  </span><span class="err">'last_update':</span><span class="w"> </span><span class="err">'</span><span class="mi">2018-06-01</span><span class="err">T</span><span class="mi">17</span><span class="err">:</span><span class="mi">56</span><span class="err">:</span><span class="mi">15</span><span class="err">',</span><span class="w">
-  </span><span class="err">'max_accepted_payout':</span><span class="w"> </span><span class="err">'</span><span class="mf">1000000.000</span><span class="w"> </span><span class="err">SBD',</span><span class="w">
-  </span><span class="err">'max_cashout_time':</span><span class="w"> </span><span class="err">'</span><span class="mi">1969-12-31</span><span class="err">T</span><span class="mi">23</span><span class="err">:</span><span class="mi">59</span><span class="err">:</span><span class="mi">59</span><span class="err">',</span><span class="w">
-  </span><span class="err">'net_rshares':</span><span class="w"> </span><span class="mi">0</span><span class="err">,</span><span class="w">
-  </span><span class="err">'net_votes':</span><span class="w"> </span><span class="mi">2</span><span class="err">,</span><span class="w">
-  </span><span class="err">'parent_author':</span><span class="w"> </span><span class="err">'markkujantunen',</span><span class="w">
-  </span><span class="err">'parent_permlink':</span><span class="w"> </span><span class="err">'mein-kampf-gegen-den-loewenzahn-my-struggle-against-dandelions',</span><span class="w">
-  </span><span class="err">'pending_payout_value':</span><span class="w"> </span><span class="err">'</span><span class="mf">0.000</span><span class="w"> </span><span class="err">SBD',</span><span class="w">
-  </span><span class="err">'percent_steem_dollars':</span><span class="w"> </span><span class="mi">10000</span><span class="err">,</span><span class="w">
-  </span><span class="err">'permlink':</span><span class="w"> </span><span class="err">'re-markkujantunen-mein-kampf-gegen-den-loewenzahn-my-struggle-against-dandelions</span><span class="mi">-20180601</span><span class="err">t</span><span class="mi">175605072</span><span class="err">z',</span><span class="w">
-  </span><span class="err">'promoted':</span><span class="w"> </span><span class="err">'</span><span class="mf">0.000</span><span class="w"> </span><span class="err">SBD',</span><span class="w">
-  </span><span class="err">'reblogged_by':</span><span class="w"> </span><span class="p">[]</span><span class="err">,</span><span class="w">
-  </span><span class="err">'replies':</span><span class="w"> </span><span class="p">[]</span><span class="err">,</span><span class="w">
-  </span><span class="err">'reward_weight':</span><span class="w"> </span><span class="mi">10000</span><span class="err">,</span><span class="w">
-  </span><span class="err">'root_author':</span><span class="w"> </span><span class="err">'markkujantunen',</span><span class="w">
-  </span><span class="err">'root_permlink':</span><span class="w"> </span><span class="err">'mein-kampf-gegen-den-loewenzahn-my-struggle-against-dandelions',</span><span class="w">
-  </span><span class="err">'root_title':</span><span class="w"> </span><span class="err">'Mein</span><span class="w"> </span><span class="err">Kampf</span><span class="w"> </span><span class="err">Gegen</span><span class="w"> </span><span class="err">Den</span><span class="w"> </span><span class="err">Löwenzahn/My</span><span class="w"> </span><span class="err">Struggle</span><span class="w"> </span><span class="err">Against</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">'</span><span class="w">
-                </span><span class="err">'Dandelion',</span><span class="w">
-  </span><span class="err">'title':</span><span class="w"> </span><span class="err">'',</span><span class="w">
-  </span><span class="err">'total_payout_value':</span><span class="w"> </span><span class="err">'</span><span class="mf">0.067</span><span class="w"> </span><span class="err">SBD',</span><span class="w">
-  </span><span class="err">'total_pending_payout_value':</span><span class="w"> </span><span class="err">'</span><span class="mf">0.000</span><span class="w"> </span><span class="err">STEEM',</span><span class="w">
-  </span><span class="err">'total_vote_weight':</span><span class="w"> </span><span class="mi">0</span><span class="err">,</span><span class="w">
-  </span><span class="err">'url':</span><span class="w"> </span><span class="err">'/finland/@markkujantunen/mein-kampf-gegen-den-loewenzahn-my-struggle-against-dandelions#@rakibmaruf</span><span class="mi">24</span><span class="err">/re-markkujantunen-mein-kampf-gegen-den-loewenzahn-my-struggle-against-dandelions</span><span class="mi">-20180601</span><span class="err">t</span><span class="mi">175605072</span><span class="err">z',</span><span class="w">
-  </span><span class="err">'vote_rshares':</span><span class="w"> </span><span class="mi">0</span><span class="err">}</span><span class="w">
-</span><span class="err">]</span><span class="w">
-</span></code></pre>
-</div>
+ </span><span class="p">{</span><span class="err">'abs_rshares'</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="err">'active'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">2018-06-01</span><span class="err">T</span><span class="mi">18</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">06</span><span class="err">'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'active_votes'</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="err">'percent'</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+                    </span><span class="err">'reputation'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">26818436016691</span><span class="err">'</span><span class="p">,</span><span class="w">
+                    </span><span class="err">'rshares'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">16086534528</span><span class="err">'</span><span class="p">,</span><span class="w">
+                    </span><span class="err">'time'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">2018-06-01</span><span class="err">T</span><span class="mi">21</span><span class="p">:</span><span class="mi">42</span><span class="p">:</span><span class="mi">09</span><span class="err">'</span><span class="p">,</span><span class="w">
+                    </span><span class="err">'voter'</span><span class="p">:</span><span class="w"> </span><span class="err">'gamer</span><span class="mi">00</span><span class="err">'</span><span class="p">,</span><span class="w">
+                    </span><span class="err">'weight'</span><span class="p">:</span><span class="w"> </span><span class="mi">65289</span><span class="p">},</span><span class="w">
+                   </span><span class="p">{</span><span class="err">'percent'</span><span class="p">:</span><span class="w"> </span><span class="mi">800</span><span class="p">,</span><span class="w">
+                    </span><span class="err">'reputation'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">7605717819625</span><span class="err">'</span><span class="p">,</span><span class="w">
+                    </span><span class="err">'rshares'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">7561308944</span><span class="err">'</span><span class="p">,</span><span class="w">
+                    </span><span class="err">'time'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">2018-06-01</span><span class="err">T</span><span class="mi">18</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mi">51</span><span class="err">'</span><span class="p">,</span><span class="w">
+                    </span><span class="err">'voter'</span><span class="p">:</span><span class="w"> </span><span class="err">'markkujantunen'</span><span class="p">,</span><span class="w">
+                    </span><span class="err">'weight'</span><span class="p">:</span><span class="w"> </span><span class="mi">90456</span><span class="p">}],</span><span class="w">
+  </span><span class="err">'allow_curation_rewards'</span><span class="p">:</span><span class="w"> </span><span class="err">True</span><span class="p">,</span><span class="w">
+  </span><span class="err">'allow_replies'</span><span class="p">:</span><span class="w"> </span><span class="err">True</span><span class="p">,</span><span class="w">
+  </span><span class="err">'allow_votes'</span><span class="p">:</span><span class="w"> </span><span class="err">True</span><span class="p">,</span><span class="w">
+  </span><span class="err">'author'</span><span class="p">:</span><span class="w"> </span><span class="err">'rakibmaruf</span><span class="mi">24</span><span class="err">'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'author_reputation'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">115387353393</span><span class="err">'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'author_rewards'</span><span class="p">:</span><span class="w"> </span><span class="mi">29</span><span class="p">,</span><span class="w">
+  </span><span class="err">'beneficiaries'</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="err">'body'</span><span class="p">:</span><span class="w"> </span><span class="s2">"How did it worked ? I don't understand about this brother."</span><span class="p">,</span><span class="w">
+  </span><span class="err">'body_length'</span><span class="p">:</span><span class="w"> </span><span class="mi">58</span><span class="p">,</span><span class="w">
+  </span><span class="err">'cashout_time'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">1969-12-31</span><span class="err">T</span><span class="mi">23</span><span class="p">:</span><span class="mi">59</span><span class="p">:</span><span class="mi">59</span><span class="err">'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'category'</span><span class="p">:</span><span class="w"> </span><span class="err">'finland'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'children'</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="err">'children_abs_rshares'</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="err">'created'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">2018-06-01</span><span class="err">T</span><span class="mi">17</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">15</span><span class="err">'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'curator_payout_value'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mf">0.018</span><span class="w"> </span><span class="err">SBD'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'depth'</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="err">'id'</span><span class="p">:</span><span class="w"> </span><span class="mi">51280699</span><span class="p">,</span><span class="w">
+  </span><span class="err">'json_metadata'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="p">{</span><span class="s2">"tags"</span><span class="p">:[</span><span class="s2">"finland"</span><span class="p">],</span><span class="s2">"app"</span><span class="p">:</span><span class="s2">"steemit/0.1"</span><span class="p">}</span><span class="err">'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'last_payout'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">2018-06-08</span><span class="err">T</span><span class="mi">17</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">15</span><span class="err">'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'last_update'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">2018-06-01</span><span class="err">T</span><span class="mi">17</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">15</span><span class="err">'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'max_accepted_payout'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mf">1000000.000</span><span class="w"> </span><span class="err">SBD'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'max_cashout_time'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">1969-12-31</span><span class="err">T</span><span class="mi">23</span><span class="p">:</span><span class="mi">59</span><span class="p">:</span><span class="mi">59</span><span class="err">'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'net_rshares'</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="err">'net_votes'</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="err">'parent_author'</span><span class="p">:</span><span class="w"> </span><span class="err">'markkujantunen'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'parent_permlink'</span><span class="p">:</span><span class="w"> </span><span class="err">'mein-kampf-gegen-den-loewenzahn-my-struggle-against-dandelions'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'pending_payout_value'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mf">0.000</span><span class="w"> </span><span class="err">SBD'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'percent_steem_dollars'</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+  </span><span class="err">'permlink'</span><span class="p">:</span><span class="w"> </span><span class="err">'re-markkujantunen-mein-kampf-gegen-den-loewenzahn-my-struggle-against-dandelions</span><span class="mi">-20180601</span><span class="err">t</span><span class="mi">175605072</span><span class="err">z'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'promoted'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mf">0.000</span><span class="w"> </span><span class="err">SBD'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'reblogged_by'</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="err">'replies'</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="err">'reward_weight'</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+  </span><span class="err">'root_author'</span><span class="p">:</span><span class="w"> </span><span class="err">'markkujantunen'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'root_permlink'</span><span class="p">:</span><span class="w"> </span><span class="err">'mein-kampf-gegen-den-loewenzahn-my-struggle-against-dandelions'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'root_title'</span><span class="p">:</span><span class="w"> </span><span class="err">'Mein</span><span class="w"> </span><span class="err">Kampf</span><span class="w"> </span><span class="err">Gegen</span><span class="w"> </span><span class="err">Den</span><span class="w"> </span><span class="err">Löwenzahn/My</span><span class="w"> </span><span class="err">Struggle</span><span class="w"> </span><span class="err">Against</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">'</span><span class="w">
+                </span><span class="err">'Dandelion'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'title'</span><span class="p">:</span><span class="w"> </span><span class="err">''</span><span class="p">,</span><span class="w">
+  </span><span class="err">'total_payout_value'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mf">0.067</span><span class="w"> </span><span class="err">SBD'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'total_pending_payout_value'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mf">0.000</span><span class="w"> </span><span class="err">STEEM'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'total_vote_weight'</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="err">'url'</span><span class="p">:</span><span class="w"> </span><span class="err">'/finland/@markkujantunen/mein-kampf-gegen-den-loewenzahn-my-struggle-against-dandelions#@rakibmaruf</span><span class="mi">24</span><span class="err">/re-markkujantunen-mein-kampf-gegen-den-loewenzahn-my-struggle-against-dandelions</span><span class="mi">-20180601</span><span class="err">t</span><span class="mi">175605072</span><span class="err">z'</span><span class="p">,</span><span class="w">
+  </span><span class="err">'vote_rshares'</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
 
 <p>From this result you have access to everything associated to the comments of account including content of comment, timestamp, active_votes, etc., so that you can use in further development of your application with Python.</p>
 

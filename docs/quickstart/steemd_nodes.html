@@ -15,23 +15,18 @@
 	<script src="/js/main.js"></script>
 	
 
-	<!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>steemd Nodes - Steem Developer</title>
+	<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>steemd Nodes | Steem Developer</title>
+<meta name="generator" content="Jekyll v3.8.4" />
 <meta property="og:title" content="steemd Nodes" />
+<meta property="og:locale" content="en_US" />
 <meta name="description" content="Applications that interface directly with the Steem blockchain will need to connect to a steemd node. Developers may choose to use one of the public API nodes that are available, or run their own instance of a node." />
 <meta property="og:description" content="Applications that interface directly with the Steem blockchain will need to connect to a steemd node. Developers may choose to use one of the public API nodes that are available, or run their own instance of a node." />
-<link rel="canonical" href="https://developer.steem.io/quickstart/steemd_nodes" />
-<meta property="og:url" content="https://developer.steem.io/quickstart/steemd_nodes" />
+<link rel="canonical" href="https://developers.steem.io/quickstart/steemd_nodes" />
+<meta property="og:url" content="https://developers.steem.io/quickstart/steemd_nodes" />
 <meta property="og:site_name" content="Steem Developer" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-25T13:58:36-05:00" />
 <script type="application/ld+json">
-{"@context": "http://schema.org",
-"@type": "BlogPosting",
-"headline": "steemd Nodes",
-"datePublished": "2018-09-25T13:58:36-05:00",
-"description": "Applications that interface directly with the Steem blockchain will need to connect to a steemd node. Developers may choose to use one of the public API nodes that are available, or run their own instance of a node.",
-"url": "https://developer.steem.io/quickstart/steemd_nodes"}</script>
+{"description":"Applications that interface directly with the Steem blockchain will need to connect to a steemd node. Developers may choose to use one of the public API nodes that are available, or run their own instance of a node.","@type":"WebPage","url":"https://developers.steem.io/quickstart/steemd_nodes","headline":"steemd Nodes","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -169,11 +164,11 @@
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
 						
 					
 						
@@ -214,6 +209,10 @@
 					
 						
 						<li><a href="/apidefinitions/#apidefinitions-block-api">Block Api</a></li>
+						
+					
+						
+						<li><a href="/apidefinitions/#apidefinitions-debug-node-api">Debug Node Api</a></li>
 						
 					
 						
@@ -335,16 +334,8 @@
       <td>@timcliff</td>
     </tr>
     <tr>
-      <td>appbase.buildteam.io</td>
-      <td>@themarkymark</td>
-    </tr>
-    <tr>
       <td>gtg.steem.house:8090</td>
       <td>@gtg</td>
-    </tr>
-    <tr>
-      <td>rpc.buildteam.io</td>
-      <td>@themarkymark</td>
     </tr>
     <tr>
       <td>rpc.curiesteem.com</td>
@@ -395,13 +386,12 @@
 
 <p>There is another <a href="https://github.com/steemit/steem/issues/2391">trick which might help</a> with faster sync/replay on smaller equipped servers:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>while :
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>while :
 do
    dd if=blockchain/block_log iflag=nocache count=0
    sleep 60
 done
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Above bash script drops <code class="highlighter-rouge">block_log</code> from the OS cache, leaving more memory free for backing the blockchain database. It might also help while running live, but measurement would be needed to determine this.</p>
 
@@ -409,30 +399,27 @@ done
 
 <p>For Linux users, virtual memory writes dirty pages of the shared file out to disk more often than is optimal which results in steemd being slowed down by redundant IO operations. These settings are recommended to optimize reindex time.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>echo    75 | sudo tee /proc/sys/vm/dirty_background_ratio
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo    75 | sudo tee /proc/sys/vm/dirty_background_ratio
 echo  1000 | sudo tee /proc/sys/vm/dirty_expire_centisecs
 echo    80 | sudo tee /proc/sys/vm/dirty_ratio
 echo 30000 | sudo tee /proc/sys/vm/dirty_writeback_centisecs
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Another settings that can be changed in <code class="highlighter-rouge">config.ini</code> is <code class="highlighter-rouge">flush</code> - it is to specify a target number of blocks to process before flushing the chain database to disk. This is needed on Linux machines and a value of 100000 is recommended. It is not needed on OS X, but can be used if desired.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>docker run <span class="se">\</span>
-    -d -p 2001:2001 -p 8090:8090 --name steemd-default <span class="se">\</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="se">\</span>
+    <span class="nt">-d</span> <span class="nt">-p</span> 2001:2001 <span class="nt">-p</span> 8090:8090 <span class="nt">--name</span> steemd-default <span class="se">\</span>
     steemit/steem
 
-docker logs -f steemd-default  <span class="c"># follow along</span>
-</code></pre>
-</div>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>docker run <span class="se">\</span>
-    --env <span class="nv">USE_WAY_TOO_MUCH_RAM</span><span class="o">=</span>1 <span class="se">\</span>
-    -d -p 2001:2001 -p 8090:8090 --name steemd-full <span class="se">\</span>
+docker logs <span class="nt">-f</span> steemd-default  <span class="c"># follow along</span>
+</code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="se">\</span>
+    <span class="nt">--env</span> <span class="nv">USE_WAY_TOO_MUCH_RAM</span><span class="o">=</span>1 <span class="se">\</span>
+    <span class="nt">-d</span> <span class="nt">-p</span> 2001:2001 <span class="nt">-p</span> 8090:8090 <span class="nt">--name</span> steemd-full <span class="se">\</span>
     steemit/steem
 
-docker logs -f steemd-full
-</code></pre>
-</div>
+docker logs <span class="nt">-f</span> steemd-full
+</code></pre></div></div>
 
 </div>
 <div class="footer">

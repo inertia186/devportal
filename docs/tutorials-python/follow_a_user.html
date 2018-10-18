@@ -15,23 +15,20 @@
 	<script src="/js/main.js"></script>
 	
 
-	<!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>PY: Follow A User - Steem Developer</title>
+	<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>PY: Follow A User | Steem Developer</title>
+<meta name="generator" content="Jekyll v3.8.4" />
 <meta property="og:title" content="PY: Follow A User" />
+<meta property="og:locale" content="en_US" />
 <meta name="description" content="How to follow or unfollow an author using Python." />
 <meta property="og:description" content="How to follow or unfollow an author using Python." />
-<link rel="canonical" href="https://developer.steem.io/tutorials-python/follow_a_user" />
-<meta property="og:url" content="https://developer.steem.io/tutorials-python/follow_a_user" />
+<link rel="canonical" href="https://developers.steem.io/tutorials-python/follow_a_user" />
+<meta property="og:url" content="https://developers.steem.io/tutorials-python/follow_a_user" />
 <meta property="og:site_name" content="Steem Developer" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-25T13:58:36-05:00" />
+<meta property="article:published_time" content="2018-10-18T14:29:07-05:00" />
 <script type="application/ld+json">
-{"@context": "http://schema.org",
-"@type": "BlogPosting",
-"headline": "PY: Follow A User",
-"datePublished": "2018-09-25T13:58:36-05:00",
-"description": "How to follow or unfollow an author using Python.",
-"url": "https://developer.steem.io/tutorials-python/follow_a_user"}</script>
+{"description":"How to follow or unfollow an author using Python.","@type":"BlogPosting","url":"https://developers.steem.io/tutorials-python/follow_a_user","headline":"PY: Follow A User","dateModified":"2018-10-18T14:29:07-05:00","datePublished":"2018-10-18T14:29:07-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://developers.steem.io/tutorials-python/follow_a_user"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -169,11 +166,11 @@
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
 						
 					
 						
@@ -214,6 +211,10 @@
 					
 						
 						<li><a href="/apidefinitions/#apidefinitions-block-api">Block Api</a></li>
+						
+					
+						
+						<li><a href="/apidefinitions/#apidefinitions-debug-node-api">Debug Node Api</a></li>
 						
 					
 						
@@ -350,7 +351,7 @@
 
 <p>We import the libraries and connect to the <code class="highlighter-rouge">testnet</code>.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">steembase</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">steembase</span>
 <span class="kn">import</span> <span class="nn">steem</span>
 <span class="kn">from</span> <span class="nn">pick</span> <span class="kn">import</span> <span class="n">pick</span>
 
@@ -358,8 +359,7 @@
     <span class="s">'chain_id'</span><span class="p">:</span> <span class="s">'79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673'</span><span class="p">,</span>
     <span class="s">'prefix'</span><span class="p">:</span> <span class="s">'STX'</span><span class="p">,</span> <span class="s">'steem_symbol'</span><span class="p">:</span> <span class="s">'STEEM'</span><span class="p">,</span> <span class="s">'sbd_symbol'</span><span class="p">:</span> <span class="s">'SBD'</span><span class="p">,</span> <span class="s">'vests_symbol'</span><span class="p">:</span> <span class="s">'VESTS'</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Because this tutorial alters the blockchain we connect to the testnet so we don’t create spam on the production server.</p>
 
@@ -367,26 +367,24 @@
 
 <p>We also require the <code class="highlighter-rouge">private posting key</code> of the user that wishes to follow a selected author in order to commit the action to the blockchain. This is why we have to specify this along with the <code class="highlighter-rouge">testnet</code> node. The values are supplied via the terminal/console before we initialise the steem class. We have supplied a test account, <code class="highlighter-rouge">cdemo</code> to use with this tutorial but any demo account set up on the testnet can be used.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#capture user information</span>
-<span class="n">username</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Please enter your username: '</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#capture user information
+</span><span class="n">username</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Please enter your username: '</span><span class="p">)</span>
 <span class="n">postingkey</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Please enter your private posting key: '</span><span class="p">)</span>
 
-<span class="c">#connect node and private posting key, demo account being used: cdemo, posting key: 5JEZ1EiUjFKfsKP32b15Y7jybjvHQPhnvCYZ9BW62H1LDUnMvHz</span>
-<span class="n">s</span> <span class="o">=</span> <span class="n">steem</span><span class="o">.</span><span class="n">Steem</span><span class="p">(</span><span class="n">nodes</span><span class="o">=</span><span class="p">[</span><span class="s">'https://testnet.steem.vc'</span><span class="p">],</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="n">postingkey</span><span class="p">])</span>
-</code></pre>
-</div>
+<span class="c1">#connect node and private posting key, demo account being used: cdemo, posting key: 5JEZ1EiUjFKfsKP32b15Y7jybjvHQPhnvCYZ9BW62H1LDUnMvHz
+</span><span class="n">s</span> <span class="o">=</span> <span class="n">steem</span><span class="o">.</span><span class="n">Steem</span><span class="p">(</span><span class="n">nodes</span><span class="o">=</span><span class="p">[</span><span class="s">'https://testnet.steem.vc'</span><span class="p">],</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="n">postingkey</span><span class="p">])</span>
+</code></pre></div></div>
 
 <h4 id="3-check-author-status">3. Check author status<a name="authorstat"></a></h4>
 
 <p>To insure the validity of the <code class="highlighter-rouge">follow</code> process, we first check to see if the <code class="highlighter-rouge">author</code> provided by the user is in fact an active username. This is done with a simple call to the blockchain which returns an array of all the user information. If the author does not exist, the return value is <code class="highlighter-rouge">null</code>.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#capture variables</span>
-<span class="n">author</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Author to follow: '</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#capture variables
+</span><span class="n">author</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Author to follow: '</span><span class="p">)</span>
 
-<span class="c">#check author status</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">get_account</span><span class="p">(</span><span class="n">author</span><span class="p">)</span>
-</code></pre>
-</div>
+<span class="c1">#check author status
+</span><span class="n">result</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">get_account</span><span class="p">(</span><span class="n">author</span><span class="p">)</span>
+</code></pre></div></div>
 
 <p>Once the author name is confirmed to be valid we can move on to check the follow status of that author.</p>
 
@@ -394,10 +392,10 @@
 
 <p>If the author check comes back with a value we use a simple <code class="highlighter-rouge">if</code> statement to initialise the database query for the follow status. A comprehensive tutorial is available to retrieve a list of followers and users that are being followed in the tutorial specified in the <code class="highlighter-rouge">intro</code>. As we are only interested in a very specific author we can narrow the query results down to a single result. That result then determines what the available actions are.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#result from previous step</span>
-<span class="k">if</span> <span class="n">result</span> <span class="p">:</span>
-	<span class="c">#check for author name in the current following list</span>
-	<span class="n">follow</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">get_following</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">author</span><span class="p">,</span> <span class="s">'blog'</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#result from previous step
+</span><span class="k">if</span> <span class="n">result</span> <span class="p">:</span>
+	<span class="c1">#check for author name in the current following list
+</span>	<span class="n">follow</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">get_following</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">author</span><span class="p">,</span> <span class="s">'blog'</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 	<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">follow</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">follow</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">'following'</span><span class="p">]</span> <span class="o">==</span> <span class="n">author</span> <span class="p">:</span>
 		<span class="n">title</span> <span class="o">=</span> <span class="s">"Author is already being followed, please choose action"</span>
 	<span class="k">else</span><span class="p">:</span>
@@ -405,16 +403,14 @@
 <span class="k">else</span><span class="p">:</span>
 	<span class="k">print</span><span class="p">(</span><span class="s">'Author does not exist'</span><span class="p">)</span>
 	<span class="nb">exit</span><span class="p">()</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The result from the <code class="highlighter-rouge">follow</code> query is printed on the UI and the user is asked to select the next action to take based on that information. If the author does not exit the program exits automatically.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#get index and selected action</span>
-<span class="n">options</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Follow'</span><span class="p">,</span> <span class="s">'Unfollow'</span><span class="p">,</span> <span class="s">'Exit'</span><span class="p">]</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#get index and selected action
+</span><span class="n">options</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Follow'</span><span class="p">,</span> <span class="s">'Unfollow'</span><span class="p">,</span> <span class="s">'Exit'</span><span class="p">]</span>
 <span class="n">option</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">pick</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Once we know what the user wants to do, we can move on to the actual <code class="highlighter-rouge">commit</code> to the blockchain.</p>
 
@@ -422,7 +418,7 @@
 
 <p>Once the user has selected which action to take we user another <code class="highlighter-rouge">if</code> statement to execute that selection.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="n">option</span> <span class="o">==</span> <span class="s">'Follow'</span> <span class="p">:</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">option</span> <span class="o">==</span> <span class="s">'Follow'</span> <span class="p">:</span>
 	<span class="n">s</span><span class="o">.</span><span class="n">commit</span><span class="o">.</span><span class="n">follow</span><span class="p">(</span><span class="n">author</span><span class="p">,</span> <span class="p">[</span><span class="s">'blog'</span><span class="p">],</span> <span class="n">username</span><span class="p">)</span>
 	<span class="k">print</span><span class="p">(</span><span class="n">author</span> <span class="o">+</span> <span class="s">' is now being followed'</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
@@ -431,8 +427,7 @@
 		<span class="k">print</span><span class="p">(</span><span class="n">author</span> <span class="o">+</span> <span class="s">' has now been unfollowed'</span><span class="p">)</span>
 	<span class="k">else</span><span class="p">:</span>
 		<span class="k">print</span><span class="p">(</span><span class="s">'Action Cancelled'</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>A simple confirmation of the chosen action is printed on the screen.</p>
 

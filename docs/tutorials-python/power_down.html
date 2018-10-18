@@ -15,23 +15,20 @@
 	<script src="/js/main.js"></script>
 	
 
-	<!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>PY: Power Down - Steem Developer</title>
+	<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>PY: Power Down | Steem Developer</title>
+<meta name="generator" content="Jekyll v3.8.4" />
 <meta property="og:title" content="PY: Power Down" />
+<meta property="og:locale" content="en_US" />
 <meta name="description" content="How to power down (withdraw) your vesting shares using Python." />
 <meta property="og:description" content="How to power down (withdraw) your vesting shares using Python." />
-<link rel="canonical" href="https://developer.steem.io/tutorials-python/power_down" />
-<meta property="og:url" content="https://developer.steem.io/tutorials-python/power_down" />
+<link rel="canonical" href="https://developers.steem.io/tutorials-python/power_down" />
+<meta property="og:url" content="https://developers.steem.io/tutorials-python/power_down" />
 <meta property="og:site_name" content="Steem Developer" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-25T13:58:36-05:00" />
+<meta property="article:published_time" content="2018-10-18T14:29:07-05:00" />
 <script type="application/ld+json">
-{"@context": "http://schema.org",
-"@type": "BlogPosting",
-"headline": "PY: Power Down",
-"datePublished": "2018-09-25T13:58:36-05:00",
-"description": "How to power down (withdraw) your vesting shares using Python.",
-"url": "https://developer.steem.io/tutorials-python/power_down"}</script>
+{"description":"How to power down (withdraw) your vesting shares using Python.","@type":"BlogPosting","url":"https://developers.steem.io/tutorials-python/power_down","headline":"PY: Power Down","dateModified":"2018-10-18T14:29:07-05:00","datePublished":"2018-10-18T14:29:07-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://developers.steem.io/tutorials-python/power_down"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -169,11 +166,11 @@
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
 						
 					
 						
@@ -214,6 +211,10 @@
 					
 						
 						<li><a href="/apidefinitions/#apidefinitions-block-api">Block Api</a></li>
+						
+					
+						
+						<li><a href="/apidefinitions/#apidefinitions-debug-node-api">Debug Node Api</a></li>
 						
 					
 						
@@ -348,7 +349,7 @@
 
 <p>We import the libraries and connect to the <code class="highlighter-rouge">testnet</code>.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">steembase</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">steembase</span>
 <span class="kn">import</span> <span class="nn">steem</span>
 <span class="kn">from</span> <span class="nn">pick</span> <span class="kn">import</span> <span class="n">pick</span>
 <span class="kn">from</span> <span class="nn">steem.amount</span> <span class="kn">import</span> <span class="n">Amount</span>
@@ -357,8 +358,7 @@
     <span class="s">'chain_id'</span><span class="p">:</span> <span class="s">'79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673'</span><span class="p">,</span>
     <span class="s">'prefix'</span><span class="p">:</span> <span class="s">'STX'</span><span class="p">,</span> <span class="s">'steem_symbol'</span><span class="p">:</span> <span class="s">'STEEM'</span><span class="p">,</span> <span class="s">'sbd_symbol'</span><span class="p">:</span> <span class="s">'SBD'</span><span class="p">,</span> <span class="s">'vests_symbol'</span><span class="p">:</span> <span class="s">'VESTS'</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Because this tutorial alters the blockchain we connect to the testnet so we don’t create spam on the production server.</p>
 
@@ -366,21 +366,20 @@
 
 <p>We require the <code class="highlighter-rouge">private active key</code> of the user in order for the conversion to be committed to the blockchain. This is why we have to specify this alongside the <code class="highlighter-rouge">testnet</code> node. The values are supplied via the terminal/console before we initialise the steem class. There is a demo account available to use with this tutorial but any account that is set up on the testnet can be used.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#capture user information</span>
-<span class="n">username</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Enter username: '</span><span class="p">)</span> <span class="c">#demo account: cdemo</span>
-<span class="n">wif</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Enter private ACTIVE key: '</span><span class="p">)</span> <span class="c">#demo account: 5KaNM84WWSqzwKzY82fXPaUW43idbLnPqf5SfjGxLfw6eV2kAP3</span>
-
-<span class="c">#connect node and private active key</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">steem</span><span class="o">.</span><span class="n">Steem</span><span class="p">(</span><span class="n">nodes</span><span class="o">=</span><span class="p">[</span><span class="s">'https://testnet.steem.vc'</span><span class="p">],</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="n">wif</span><span class="p">])</span>
-</code></pre>
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#capture user information
+</span><span class="n">username</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Enter username: '</span><span class="p">)</span> <span class="c1">#demo account: cdemo
+</span><span class="n">wif</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Enter private ACTIVE key: '</span><span class="p">)</span> <span class="c1">#demo account: 5KaNM84WWSqzwKzY82fXPaUW43idbLnPqf5SfjGxLfw6eV2kAP3
+</span>
+<span class="c1">#connect node and private active key
+</span><span class="n">client</span> <span class="o">=</span> <span class="n">steem</span><span class="o">.</span><span class="n">Steem</span><span class="p">(</span><span class="n">nodes</span><span class="o">=</span><span class="p">[</span><span class="s">'https://testnet.steem.vc'</span><span class="p">],</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="n">wif</span><span class="p">])</span>
+</code></pre></div></div>
 
 <h4 id="3-check-balance-">3. Check balance <a name="balance"></a></h4>
 
 <p>In order to give the user enough information to make the conversion we check the current balance of the account using the <code class="highlighter-rouge">get_account</code> function.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#get account balance for vesting shares</span>
-<span class="n">userinfo</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_account</span><span class="p">(</span><span class="n">username</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#get account balance for vesting shares
+</span><span class="n">userinfo</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_account</span><span class="p">(</span><span class="n">username</span><span class="p">)</span>
 <span class="n">delegated_vests</span> <span class="o">=</span> <span class="n">userinfo</span><span class="p">[</span><span class="s">'delegated_vesting_shares'</span><span class="p">]</span>
 <span class="n">vesting_shares</span> <span class="o">=</span> <span class="n">userinfo</span><span class="p">[</span><span class="s">'vesting_shares'</span><span class="p">]</span>
 <span class="n">to_withdraw</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">userinfo</span><span class="p">[</span><span class="s">'to_withdraw'</span><span class="p">])</span>
@@ -393,8 +392,7 @@
     <span class="s">'</span><span class="se">\n</span><span class="s">'</span> <span class="o">+</span> <span class="s">'Available VESTS: '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">available_vests</span><span class="p">)</span> <span class="o">+</span> <span class="s">' VESTS'</span><span class="p">)</span>
 
 <span class="nb">input</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span> <span class="o">+</span> <span class="s">'Press enter to continue'</span> <span class="o">+</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The available vesting shares to withdraw is not directly available from the user information and needs to be calculated. In order to find the total VESTS available to power down we need to know how much is currently in power down, how much has been delegated and then the total amount of vesting shares. The values are assigned from the query directly as <code class="highlighter-rouge">float</code> type to make the calculations a little simpler. The results of the query and calculation are converted to <code class="highlighter-rouge">string</code> type and displayed in the console/terminal.</p>
 
@@ -402,17 +400,16 @@
 
 <p>The user is given the option to withdraw all available vesting shares, a portion of the shares or to cancel the transaction completely.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#choice of transfer</span>
-<span class="n">title</span> <span class="o">=</span> <span class="s">'Please choose an option: '</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#choice of transfer
+</span><span class="n">title</span> <span class="o">=</span> <span class="s">'Please choose an option: '</span>
 <span class="n">options</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Power down ALL'</span><span class="p">,</span> <span class="s">'Power down PORTION'</span><span class="p">,</span> <span class="s">'Cancel Transaction'</span><span class="p">]</span>
 <span class="n">option</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">pick</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Based on the input from the user the <code class="highlighter-rouge">amount</code> variable can be assigned and the transaction committed to the blockchain. The amount must be between zero and the total amount of vesting shares (both pending conversion and available VESTS combined). <strong>The amount you set to be withdrawn will override the current amount of vesting shares pending withdrawal.</strong> If for example the user enters a new amount of ‘0’ shares to be withdrawn, it will cancel the current withdrawal completely.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#parameters: amount, account</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">option</span> <span class="o">==</span> <span class="s">'Cancel Transaction'</span><span class="p">)</span> <span class="p">:</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#parameters: amount, account
+</span><span class="k">if</span> <span class="p">(</span><span class="n">option</span> <span class="o">==</span> <span class="s">'Cancel Transaction'</span><span class="p">)</span> <span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s">'transaction cancelled'</span><span class="p">)</span>
     <span class="nb">exit</span><span class="p">()</span>
 <span class="k">else</span> <span class="p">:</span>
@@ -433,8 +430,7 @@
                 <span class="k">print</span><span class="p">(</span><span class="s">'No change to withdraw amount'</span><span class="p">)</span>
             <span class="k">else</span> <span class="p">:</span>
                 <span class="k">print</span><span class="p">(</span><span class="s">'insufficient funds available'</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The result is displayed on the console/terminal.</p>
 

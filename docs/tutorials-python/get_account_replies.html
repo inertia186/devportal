@@ -15,23 +15,20 @@
 	<script src="/js/main.js"></script>
 	
 
-	<!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>PY: Get Account Replies - Steem Developer</title>
+	<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>PY: Get Account Replies | Steem Developer</title>
+<meta name="generator" content="Jekyll v3.8.4" />
 <meta property="og:title" content="PY: Get Account Replies" />
+<meta property="og:locale" content="en_US" />
 <meta name="description" content="List of replies received by account to its content, post, comment." />
 <meta property="og:description" content="List of replies received by account to its content, post, comment." />
-<link rel="canonical" href="https://developer.steem.io/tutorials-python/get_account_replies" />
-<meta property="og:url" content="https://developer.steem.io/tutorials-python/get_account_replies" />
+<link rel="canonical" href="https://developers.steem.io/tutorials-python/get_account_replies" />
+<meta property="og:url" content="https://developers.steem.io/tutorials-python/get_account_replies" />
 <meta property="og:site_name" content="Steem Developer" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-25T13:58:36-05:00" />
+<meta property="article:published_time" content="2018-10-18T14:29:07-05:00" />
 <script type="application/ld+json">
-{"@context": "http://schema.org",
-"@type": "BlogPosting",
-"headline": "PY: Get Account Replies",
-"datePublished": "2018-09-25T13:58:36-05:00",
-"description": "List of replies received by account to its content, post, comment.",
-"url": "https://developer.steem.io/tutorials-python/get_account_replies"}</script>
+{"description":"List of replies received by account to its content, post, comment.","@type":"BlogPosting","url":"https://developers.steem.io/tutorials-python/get_account_replies","headline":"PY: Get Account Replies","dateModified":"2018-10-18T14:29:07-05:00","datePublished":"2018-10-18T14:29:07-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://developers.steem.io/tutorials-python/get_account_replies"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -169,11 +166,11 @@
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
 						
 					
 						
@@ -214,6 +211,10 @@
 					
 						
 						<li><a href="/apidefinitions/#apidefinitions-block-api">Block Api</a></li>
+						
+					
+						
+						<li><a href="/apidefinitions/#apidefinitions-debug-node-api">Debug Node Api</a></li>
 						
 					
 						
@@ -338,40 +339,38 @@
 
 <p>First we import all three library and initialize Steem class</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code>    <span class="kn">import</span> <span class="nn">pprint</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kn">import</span> <span class="nn">pprint</span>
     <span class="kn">from</span> <span class="nn">pick</span> <span class="kn">import</span> <span class="n">pick</span>
-    <span class="c"># initialize Steem class</span>
-    <span class="kn">from</span> <span class="nn">steem</span> <span class="kn">import</span> <span class="n">Steem</span>
+    <span class="c1"># initialize Steem class
+</span>    <span class="kn">from</span> <span class="nn">steem</span> <span class="kn">import</span> <span class="n">Steem</span>
 
     <span class="n">s</span> <span class="o">=</span> <span class="n">Steem</span><span class="p">()</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="2-post-list-">2. Post list <a name="post-list"></a></h4>
 
 <p>Next we will fetch and make a list of posts and setup <code class="highlighter-rouge">pick</code> properly.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code>    <span class="n">query</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s">"limit"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="c">#number of posts</span>
-        <span class="s">"tag"</span><span class="p">:</span><span class="s">""</span> <span class="c">#tag of posts</span>
-    <span class="p">}</span>
-    <span class="c">#post list for selected query</span>
-    <span class="c">#we are merely using this to display the most recent posters</span>
-    <span class="c">#the 'author' can easily be changed to any value within the 'get_replies' function</span>
-
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">query</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">"limit"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="c1">#number of posts
+</span>        <span class="s">"tag"</span><span class="p">:</span><span class="s">""</span> <span class="c1">#tag of posts
+</span>    <span class="p">}</span>
+    <span class="c1">#post list for selected query
+</span>    <span class="c1">#we are merely using this to display the most recent posters
+</span>    <span class="c1">#the 'author' can easily be changed to any value within the 'get_replies' function
+</span>
     <span class="n">posts</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">get_discussions_by_created</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
 
     <span class="n">title</span> <span class="o">=</span> <span class="s">'Please choose author: '</span>
     <span class="n">options</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="c">#posts list</span>
-    <span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">posts</span><span class="p">:</span>
+    <span class="c1">#posts list
+</span>    <span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">posts</span><span class="p">:</span>
         <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">post</span><span class="p">[</span><span class="s">"author"</span><span class="p">]</span><span class="o">+</span><span class="s">'/'</span><span class="o">+</span><span class="n">post</span><span class="p">[</span><span class="s">"permlink"</span><span class="p">])</span>
-    <span class="c"># get index and selected filter name</span>
-    <span class="n">option</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">pick</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
-    <span class="c"># option is printed as reference</span>
-    <span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="s">"Selected: "</span><span class="o">+</span><span class="n">option</span><span class="p">)</span>
-</code></pre>
-</div>
+    <span class="c1"># get index and selected filter name
+</span>    <span class="n">option</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">pick</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
+    <span class="c1"># option is printed as reference
+</span>    <span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="s">"Selected: "</span><span class="o">+</span><span class="n">option</span><span class="p">)</span>
+</code></pre></div></div>
 
 <p>This will show us list of posts to select in terminal/command prompt. And after selection we will get index and post name to <code class="highlighter-rouge">index</code> and <code class="highlighter-rouge">option</code> variables. We will also print the selection on screen for easy reference.</p>
 
@@ -379,24 +378,22 @@
 
 <p>Next we will allocate variables to make the function easier to use as well as provide a limit for the number of replies that we want to print. To retreive the replies we only need the <code class="highlighter-rouge">author</code> variable. This is then used in the <code class="highlighter-rouge">get_replies</code> function present in the steem library.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code>    <span class="c"># allocate variables</span>
-    <span class="n">_author</span> <span class="o">=</span> <span class="n">posts</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s">"author"</span><span class="p">]</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c1"># allocate variables
+</span>    <span class="n">_author</span> <span class="o">=</span> <span class="n">posts</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s">"author"</span><span class="p">]</span>
     <span class="n">_limit</span> <span class="o">=</span> <span class="mi">1</span>
 
-    <span class="c"># get replies for specific author</span>
-    <span class="n">details</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">get_replies</span><span class="p">(</span><span class="n">_author</span><span class="p">)</span>
-</code></pre>
-</div>
+    <span class="c1"># get replies for specific author
+</span>    <span class="n">details</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">get_replies</span><span class="p">(</span><span class="n">_author</span><span class="p">)</span>
+</code></pre></div></div>
 
 <h4 id="4-print-output-">4. Print output <a name="print-output"></a></h4>
 
 <p>Next, we will print the details obtained from the function. Because we only want to print a limited number, we input the values in the form of an array.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code>    <span class="c"># print specified number of comments</span>
-
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c1"># print specified number of comments
+</span>
     <span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">details</span><span class="p">[:</span><span class="n">_limit</span><span class="p">])</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="to-run-the-tutorial">To Run the tutorial</h3>
 

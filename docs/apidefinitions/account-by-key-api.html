@@ -15,23 +15,18 @@
 	<script src="/js/main.js"></script>
 	
 
-	<!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>Account By Key Api - Steem Developer</title>
+	<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Account By Key Api | Steem Developer</title>
+<meta name="generator" content="Jekyll v3.8.4" />
 <meta property="og:title" content="Account By Key Api" />
+<meta property="og:locale" content="en_US" />
 <meta name="description" content="Used to lookup account information based on a key. These AppBase API methods are still under development and subject to change. Since: HF16 account_by_key_api.get_key_references Returns all accounts that have the key associated with their owner or active authorities. Query Parameters JSON {&quot;keys&quot;: []} Expected Response JSON {&quot;accounts&quot;: []} Example curl curl -s --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;, &quot;method&quot;:&quot;account_by_key_api.get_key_references&quot;, &quot;params&quot;:{&quot;keys&quot;:[&quot;STM5jZtLoV8YbxCxr4imnbWn61zMB24wwonpnVhfXRmv7j6fk3dTH&quot;]}, &quot;id&quot;:1}&#39; https://api.steemit.com" />
 <meta property="og:description" content="Used to lookup account information based on a key. These AppBase API methods are still under development and subject to change. Since: HF16 account_by_key_api.get_key_references Returns all accounts that have the key associated with their owner or active authorities. Query Parameters JSON {&quot;keys&quot;: []} Expected Response JSON {&quot;accounts&quot;: []} Example curl curl -s --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;, &quot;method&quot;:&quot;account_by_key_api.get_key_references&quot;, &quot;params&quot;:{&quot;keys&quot;:[&quot;STM5jZtLoV8YbxCxr4imnbWn61zMB24wwonpnVhfXRmv7j6fk3dTH&quot;]}, &quot;id&quot;:1}&#39; https://api.steemit.com" />
-<link rel="canonical" href="https://developer.steem.io/apidefinitions/account-by-key-api" />
-<meta property="og:url" content="https://developer.steem.io/apidefinitions/account-by-key-api" />
+<link rel="canonical" href="https://developers.steem.io/apidefinitions/account-by-key-api" />
+<meta property="og:url" content="https://developers.steem.io/apidefinitions/account-by-key-api" />
 <meta property="og:site_name" content="Steem Developer" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-25T13:58:36-05:00" />
 <script type="application/ld+json">
-{"@context": "http://schema.org",
-"@type": "BlogPosting",
-"headline": "Account By Key Api",
-"datePublished": "2018-09-25T13:58:36-05:00",
-"description": "Used to lookup account information based on a key. These AppBase API methods are still under development and subject to change. Since: HF16 account_by_key_api.get_key_references Returns all accounts that have the key associated with their owner or active authorities. Query Parameters JSON {&quot;keys&quot;: []} Expected Response JSON {&quot;accounts&quot;: []} Example curl curl -s --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;, &quot;method&quot;:&quot;account_by_key_api.get_key_references&quot;, &quot;params&quot;:{&quot;keys&quot;:[&quot;STM5jZtLoV8YbxCxr4imnbWn61zMB24wwonpnVhfXRmv7j6fk3dTH&quot;]}, &quot;id&quot;:1}&#39; https://api.steemit.com",
-"url": "https://developer.steem.io/apidefinitions/account-by-key-api"}</script>
+{"description":"Used to lookup account information based on a key. These AppBase API methods are still under development and subject to change. Since: HF16 account_by_key_api.get_key_references Returns all accounts that have the key associated with their owner or active authorities. Query Parameters JSON {&quot;keys&quot;: []} Expected Response JSON {&quot;accounts&quot;: []} Example curl curl -s --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;, &quot;method&quot;:&quot;account_by_key_api.get_key_references&quot;, &quot;params&quot;:{&quot;keys&quot;:[&quot;STM5jZtLoV8YbxCxr4imnbWn61zMB24wwonpnVhfXRmv7j6fk3dTH&quot;]}, &quot;id&quot;:1}&#39; https://api.steemit.com","@type":"WebPage","url":"https://developers.steem.io/apidefinitions/account-by-key-api","headline":"Account By Key Api","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -169,11 +164,11 @@
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
 						
 					
 						
@@ -214,6 +209,10 @@
 					
 						
 						<li><a href="/apidefinitions/#apidefinitions-block-api">Block Api</a></li>
+						
+					
+						
+						<li><a href="/apidefinitions/#apidefinitions-debug-node-api">Debug Node Api</a></li>
 						
 					
 						
@@ -315,19 +314,16 @@
 <h4 id="account_by_key_api.get_key_references">account_by_key_api.get_key_references <a href="#account_by_key_api.get_key_references"><i class="fas fa-link fa-xs"></i></a></h4>
 <p>Returns all accounts that have the key associated with their owner or active authorities.</p>
 <h5 id="account_by_key_api.get_key_references-parameter_json">Query Parameters JSON <a href="#account_by_key_api.get_key_references-parameter_json"><i class="fas fa-link fa-sm"></i></a></h5>
-<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="nt">"keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[]}</span><span class="w">
-</span></code></pre>
-</div>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="s2">"keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[]}</span><span class="w">
+</span></code></pre></div></div>
 <h5 id="account_by_key_api.get_key_references-expected_response_json">Expected Response JSON <a href="#account_by_key_api.get_key_references-expected_response_json"><i class="fas fa-link fa-sm"></i></a></h5>
-<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="nt">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[]}</span><span class="w">
-</span></code></pre>
-</div>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="s2">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[]}</span><span class="w">
+</span></code></pre></div></div>
 
 <h5 id="account_by_key_api.get_key_references-curl-examples">Example <code>curl</code> <a href="#account_by_key_api.get_key_references-curl-examples"><i class="fas fa-link fa-sm"></i></a></h5>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>curl -s --data <span class="s1">'{"jsonrpc":"2.0", "method":"account_by_key_api.get_key_references", "params":{"keys":["STM5jZtLoV8YbxCxr4imnbWn61zMB24wwonpnVhfXRmv7j6fk3dTH"]}, "id":1}'</span> https://api.steemit.com
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-s</span> <span class="nt">--data</span> <span class="s1">'{"jsonrpc":"2.0", "method":"account_by_key_api.get_key_references", "params":{"keys":["STM5jZtLoV8YbxCxr4imnbWn61zMB24wwonpnVhfXRmv7j6fk3dTH"]}, "id":1}'</span> https://api.steemit.com
+</code></pre></div></div>
 
 <hr />
 

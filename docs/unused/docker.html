@@ -15,20 +15,18 @@
 	<script src="/js/main.js"></script>
 	
 
-	<!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>Docker - Steem Developer</title>
+	<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Docker | Steem Developer</title>
+<meta name="generator" content="Jekyll v3.8.4" />
 <meta property="og:title" content="Docker" />
+<meta property="og:locale" content="en_US" />
 <meta name="description" content="Steem Developer Documentation." />
 <meta property="og:description" content="Steem Developer Documentation." />
-<link rel="canonical" href="https://developer.steem.io/unused/docker" />
-<meta property="og:url" content="https://developer.steem.io/unused/docker" />
+<link rel="canonical" href="https://developers.steem.io/unused/docker" />
+<meta property="og:url" content="https://developers.steem.io/unused/docker" />
 <meta property="og:site_name" content="Steem Developer" />
 <script type="application/ld+json">
-{"@context": "http://schema.org",
-"@type": "WebPage",
-"headline": "Docker",
-"description": "Steem Developer Documentation.",
-"url": "https://developer.steem.io/unused/docker"}</script>
+{"description":"Steem Developer Documentation.","@type":"WebPage","url":"https://developers.steem.io/unused/docker","headline":"Docker","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -166,11 +164,11 @@
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
 						
 					
 						
@@ -211,6 +209,10 @@
 					
 						
 						<li><a href="/apidefinitions/#apidefinitions-block-api">Block Api</a></li>
+						
+					
+						
+						<li><a href="/apidefinitions/#apidefinitions-debug-node-api">Debug Node Api</a></li>
 						
 					
 						
@@ -308,27 +310,25 @@ dockerized container.  Both common binary types are included.</p>
 
 <p>To run a p2p node (ca. 2GB of memory is required at the moment):</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>docker run \
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run \
     -d -p 2001:2001 -p 8090:8090 --name steemd-default \
     steemit/steem
 
 docker logs -f steemd-default  # follow along
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="dockerized-full-node">Dockerized Full Node</h4>
 
 <p>To run a node with <em>all</em> the data (e.g. for supporting a content website)
 that uses ca. 14GB of memory and growing:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>docker run \
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run \
     --env USE_WAY_TOO_MUCH_RAM=1 \
     -d -p 2001:2001 -p 8090:8090 --name steemd-full \
     steemit/steem
 
 docker logs -f steemd-full
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="seed-nodes">Seed Nodes</h4>
 

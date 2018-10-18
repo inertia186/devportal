@@ -15,20 +15,18 @@
 	<script src="/js/main.js"></script>
 	
 
-	<!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>Quickstart - Steem Developer</title>
+	<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Quickstart | Steem Developer</title>
+<meta name="generator" content="Jekyll v3.8.4" />
 <meta property="og:title" content="Quickstart" />
+<meta property="og:locale" content="en_US" />
 <meta name="description" content="Steem Developer Documentation." />
 <meta property="og:description" content="Steem Developer Documentation." />
-<link rel="canonical" href="https://developer.steem.io/quickstart/" />
-<meta property="og:url" content="https://developer.steem.io/quickstart/" />
+<link rel="canonical" href="https://developers.steem.io/quickstart/" />
+<meta property="og:url" content="https://developers.steem.io/quickstart/" />
 <meta property="og:site_name" content="Steem Developer" />
 <script type="application/ld+json">
-{"@context": "http://schema.org",
-"@type": "WebPage",
-"headline": "Quickstart",
-"description": "Steem Developer Documentation.",
-"url": "https://developer.steem.io/quickstart/"}</script>
+{"description":"Steem Developer Documentation.","@type":"WebPage","url":"https://developers.steem.io/quickstart/","headline":"Quickstart","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -166,11 +164,11 @@
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
 						
 					
 						
@@ -211,6 +209,10 @@
 					
 						
 						<li><a href="/apidefinitions/#apidefinitions-block-api">Block Api</a></li>
+						
+					
+						
+						<li><a href="/apidefinitions/#apidefinitions-debug-node-api">Debug Node Api</a></li>
 						
 					
 						
@@ -360,16 +362,8 @@
       <td>@timcliff</td>
     </tr>
     <tr>
-      <td>appbase.buildteam.io</td>
-      <td>@themarkymark</td>
-    </tr>
-    <tr>
       <td>gtg.steem.house:8090</td>
       <td>@gtg</td>
-    </tr>
-    <tr>
-      <td>rpc.buildteam.io</td>
-      <td>@themarkymark</td>
     </tr>
     <tr>
       <td>rpc.curiesteem.com</td>
@@ -420,13 +414,12 @@
 
 <p>There is another <a href="https://github.com/steemit/steem/issues/2391">trick which might help</a> with faster sync/replay on smaller equipped servers:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>while :
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>while :
 do
    dd if=blockchain/block_log iflag=nocache count=0
    sleep 60
 done
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Above bash script drops <code class="highlighter-rouge">block_log</code> from the OS cache, leaving more memory free for backing the blockchain database. It might also help while running live, but measurement would be needed to determine this.</p>
 
@@ -434,30 +427,27 @@ done
 
 <p>For Linux users, virtual memory writes dirty pages of the shared file out to disk more often than is optimal which results in steemd being slowed down by redundant IO operations. These settings are recommended to optimize reindex time.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>echo    75 | sudo tee /proc/sys/vm/dirty_background_ratio
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo    75 | sudo tee /proc/sys/vm/dirty_background_ratio
 echo  1000 | sudo tee /proc/sys/vm/dirty_expire_centisecs
 echo    80 | sudo tee /proc/sys/vm/dirty_ratio
 echo 30000 | sudo tee /proc/sys/vm/dirty_writeback_centisecs
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Another settings that can be changed in <code class="highlighter-rouge">config.ini</code> is <code class="highlighter-rouge">flush</code> - it is to specify a target number of blocks to process before flushing the chain database to disk. This is needed on Linux machines and a value of 100000 is recommended. It is not needed on OS X, but can be used if desired.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>docker run <span class="se">\</span>
-    -d -p 2001:2001 -p 8090:8090 --name steemd-default <span class="se">\</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="se">\</span>
+    <span class="nt">-d</span> <span class="nt">-p</span> 2001:2001 <span class="nt">-p</span> 8090:8090 <span class="nt">--name</span> steemd-default <span class="se">\</span>
     steemit/steem
 
-docker logs -f steemd-default  <span class="c"># follow along</span>
-</code></pre>
-</div>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>docker run <span class="se">\</span>
-    --env <span class="nv">USE_WAY_TOO_MUCH_RAM</span><span class="o">=</span>1 <span class="se">\</span>
-    -d -p 2001:2001 -p 8090:8090 --name steemd-full <span class="se">\</span>
+docker logs <span class="nt">-f</span> steemd-default  <span class="c"># follow along</span>
+</code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="se">\</span>
+    <span class="nt">--env</span> <span class="nv">USE_WAY_TOO_MUCH_RAM</span><span class="o">=</span>1 <span class="se">\</span>
+    <span class="nt">-d</span> <span class="nt">-p</span> 2001:2001 <span class="nt">-p</span> 8090:8090 <span class="nt">--name</span> steemd-full <span class="se">\</span>
     steemit/steem
 
-docker logs -f steemd-full
-</code></pre>
-</div>
+docker logs <span class="nt">-f</span> steemd-full
+</code></pre></div></div>
 
 		</section>
 	
@@ -494,41 +484,40 @@ docker logs -f steemd-full
   <li><code class="highlighter-rouge">16GB RAM</code> (mostly needed for <code class="highlighter-rouge">steemd</code> build)</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get dist-upgrade
-sudo reboot
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get update <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt-get dist-upgrade
+<span class="nb">sudo </span>reboot
 
-sudo apt-get install autoconf automake autotools-dev bsdmainutils build-essential cmake doxygen <span class="se">\</span>
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>autoconf automake autotools-dev bsdmainutils build-essential cmake doxygen <span class="se">\</span>
    git libboost-all-dev libreadline-dev libssl-dev libtool ncurses-dev pbzip2 pkg-config <span class="se">\</span>
    python3-dev python3-jinja2 python3-pip libbz2-dev libsnappy-dev<span class="se">\</span>
    wget curl screen pv virtualenv nano xz-utils
-mkdir -p src
+<span class="nb">mkdir</span> <span class="nt">-p</span> src
 <span class="nb">cd </span>src
 git clone https://github.com/steemit/steem
 <span class="nb">cd </span>steem
 git checkout &lt;20180824-testnet OR develop OR a more current branch&gt;
-git submodule update --init --recursive
-mkdir -p build
+git submodule update <span class="nt">--init</span> <span class="nt">--recursive</span>
+<span class="nb">mkdir</span> <span class="nt">-p</span> build
 <span class="nb">cd </span>build
 cmake <span class="se">\</span>
-   -DCMAKE_BUILD_TYPE<span class="o">=</span>Release <span class="se">\</span>
-   -DBUILD_STEEM_TESTNET<span class="o">=</span>ON <span class="se">\</span>
-   -DENABLE_SMT_SUPPORT<span class="o">=</span>ON <span class="se">\</span>
-   -DLOW_MEMORY_NODE<span class="o">=</span>ON <span class="se">\</span>
-   -DCHAINBASE_CHECK_LOCKING<span class="o">=</span>ON <span class="se">\</span>
-   -DCLEAR_VOTES<span class="o">=</span>ON <span class="se">\</span>
-   -DSKIP_BY_TX_ID<span class="o">=</span>ON <span class="se">\</span>
-   -DSTEEM_LINT_LEVEL<span class="o">=</span>OFF <span class="se">\</span>
+   <span class="nt">-DCMAKE_BUILD_TYPE</span><span class="o">=</span>Release <span class="se">\</span>
+   <span class="nt">-DBUILD_STEEM_TESTNET</span><span class="o">=</span>ON <span class="se">\</span>
+   <span class="nt">-DENABLE_SMT_SUPPORT</span><span class="o">=</span>ON <span class="se">\</span>
+   <span class="nt">-DLOW_MEMORY_NODE</span><span class="o">=</span>ON <span class="se">\</span>
+   <span class="nt">-DCHAINBASE_CHECK_LOCKING</span><span class="o">=</span>ON <span class="se">\</span>
+   <span class="nt">-DCLEAR_VOTES</span><span class="o">=</span>ON <span class="se">\</span>
+   <span class="nt">-DSKIP_BY_TX_ID</span><span class="o">=</span>ON <span class="se">\</span>
+   <span class="nt">-DSTEEM_LINT_LEVEL</span><span class="o">=</span>OFF <span class="se">\</span>
    ..
-make -j<span class="k">$(</span>nproc<span class="k">)</span> install
-<span class="nb">cd
-</span>mkdir -p testnet-data
+make <span class="nt">-j</span><span class="k">$(</span><span class="nb">nproc</span><span class="k">)</span> <span class="nb">install
+cd
+mkdir</span> <span class="nt">-p</span> testnet-data
 nano config.ini
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="configini"><code class="highlighter-rouge">config.ini</code></h3>
 
-<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="py">log-console-appender</span> <span class="p">=</span> <span class="s">{"appender":"stderr","stream":"std_error"}</span>
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">log-console-appender</span> <span class="p">=</span> <span class="s">{"appender":"stderr","stream":"std_error"}</span>
 <span class="py">log-file-appender</span> <span class="p">=</span> <span class="s">{"appender":"p2p","file":"logs/p2p/p2p.log"}</span>
 <span class="py">log-logger</span> <span class="p">=</span> <span class="s">{"name":"default","level":"info","appender":"stderr"}</span>
 <span class="py">log-logger</span> <span class="p">=</span> <span class="s">{"name":"p2p","level":"warn","appender":"p2p"}</span>
@@ -544,12 +533,10 @@ nano config.ini
 
 <span class="c"># testnet.steemitdev.com
 </span><span class="py">p2p-seed-node</span> <span class="p">=</span> <span class="s">testnet.steemitdev.com:2001</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>steemd --data-dir<span class="o">=</span>. --chain-id<span class="o">=</span>46d82ab7d8db682eb1959aed0ada039a6d49afa1602491f93dde9cac3e8e6c32
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>steemd <span class="nt">--data-dir</span><span class="o">=</span><span class="nb">.</span> <span class="nt">--chain-id</span><span class="o">=</span>46d82ab7d8db682eb1959aed0ada039a6d49afa1602491f93dde9cac3e8e6c32
+</code></pre></div></div>
 
 <p>Now let it sync, and you’ll have a shiny new testnet seed node to play with.</p>
 

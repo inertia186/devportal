@@ -15,23 +15,18 @@
 	<script src="/js/main.js"></script>
 	
 
-	<!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>ImageHoster - Steem Developer</title>
+	<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>ImageHoster | Steem Developer</title>
+<meta name="generator" content="Jekyll v3.8.4" />
 <meta property="og:title" content="ImageHoster" />
+<meta property="og:locale" content="en_US" />
 <meta name="description" content="Definition" />
 <meta property="og:description" content="Definition" />
-<link rel="canonical" href="https://developer.steem.io/services/imageHoster" />
-<meta property="og:url" content="https://developer.steem.io/services/imageHoster" />
+<link rel="canonical" href="https://developers.steem.io/services/imageHoster" />
+<meta property="og:url" content="https://developers.steem.io/services/imageHoster" />
 <meta property="og:site_name" content="Steem Developer" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-25T13:58:36-05:00" />
 <script type="application/ld+json">
-{"@context": "http://schema.org",
-"@type": "BlogPosting",
-"headline": "ImageHoster",
-"datePublished": "2018-09-25T13:58:36-05:00",
-"description": "Definition",
-"url": "https://developer.steem.io/services/imageHoster"}</script>
+{"description":"Definition","@type":"WebPage","url":"https://developers.steem.io/services/imageHoster","headline":"ImageHoster","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -169,11 +164,11 @@
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
 						
 					
 						
@@ -214,6 +209,10 @@
 					
 						
 						<li><a href="/apidefinitions/#apidefinitions-block-api">Block Api</a></li>
+						
+					
+						
+						<li><a href="/apidefinitions/#apidefinitions-debug-node-api">Debug Node Api</a></li>
 						
 					
 						
@@ -333,11 +332,10 @@
 
 <p>This returns a JSON object container the URL to the uploaded image, ex:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images.example.com/DQmZi174Xz96UrRVBMNRHb6A2FfU3z1HRPwPPQCgSMgdiUT/test.jpg"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+    "url": "https://images.example.com/DQmZi174Xz96UrRVBMNRHb6A2FfU3z1HRPwPPQCgSMgdiUT/test.jpg"
+}
+</code></pre></div></div>
 
 <p>For this to succeed it requires a signature from a Steem account in good standing.</p>
 
@@ -378,27 +376,26 @@
 
 <p>Creating a signature for <code class="highlighter-rouge">node.js</code> and with <code class="highlighter-rouge">dsteem</code>:</p>
 
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">dsteem</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'dsteem'</span><span class="p">)</span>
-<span class="kr">const</span> <span class="nx">crypto</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'crypto'</span><span class="p">)</span>
-<span class="kr">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs'</span><span class="p">)</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">dsteem</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'dsteem'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">crypto</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'crypto'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs'</span><span class="p">)</span>
 
-<span class="kr">const</span> <span class="p">[</span><span class="nx">wif</span><span class="p">,</span> <span class="nx">file</span><span class="p">]</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">argv</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="kd">const</span> <span class="p">[</span><span class="nx">wif</span><span class="p">,</span> <span class="nx">file</span><span class="p">]</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">argv</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">wif</span> <span class="o">||</span> <span class="o">!</span><span class="nx">file</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">process</span><span class="p">.</span><span class="nx">stderr</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="err">`</span><span class="nx">Usage</span><span class="err">:</span> <span class="p">.</span><span class="o">/</span><span class="nx">sign</span><span class="p">.</span><span class="nx">js</span> <span class="o">&lt;</span><span class="nx">posting_wif</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nx">file</span><span class="o">&gt;</span><span class="err">\</span><span class="nx">n</span><span class="err">`</span><span class="p">)</span>
+    <span class="nx">process</span><span class="p">.</span><span class="nx">stderr</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">`Usage: ./sign.js &lt;posting_wif&gt; &lt;file&gt;\n`</span><span class="p">)</span>
     <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span>
-<span class="kr">const</span> <span class="nx">key</span> <span class="o">=</span> <span class="nx">dsteem</span><span class="p">.</span><span class="nx">PrivateKey</span><span class="p">.</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">wif</span><span class="p">)</span>
-<span class="kr">const</span> <span class="nx">imageHash</span> <span class="o">=</span> <span class="nx">crypto</span><span class="p">.</span><span class="nx">createHash</span><span class="p">(</span><span class="s1">'sha256'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">key</span> <span class="o">=</span> <span class="nx">dsteem</span><span class="p">.</span><span class="nx">PrivateKey</span><span class="p">.</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">wif</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">imageHash</span> <span class="o">=</span> <span class="nx">crypto</span><span class="p">.</span><span class="nx">createHash</span><span class="p">(</span><span class="s1">'sha256'</span><span class="p">)</span>
     <span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="s1">'ImageSigningChallenge'</span><span class="p">)</span>
     <span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
     <span class="p">.</span><span class="nx">digest</span><span class="p">()</span>
 
-<span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">key</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">imageHash</span><span class="p">).</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">'\n'</span><span class="p">)</span>
-</code></pre>
-</div>
+<span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">key</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">imageHash</span><span class="p">).</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">'</span><span class="err">\</span><span class="s1">n'</span><span class="p">)</span>
+</code></pre></div></div>
 
 <h4 id="6-how-to-run-">6. How to run <a name="how-to-run"></a></h4>
 

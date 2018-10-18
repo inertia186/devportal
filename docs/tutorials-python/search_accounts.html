@@ -15,23 +15,20 @@
 	<script src="/js/main.js"></script>
 	
 
-	<!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>PY: Search Accounts - Steem Developer</title>
+	<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>PY: Search Accounts | Steem Developer</title>
+<meta name="generator" content="Jekyll v3.8.4" />
 <meta property="og:title" content="PY: Search Accounts" />
+<meta property="og:locale" content="en_US" />
 <meta name="description" content="How to pull a list of the active user accounts or trending tags from the blockchain using Python." />
 <meta property="og:description" content="How to pull a list of the active user accounts or trending tags from the blockchain using Python." />
-<link rel="canonical" href="https://developer.steem.io/tutorials-python/search_accounts" />
-<meta property="og:url" content="https://developer.steem.io/tutorials-python/search_accounts" />
+<link rel="canonical" href="https://developers.steem.io/tutorials-python/search_accounts" />
+<meta property="og:url" content="https://developers.steem.io/tutorials-python/search_accounts" />
 <meta property="og:site_name" content="Steem Developer" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-25T13:58:36-05:00" />
+<meta property="article:published_time" content="2018-10-18T14:29:07-05:00" />
 <script type="application/ld+json">
-{"@context": "http://schema.org",
-"@type": "BlogPosting",
-"headline": "PY: Search Accounts",
-"datePublished": "2018-09-25T13:58:36-05:00",
-"description": "How to pull a list of the active user accounts or trending tags from the blockchain using Python.",
-"url": "https://developer.steem.io/tutorials-python/search_accounts"}</script>
+{"description":"How to pull a list of the active user accounts or trending tags from the blockchain using Python.","@type":"BlogPosting","url":"https://developers.steem.io/tutorials-python/search_accounts","headline":"PY: Search Accounts","dateModified":"2018-10-18T14:29:07-05:00","datePublished":"2018-10-18T14:29:07-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://developers.steem.io/tutorials-python/search_accounts"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -169,11 +166,11 @@
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
 						
 					
 						
@@ -214,6 +211,10 @@
 					
 						
 						<li><a href="/apidefinitions/#apidefinitions-block-api">Block Api</a></li>
+						
+					
+						
+						<li><a href="/apidefinitions/#apidefinitions-debug-node-api">Debug Node Api</a></li>
 						
 					
 						
@@ -343,26 +344,24 @@
 
 <p>First we import both libraries and initialize Steem class</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">steem</span> <span class="kn">import</span> <span class="n">Steem</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">steem</span> <span class="kn">import</span> <span class="n">Steem</span>
 <span class="kn">from</span> <span class="nn">pick</span> <span class="kn">import</span> <span class="n">pick</span>
 
 
 <span class="n">s</span> <span class="o">=</span> <span class="n">Steem</span><span class="p">()</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="2-list-selection">2. List selection<a name="list"></a></h4>
 
 <p>The user is given the option of which list to create, <code class="highlighter-rouge">active accounts</code> or <code class="highlighter-rouge">trending tags</code>. We create this option list and setup <code class="highlighter-rouge">pick</code>.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#choose list type</span>
-<span class="n">title</span> <span class="o">=</span> <span class="s">'Please select type of list:'</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#choose list type
+</span><span class="n">title</span> <span class="o">=</span> <span class="s">'Please select type of list:'</span>
 <span class="n">options</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Active Account names'</span><span class="p">,</span> <span class="s">'Trending tags'</span><span class="p">]</span>
 
-<span class="c">#get index and selected list name</span>
-<span class="n">option</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">pick</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
-</code></pre>
-</div>
+<span class="c1">#get index and selected list name
+</span><span class="n">option</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">pick</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
+</code></pre></div></div>
 
 <p>This will show the two options as a list to select in terminal/command prompt. From there we can determine which function to execute.</p>
 
@@ -370,16 +369,15 @@
 
 <p>Once the user selects the required list, a simple <code class="highlighter-rouge">if</code> statement is used to execute the relevant function. Based on the selection we then run the query. The parameters for the <code class="highlighter-rouge">lookup_accounts</code> function is captured in the <code class="highlighter-rouge">if</code> statement via the terminal/console.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="n">option</span><span class="o">==</span><span class="s">'Active Account names'</span> <span class="p">:</span>
-	<span class="c">#capture starting account</span>
-	<span class="n">account</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter account name to start search from: "</span><span class="p">)</span>
-	<span class="c">#input list limit</span>
-	<span class="n">limit</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter max number of accounts to display: "</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">option</span><span class="o">==</span><span class="s">'Active Account names'</span> <span class="p">:</span>
+	<span class="c1">#capture starting account
+</span>	<span class="n">account</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter account name to start search from: "</span><span class="p">)</span>
+	<span class="c1">#input list limit
+</span>	<span class="n">limit</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter max number of accounts to display: "</span><span class="p">)</span>
 	<span class="n">lists</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">lookup_accounts</span><span class="p">(</span><span class="n">account</span><span class="p">,</span> <span class="n">limit</span><span class="p">)</span>
 	<span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span> <span class="o">+</span> <span class="s">"List of "</span> <span class="o">+</span> <span class="n">option</span> <span class="o">+</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
 	<span class="k">print</span><span class="p">(</span><span class="o">*</span><span class="n">lists</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Once the list is generated it is displayed on the UI with line separators along with a heading of what list it is.</p>
 
@@ -387,17 +385,16 @@
 
 <p>The query for a list of trending tags is executed in the second part of the <code class="highlighter-rouge">if</code> statement. Again, the parameters for the query is captured via the terminal/console.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">else</span> <span class="p">:</span>
-	<span class="c">#capture starting tag</span>
-	<span class="n">aftertag</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter tag name to start search from: "</span><span class="p">)</span>
-	<span class="c">#capture list limit</span>
-	<span class="n">limit</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter max number of tags to display: "</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">else</span> <span class="p">:</span>
+	<span class="c1">#capture starting tag
+</span>	<span class="n">aftertag</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter tag name to start search from: "</span><span class="p">)</span>
+	<span class="c1">#capture list limit
+</span>	<span class="n">limit</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter max number of tags to display: "</span><span class="p">)</span>
 	<span class="n">lists</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">get_trending_tags</span><span class="p">(</span><span class="n">aftertag</span><span class="p">,</span> <span class="n">limit</span><span class="p">)</span>
 	<span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span> <span class="o">+</span> <span class="s">"List of "</span> <span class="o">+</span> <span class="n">option</span> <span class="o">+</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
 	<span class="k">for</span> <span class="n">names</span> <span class="ow">in</span> <span class="n">lists</span> <span class="p">:</span>
 		<span class="k">print</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="s">"name"</span><span class="p">])</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The query returns an array of objects. We use the <code class="highlighter-rouge">for</code> loop to build a list of only the tag <code class="highlighter-rouge">names</code> from that array and then display the list on the UI with line separators. This creates an easy to read list of tags.</p>
 

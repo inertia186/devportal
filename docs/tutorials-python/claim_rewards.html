@@ -15,23 +15,20 @@
 	<script src="/js/main.js"></script>
 	
 
-	<!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>PY: Claim Rewards - Steem Developer</title>
+	<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>PY: Claim Rewards | Steem Developer</title>
+<meta name="generator" content="Jekyll v3.8.4" />
 <meta property="og:title" content="PY: Claim Rewards" />
+<meta property="og:locale" content="en_US" />
 <meta name="description" content="How to claim rewards using Python." />
 <meta property="og:description" content="How to claim rewards using Python." />
-<link rel="canonical" href="https://developer.steem.io/tutorials-python/claim_rewards" />
-<meta property="og:url" content="https://developer.steem.io/tutorials-python/claim_rewards" />
+<link rel="canonical" href="https://developers.steem.io/tutorials-python/claim_rewards" />
+<meta property="og:url" content="https://developers.steem.io/tutorials-python/claim_rewards" />
 <meta property="og:site_name" content="Steem Developer" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-25T13:58:36-05:00" />
+<meta property="article:published_time" content="2018-10-18T14:29:07-05:00" />
 <script type="application/ld+json">
-{"@context": "http://schema.org",
-"@type": "BlogPosting",
-"headline": "PY: Claim Rewards",
-"datePublished": "2018-09-25T13:58:36-05:00",
-"description": "How to claim rewards using Python.",
-"url": "https://developer.steem.io/tutorials-python/claim_rewards"}</script>
+{"description":"How to claim rewards using Python.","@type":"BlogPosting","url":"https://developers.steem.io/tutorials-python/claim_rewards","headline":"PY: Claim Rewards","dateModified":"2018-10-18T14:29:07-05:00","datePublished":"2018-10-18T14:29:07-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://developers.steem.io/tutorials-python/claim_rewards"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -169,11 +166,11 @@
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
 						
 					
 						
@@ -214,6 +211,10 @@
 					
 						
 						<li><a href="/apidefinitions/#apidefinitions-block-api">Block Api</a></li>
+						
+					
+						
+						<li><a href="/apidefinitions/#apidefinitions-debug-node-api">Debug Node Api</a></li>
 						
 					
 						
@@ -351,7 +352,7 @@
 
 <p>We import the libraries and connect to the <code class="highlighter-rouge">testnet</code>.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">steembase</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">steembase</span>
 <span class="kn">import</span> <span class="nn">steem</span>
 <span class="kn">from</span> <span class="nn">pick</span> <span class="kn">import</span> <span class="n">pick</span>
 <span class="kn">from</span> <span class="nn">steem.amount</span> <span class="kn">import</span> <span class="n">Amount</span>
@@ -360,8 +361,7 @@
     <span class="s">'chain_id'</span><span class="p">:</span> <span class="s">'79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673'</span><span class="p">,</span>
     <span class="s">'prefix'</span><span class="p">:</span> <span class="s">'STX'</span><span class="p">,</span> <span class="s">'steem_symbol'</span><span class="p">:</span> <span class="s">'STEEM'</span><span class="p">,</span> <span class="s">'sbd_symbol'</span><span class="p">:</span> <span class="s">'SBD'</span><span class="p">,</span> <span class="s">'vests_symbol'</span><span class="p">:</span> <span class="s">'VESTS'</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Because this tutorial alters the blockchain we connect to a testnet so we don’t create spam on the production server.</p>
 
@@ -369,21 +369,20 @@
 
 <p>We require the <code class="highlighter-rouge">private active key</code> of the user in order for the claim to be committed to the blockchain. This is why we are using a testnet. The values are supplied via the terminal/console before we initialise the steem class. There are some demo accounts available but we encourage you to create your own accounts on this testnet and create balances you can claim; it’s good practice.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#capture user information</span>
-<span class="n">username</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Enter username: '</span><span class="p">)</span> <span class="c">#demo account: cdemo</span>
-<span class="n">wif</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Enter private ACTIVE key: '</span><span class="p">)</span> <span class="c">#demo account: 5KaNM84WWSqzwKzY82fXPaUW43idbLnPqf5SfjGxLfw6eV2kAP3</span>
-
-<span class="c">#connect node</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">steem</span><span class="o">.</span><span class="n">Steem</span><span class="p">(</span><span class="n">nodes</span><span class="o">=</span><span class="p">[</span><span class="s">'https://testnet.steem.vc'</span><span class="p">],</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="n">wif</span><span class="p">])</span>
-</code></pre>
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#capture user information
+</span><span class="n">username</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Enter username: '</span><span class="p">)</span> <span class="c1">#demo account: cdemo
+</span><span class="n">wif</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Enter private ACTIVE key: '</span><span class="p">)</span> <span class="c1">#demo account: 5KaNM84WWSqzwKzY82fXPaUW43idbLnPqf5SfjGxLfw6eV2kAP3
+</span>
+<span class="c1">#connect node
+</span><span class="n">client</span> <span class="o">=</span> <span class="n">steem</span><span class="o">.</span><span class="n">Steem</span><span class="p">(</span><span class="n">nodes</span><span class="o">=</span><span class="p">[</span><span class="s">'https://testnet.steem.vc'</span><span class="p">],</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="n">wif</span><span class="p">])</span>
+</code></pre></div></div>
 
 <h4 id="3-check-reward-balance-">3. Check reward balance <a name="balance"></a></h4>
 
 <p>In order to get a clear picture of the available rewards that can be claimed, we send a query to the blockchain using the <code class="highlighter-rouge">get_account</code> function. From the result we can gather the rewards balances.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#get account reward balances</span>
-<span class="n">userinfo</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_account</span><span class="p">(</span><span class="n">username</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#get account reward balances
+</span><span class="n">userinfo</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_account</span><span class="p">(</span><span class="n">username</span><span class="p">)</span>
 
 <span class="n">reward_steem</span> <span class="o">=</span> <span class="n">userinfo</span><span class="p">[</span><span class="s">'reward_steem_balance'</span><span class="p">]</span>
 <span class="n">reward_sbd</span> <span class="o">=</span> <span class="n">userinfo</span><span class="p">[</span><span class="s">'reward_sbd_balance'</span><span class="p">]</span>
@@ -398,8 +397,7 @@
     <span class="p">)</span>
 
 <span class="nb">input</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span> <span class="o">+</span> <span class="s">'Press enter to continue to claim selection'</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The result of the query is displayed in the console/terminal.</p>
 
@@ -407,17 +405,16 @@
 
 <p>An option is provided to either claim all rewards at once or to specify specific amounts to be claimed for each individual reward balance. If you are using one of Steemit’s demo accounts, please leave some rewards for others to claim!</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#choice of claim</span>
-<span class="n">title</span> <span class="o">=</span> <span class="s">'Please choose claim type: '</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#choice of claim
+</span><span class="n">title</span> <span class="o">=</span> <span class="s">'Please choose claim type: '</span>
 <span class="n">options</span> <span class="o">=</span> <span class="p">[</span><span class="s">'ALL'</span><span class="p">,</span> <span class="s">'SELECTED'</span><span class="p">,</span> <span class="s">'CANCEL'</span><span class="p">]</span>
 <span class="n">option</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">pick</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>When the option to claim all rewards is selected, the claim parameters are automatically assigned from the <code class="highlighter-rouge">get_accounts</code> query. We also check that there are in fact outstanding rewards balances before we commit the claim.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#commit claim based on selection</span>
-<span class="k">if</span> <span class="n">option</span> <span class="o">==</span> <span class="s">'ALL'</span><span class="p">:</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#commit claim based on selection
+</span><span class="k">if</span> <span class="n">option</span> <span class="o">==</span> <span class="s">'ALL'</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">Amount</span><span class="p">(</span><span class="n">reward_steem</span><span class="p">)</span><span class="o">.</span><span class="n">amount</span> <span class="o">+</span> <span class="n">Amount</span><span class="p">(</span><span class="n">reward_sbd</span><span class="p">)</span><span class="o">.</span><span class="n">amount</span> <span class="o">+</span> <span class="n">Amount</span><span class="p">(</span><span class="n">reward_vests</span><span class="p">)</span><span class="o">.</span><span class="n">amount</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span> <span class="o">+</span> <span class="s">'No rewards to claim'</span><span class="p">)</span>
         <span class="nb">exit</span><span class="p">()</span>
@@ -443,8 +440,7 @@
                 <span class="n">client</span><span class="o">.</span><span class="n">claim_reward_balance</span><span class="p">(</span><span class="n">claim_steem</span><span class="p">,</span> <span class="n">claim_sbd</span><span class="p">,</span> <span class="n">claim_vests</span><span class="p">,</span> <span class="n">username</span><span class="p">)</span>
                 <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span> <span class="o">+</span> <span class="s">'Claim has been processed. New reward balances are:'</span> <span class="o">+</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>When doing only a selected claim of available rewards, the values are captured in the console/terminal. The inputs cannot be negative, must be less than or equal to the available reward and at least ONE of the inputs needs to be greater than zero for the claim to be able to transmit. The result of the selected option is printed on the UI.</p>
 
@@ -452,8 +448,8 @@
 
 <p>As a final check we run the account query again to get updated values for the available rewards balances.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#get updated account reward balances</span>
-<span class="n">userinfo</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_account</span><span class="p">(</span><span class="n">username</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#get updated account reward balances
+</span><span class="n">userinfo</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_account</span><span class="p">(</span><span class="n">username</span><span class="p">)</span>
 
 <span class="n">reward_steem</span> <span class="o">=</span> <span class="n">userinfo</span><span class="p">[</span><span class="s">'reward_steem_balance'</span><span class="p">]</span>
 <span class="n">reward_sbd</span> <span class="o">=</span> <span class="n">userinfo</span><span class="p">[</span><span class="s">'reward_sbd_balance'</span><span class="p">]</span>
@@ -465,8 +461,7 @@
     <span class="s">'STEEM POWER: '</span> <span class="o">+</span> <span class="n">reward_sp</span> <span class="o">+</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span> <span class="o">+</span>
     <span class="s">'VESTS: '</span> <span class="o">+</span> <span class="n">reward_vests</span>
     <span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>We encourage users to play around with different values and data types to fully understand how this process works. You can also check the balances and transaction history on the <a href="http://condenser.steem.vc/">testnet portal</a>.</p>
 
