@@ -1,4 +1,6 @@
-_site/
+_site/*
+_site/.nosync
+docs/.nosync
 .sass-cache/
 .idea
 vendor
