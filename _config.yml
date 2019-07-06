@@ -3,8 +3,8 @@
 
 title: Steem Developer
 description: Steem Developer Documentation.
-baseurl: '/'
-url: https://developers.steem.io
+baseurl: '/devportal'
+url: https://inertia186.github.io
 google_analytics_key:
 permalink: /:categories/:title.html
 
