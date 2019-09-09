@@ -108,10 +108,14 @@ make -j$(nproc) install
 The snapshot is a copy of all accounts on the blockchain plus some other properties.  Having a full snapshot allows `tinman` to create a more realistic testnet.  Here's how we generate a snapshot:
 
 ```bash
+cd ~/src/tinman
+source ~/ve/tinman/bin/activate
 tinman snapshot -s http://mainnet-steem-node:8090 | pv -l > snapshot.json
 ```
 
 In the above example, we assume that `http://mainnet-steem-node:8090` is our Steem node on our local network.  If you use a public node to build the `snapshot.json` file instead (not recommended), just remember that this process could take quite a while and can be interrupted or rate-limited.  You should consider running your own node.
+
+As of September 2019, assuming the Steem mainnet node is local, this process takes approximately 15 minutes to produce a 3 GB output file.
 
 ### Configure Tinman<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
@@ -342,7 +346,7 @@ cp gatling.conf.example gatling.conf
   tinman gatling -c gatling.conf -f 0 -t 0 -o - | tinman prefixsub \
 ) | \
 tinman keysub --get-dev-key $GET_DEV_KEY | \
-tinman submit --realtime -t http://127.0.0.1:18751 \
+tinman submit --realtime -t http://127.0.0.1:8751 \
     --signer $SIGN_TRANSACTION \
     --timeout 600 \
     --fail /dev/null
