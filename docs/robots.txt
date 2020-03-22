@@ -1,1 +1,1 @@
-Sitemap: https://inertia186.github.io/devportal/sitemap.xml
+Sitemap: https://inertia186.github.io/hivedocs/sitemap.xml

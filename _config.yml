@@ -1,9 +1,9 @@
 # ----
 # Site
 
-title: Steem Developer
-description: Steem Developer Documentation.
-baseurl: '/devportal'
+title: Hive Developer
+description: Hive Developer Documentation.
+baseurl: '/hivedocs'
 url: https://inertia186.github.io
 google_analytics_key:
 permalink: /:categories/:title.html

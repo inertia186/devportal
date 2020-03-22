@@ -7,28 +7,28 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Cousine|Inconsolata" rel="stylesheet">
-	<link rel="shortcut icon" type="image/png" href="/devportal/favicon.png">
+	<link rel="shortcut icon" type="image/png" href="/hivedocs/favicon.png">
 
 	
-	<link rel="stylesheet" href="/devportal/css/style.css">
-	<link rel="stylesheet" href="/devportal/css/css/fontawesome-all.min.css">
-	<script src="/devportal/js/main.js"></script>
+	<link rel="stylesheet" href="/hivedocs/css/style.css">
+	<link rel="stylesheet" href="/hivedocs/css/css/fontawesome-all.min.css">
+	<script src="/hivedocs/js/main.js"></script>
 	
 
 	<!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Paginated API Methods | Steem Developer</title>
+<title>Paginated API Methods | Hive Developer</title>
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="Paginated API Methods" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Querying multiple pages of results from the API." />
 <meta property="og:description" content="Querying multiple pages of results from the API." />
-<link rel="canonical" href="https://inertia186.github.io/devportal/tutorials-recipes/paginated-api-methods" />
-<meta property="og:url" content="https://inertia186.github.io/devportal/tutorials-recipes/paginated-api-methods" />
-<meta property="og:site_name" content="Steem Developer" />
+<link rel="canonical" href="https://inertia186.github.io/hivedocs/tutorials-recipes/paginated-api-methods" />
+<meta property="og:url" content="https://inertia186.github.io/hivedocs/tutorials-recipes/paginated-api-methods" />
+<meta property="og:site_name" content="Hive Developer" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2019-11-18T16:38:43-08:00" />
+<meta property="article:published_time" content="2020-03-22T11:32:25-07:00" />
 <script type="application/ld+json">
-{"description":"Querying multiple pages of results from the API.","@type":"BlogPosting","url":"https://inertia186.github.io/devportal/tutorials-recipes/paginated-api-methods","headline":"Paginated API Methods","dateModified":"2019-11-18T16:38:43-08:00","datePublished":"2019-11-18T16:38:43-08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://inertia186.github.io/devportal/tutorials-recipes/paginated-api-methods"},"@context":"http://schema.org"}</script>
+{"dateModified":"2020-03-22T11:32:25-07:00","datePublished":"2020-03-22T11:32:25-07:00","headline":"Paginated API Methods","mainEntityOfPage":{"@type":"WebPage","@id":"https://inertia186.github.io/hivedocs/tutorials-recipes/paginated-api-methods"},"url":"https://inertia186.github.io/hivedocs/tutorials-recipes/paginated-api-methods","description":"Querying multiple pages of results from the API.","@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -38,11 +38,11 @@
 <header>
 	<h1>
 		<button type="button" class="open-nav" id="open-nav"></button>
-		<a href="/devportal/"  class="logo-link"><img src="/devportal/images/logotype_white.svg" height="40" alt="Steem Developer logo"></a>
+		<a href="/hivedocs/"  class="logo-link"><img src="/hivedocs/images/logotype_white.svg" height="40" alt="Hive Developer logo"></a>
 	</h1>
 
 	
-	<form action="/devportal/search/" method="get">
+	<form action="/hivedocs/search/" method="get">
 		<input type="text" name="q" id="search-input" placeholder="Search">
 		<input type="submit" value="Search" style="display: none;">
 	</form>
@@ -53,7 +53,7 @@
 	
 	
 		
-    <section class="pnl-main-nav-section main-nav-section" url="/devportal/">
+    <section class="pnl-main-nav-section main-nav-section" url="/hivedocs/">
 		<h6 class="ctrl-nav-section title">Introduction</h6>
 		<ul class="cont-nav-section content">
 			
@@ -61,7 +61,7 @@
 					
 					
 						
-						<li><a href="/devportal/#introduction-welcome">Welcome to Steem</a></li>
+						<li><a href="/hivedocs/#introduction-welcome">Welcome to Steem</a></li>
 						
 					
 				
@@ -70,7 +70,7 @@
 	</section>
 	
 		
-    <section class="pnl-main-nav-section main-nav-section" url="/devportal/quickstart/">
+    <section class="pnl-main-nav-section main-nav-section" url="/hivedocs/quickstart/">
 		<h6 class="ctrl-nav-section title">Quickstart</h6>
 		<ul class="cont-nav-section content">
 			
@@ -78,15 +78,15 @@
 					
 					
 						
-						<li><a href="/devportal/quickstart/#quickstart-choose-library">Choose Library</a></li>
+						<li><a href="/hivedocs/quickstart/#quickstart-choose-library">Choose Library</a></li>
 						
 					
 						
-						<li><a href="/devportal/quickstart/#quickstart-steemd-nodes">steemd Nodes</a></li>
+						<li><a href="/hivedocs/quickstart/#quickstart-steemd-nodes">steemd Nodes</a></li>
 						
 					
 						
-						<li><a href="/devportal/quickstart/#quickstart-testnet">Steem Testnet</a></li>
+						<li><a href="/hivedocs/quickstart/#quickstart-testnet">Steem Testnet</a></li>
 						
 					
 				
@@ -95,25 +95,25 @@
 	</section>
 	
 		
-    <section class="pnl-main-nav-section main-nav-section" url="/devportal/tutorials/">
+    <section class="pnl-main-nav-section main-nav-section" url="/hivedocs/tutorials/">
 		<h6 class="ctrl-nav-section title">Tutorials</h6>
 		<ul class="cont-nav-section content">
 			
 				
 					
-						<li><a href="/devportal/tutorials/#tutorials-javascript">Javascript</a></li>
+						<li><a href="/hivedocs/tutorials/#tutorials-javascript">Javascript</a></li>
 					
 				
 					
-						<li><a href="/devportal/tutorials/#tutorials-python">Python</a></li>
+						<li><a href="/hivedocs/tutorials/#tutorials-python">Python</a></li>
 					
 				
 					
-						<li><a href="/devportal/tutorials/#tutorials-ruby">Ruby</a></li>
+						<li><a href="/hivedocs/tutorials/#tutorials-ruby">Ruby</a></li>
 					
 				
 					
-						<li><a href="/devportal/tutorials/#tutorials-recipes">Recipes</a></li>
+						<li><a href="/hivedocs/tutorials/#tutorials-recipes">Recipes</a></li>
 					
 				
 			
@@ -121,7 +121,7 @@
 	</section>
 	
 		
-    <section class="pnl-main-nav-section main-nav-section" url="/devportal/services/">
+    <section class="pnl-main-nav-section main-nav-section" url="/hivedocs/services/">
 		<h6 class="ctrl-nav-section title">Services</h6>
 		<ul class="cont-nav-section content">
 			
@@ -129,23 +129,23 @@
 					
 					
 						
-						<li><a href="/devportal/services/#services-steemit">Steemit.com</a></li>
+						<li><a href="/hivedocs/services/#services-steemit">Steemit.com</a></li>
 						
 					
 						
-						<li><a href="/devportal/services/#services-steemconnect">SteemConnect</a></li>
+						<li><a href="/hivedocs/services/#services-steemconnect">SteemConnect</a></li>
 						
 					
 						
-						<li><a href="/devportal/services/#services-jussi">Jussi</a></li>
+						<li><a href="/hivedocs/services/#services-jussi">Jussi</a></li>
 						
 					
 						
-						<li><a href="/devportal/services/#services-imagehoster">ImageHoster</a></li>
+						<li><a href="/hivedocs/services/#services-imagehoster">ImageHoster</a></li>
 						
 					
 						
-						<li><a href="/devportal/services/#services-steem-dao">Steem.DAO</a></li>
+						<li><a href="/hivedocs/services/#services-steem-dao">Steem.DAO</a></li>
 						
 					
 				
@@ -154,7 +154,7 @@
 	</section>
 	
 		
-    <section class="pnl-main-nav-section main-nav-section" url="/devportal/apidefinitions/">
+    <section class="pnl-main-nav-section main-nav-section" url="/hivedocs/apidefinitions/">
 		<h6 class="ctrl-nav-section title">Appbase API</h6>
 		<ul class="cont-nav-section content">
 			
@@ -162,71 +162,71 @@
 					
 					
 						
-						<li><a href="/devportal/apidefinitions/#apidefinitions-condenser-api">Condenser Api</a></li>
+						<li><a href="/hivedocs/apidefinitions/#apidefinitions-condenser-api">Condenser Api</a></li>
 						
 					
 						
-						<li><a href="/devportal/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
+						<li><a href="/hivedocs/apidefinitions/#apidefinitions-account-by-key-api">Account By Key Api</a></li>
 						
 					
 						
-						<li><a href="/devportal/apidefinitions/#apidefinitions-account-history-api">Account History Api</a></li>
+						<li><a href="/hivedocs/apidefinitions/#apidefinitions-account-history-api">Account History Api</a></li>
 						
 					
 						
-						<li><a href="/devportal/apidefinitions/#apidefinitions-block-api">Block Api</a></li>
+						<li><a href="/hivedocs/apidefinitions/#apidefinitions-block-api">Block Api</a></li>
 						
 					
 						
-						<li><a href="/devportal/apidefinitions/#apidefinitions-database-api">Database Api</a></li>
+						<li><a href="/hivedocs/apidefinitions/#apidefinitions-database-api">Database Api</a></li>
 						
 					
 						
-						<li><a href="/devportal/apidefinitions/#apidefinitions-debug-node-api">Debug Node Api</a></li>
+						<li><a href="/hivedocs/apidefinitions/#apidefinitions-debug-node-api">Debug Node Api</a></li>
 						
 					
 						
-						<li><a href="/devportal/apidefinitions/#apidefinitions-follow-api">Follow Api</a></li>
+						<li><a href="/hivedocs/apidefinitions/#apidefinitions-follow-api">Follow Api</a></li>
 						
 					
 						
-						<li><a href="/devportal/apidefinitions/#apidefinitions-jsonrpc">Jsonrpc</a></li>
+						<li><a href="/hivedocs/apidefinitions/#apidefinitions-jsonrpc">Jsonrpc</a></li>
 						
 					
 						
-						<li><a href="/devportal/apidefinitions/#apidefinitions-market-history-api">Market History Api</a></li>
+						<li><a href="/hivedocs/apidefinitions/#apidefinitions-market-history-api">Market History Api</a></li>
 						
 					
 						
-						<li><a href="/devportal/apidefinitions/#apidefinitions-network-broadcast-api">Network Broadcast Api</a></li>
+						<li><a href="/hivedocs/apidefinitions/#apidefinitions-network-broadcast-api">Network Broadcast Api</a></li>
 						
 					
 						
-						<li><a href="/devportal/apidefinitions/#apidefinitions-rc-api">Rc Api</a></li>
+						<li><a href="/hivedocs/apidefinitions/#apidefinitions-rc-api">Rc Api</a></li>
 						
 					
 						
-						<li><a href="/devportal/apidefinitions/#apidefinitions-reputation-api">Reputation Api</a></li>
+						<li><a href="/hivedocs/apidefinitions/#apidefinitions-reputation-api">Reputation Api</a></li>
 						
 					
 						
-						<li><a href="/devportal/apidefinitions/#apidefinitions-rewards-api">Rewards Api</a></li>
+						<li><a href="/hivedocs/apidefinitions/#apidefinitions-rewards-api">Rewards Api</a></li>
 						
 					
 						
-						<li><a href="/devportal/apidefinitions/#apidefinitions-tags-api">Tags Api</a></li>
+						<li><a href="/hivedocs/apidefinitions/#apidefinitions-tags-api">Tags Api</a></li>
 						
 					
 						
-						<li><a href="/devportal/apidefinitions/#apidefinitions-transaction-status-api">Transaction Status Api</a></li>
+						<li><a href="/hivedocs/apidefinitions/#apidefinitions-transaction-status-api">Transaction Status Api</a></li>
 						
 					
 						
-						<li><a href="/devportal/apidefinitions/#apidefinitions-witness-api">Witness Api</a></li>
+						<li><a href="/hivedocs/apidefinitions/#apidefinitions-witness-api">Witness Api</a></li>
 						
 					
 						
-						<li><a href="/devportal/apidefinitions/#apidefinitions-broadcast-ops">Broadcast Ops</a></li>
+						<li><a href="/hivedocs/apidefinitions/#apidefinitions-broadcast-ops">Broadcast Ops</a></li>
 						
 					
 				
@@ -235,7 +235,7 @@
 	</section>
 	
 		
-    <section class="pnl-main-nav-section main-nav-section" url="/devportal/resources/">
+    <section class="pnl-main-nav-section main-nav-section" url="/hivedocs/resources/">
 		<h6 class="ctrl-nav-section title">Resources</h6>
 		<ul class="cont-nav-section content">
 			
@@ -243,35 +243,35 @@
 					
 					
 						
-						<li><a href="/devportal/resources/#resources-overview">Overview</a></li>
+						<li><a href="/hivedocs/resources/#resources-overview">Overview</a></li>
 						
 					
 						
-						<li><a href="/devportal/resources/#resources-client-libs">Client Libraries</a></li>
+						<li><a href="/hivedocs/resources/#resources-client-libs">Client Libraries</a></li>
 						
 					
 						
-						<li><a href="/devportal/resources/#resources-bluepaper">Bluepaper</a></li>
+						<li><a href="/hivedocs/resources/#resources-bluepaper">Bluepaper</a></li>
 						
 					
 						
-						<li><a href="/devportal/resources/#resources-whitepaper">Whitepaper</a></li>
+						<li><a href="/hivedocs/resources/#resources-whitepaper">Whitepaper</a></li>
 						
 					
 						
-						<li><a href="/devportal/resources/#resources-tools">Tools</a></li>
+						<li><a href="/hivedocs/resources/#resources-tools">Tools</a></li>
 						
 					
 						
-						<li><a href="/devportal/resources/#resources-steem-connect-libs">SteemConnect Libs</a></li>
+						<li><a href="/hivedocs/resources/#resources-steem-connect-libs">SteemConnect Libs</a></li>
 						
 					
 						
-						<li><a href="/devportal/resources/#resources-steem-keychain">Steem Keychain</a></li>
+						<li><a href="/hivedocs/resources/#resources-steem-keychain">Steem Keychain</a></li>
 						
 					
 						
-						<li><a href="/devportal/resources/#resources-developeradvocate">Community & Help</a></li>
+						<li><a href="/hivedocs/resources/#resources-developeradvocate">Community & Help</a></li>
 						
 					
 				
@@ -280,7 +280,7 @@
 	</section>
 	
 		
-    <section class="pnl-main-nav-section main-nav-section" url="/devportal/glossary/">
+    <section class="pnl-main-nav-section main-nav-section" url="/hivedocs/glossary/">
 		<h6 class="ctrl-nav-section title">Glossary</h6>
 		<ul class="cont-nav-section content">
 			
@@ -288,25 +288,25 @@
 					
 					
 						
-						<li><a href="/devportal/glossary/#glossary-chain-basics">Chain Basics</a></li>
+						<li><a href="/hivedocs/glossary/#glossary-chain-basics">Chain Basics</a></li>
 						
 					
 						
 					
 						
-						<li><a href="/devportal/glossary/#glossary-governance">Governance</a></li>
+						<li><a href="/hivedocs/glossary/#glossary-governance">Governance</a></li>
 						
 					
 						
-						<li><a href="/devportal/glossary/#glossary-transactions">Transactions</a></li>
+						<li><a href="/hivedocs/glossary/#glossary-transactions">Transactions</a></li>
 						
 					
 						
-						<li><a href="/devportal/glossary/#glossary-api">API</a></li>
+						<li><a href="/hivedocs/glossary/#glossary-api">API</a></li>
 						
 					
 						
-						<li><a href="/devportal/glossary/#glossary-market">Market</a></li>
+						<li><a href="/hivedocs/glossary/#glossary-market">Market</a></li>
 						
 					
 				
@@ -328,7 +328,7 @@
 	<div class="hero">
 		<h1 class="hero__h1">Steem Developer Portal </h1>
 		
-		<img class="hero__img" src="/devportal/images/hero.png">
+		<img class="hero__img" src="/hivedocs/images/hero.png">
 		
 	</div>
 	<section id="tutorials-recipes-paginated-api-methods" class="row tutorials-recipes-paginated-api-methods">
@@ -543,7 +543,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#account_history_api.get_account_history">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#account_history_api.get_account_history">API Definition</a></p>
 
 <h3 id="database_apilist_accounts"><code class="highlighter-rouge">database_api.list_accounts</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -641,7 +641,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#database_api.list_accounts">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#database_api.list_accounts">API Definition</a></p>
 
 <h3 id="database_apilist_change_recovery_account_requests"><code class="highlighter-rouge">database_api.list_change_recovery_account_requests</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -694,7 +694,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#database_api.list_change_recovery_account_requests">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#database_api.list_change_recovery_account_requests">API Definition</a></p>
 
 <h3 id="database_apilist_comments"><code class="highlighter-rouge">database_api.list_comments</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -817,7 +817,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#database_api.list_comments">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#database_api.list_comments">API Definition</a></p>
 
 <h3 id="database_apilist_decline_voting_rights_requests"><code class="highlighter-rouge">database_api.list_decline_voting_rights_requests</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -882,7 +882,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#database_api.list_decline_voting_rights_requests">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#database_api.list_decline_voting_rights_requests">API Definition</a></p>
 
 <h3 id="database_apilist_escrows"><code class="highlighter-rouge">database_api.list_escrows</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -947,7 +947,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#database_api.list_escrows">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#database_api.list_escrows">API Definition</a></p>
 
 <h3 id="database_apilist_limit_orders"><code class="highlighter-rouge">database_api.list_limit_orders</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -1015,7 +1015,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#database_api.list_limit_orders">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#database_api.list_limit_orders">API Definition</a></p>
 
 <h3 id="database_apilist_owner_histories"><code class="highlighter-rouge">database_api.list_owner_histories</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -1045,7 +1045,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#database_api.list_owner_histories">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#database_api.list_owner_histories">API Definition</a></p>
 
 <h3 id="database_apilist_savings_withdrawals"><code class="highlighter-rouge">database_api.list_savings_withdrawals</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -1139,7 +1139,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#database_api.list_savings_withdrawals">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#database_api.list_savings_withdrawals">API Definition</a></p>
 
 <h3 id="database_apilist_sbd_conversion_requests"><code class="highlighter-rouge">database_api.list_sbd_conversion_requests</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -1204,7 +1204,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#database_api.list_sbd_conversion_requests">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#database_api.list_sbd_conversion_requests">API Definition</a></p>
 
 <h3 id="database_apilist_vesting_delegation_expirations"><code class="highlighter-rouge">database_api.list_vesting_delegation_expirations</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -1269,7 +1269,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#database_api.list_vesting_delegation_expirations">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#database_api.list_vesting_delegation_expirations">API Definition</a></p>
 
 <h3 id="database_apilist_vesting_delegations"><code class="highlighter-rouge">database_api.list_vesting_delegations</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -1305,7 +1305,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#database_api.list_vesting_delegations">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#database_api.list_vesting_delegations">API Definition</a></p>
 
 <h3 id="database_apilist_votes"><code class="highlighter-rouge">database_api.list_votes</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -1486,7 +1486,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#database_api.list_votes">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#database_api.list_votes">API Definition</a></p>
 
 <h3 id="database_apilist_withdraw_vesting_routes"><code class="highlighter-rouge">database_api.list_withdraw_vesting_routes</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -1551,7 +1551,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#database_api.list_withdraw_vesting_routes">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#database_api.list_withdraw_vesting_routes">API Definition</a></p>
 
 <h3 id="database_apilist_witness_votes"><code class="highlighter-rouge">database_api.list_witness_votes</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -1616,7 +1616,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#database_api.list_witness_votes">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#database_api.list_witness_votes">API Definition</a></p>
 
 <h3 id="database_apilist_witnesses"><code class="highlighter-rouge">database_api.list_witnesses</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -1710,7 +1710,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#database_api.list_witnesses">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#database_api.list_witnesses">API Definition</a></p>
 
 <h3 id="database_apilist_proposal_votes"><code class="highlighter-rouge">database_api.list_proposal_votes</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -1783,7 +1783,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#database_api.list_proposal_votes">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#database_api.list_proposal_votes">API Definition</a></p>
 
 <h3 id="database_apilist_proposals"><code class="highlighter-rouge">database_api.list_proposals</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -1896,7 +1896,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#database_api.list_proposals">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#database_api.list_proposals">API Definition</a></p>
 
 <h3 id="database_apilist_smt_contributions"><code class="highlighter-rouge">database_api.list_smt_contributions</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -1961,7 +1961,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#database_api.list_smt_contributions">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#database_api.list_smt_contributions">API Definition</a></p>
 
 <h3 id="database_apilist_smt_token_emissions"><code class="highlighter-rouge">database_api.list_smt_token_emissions</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -1997,7 +1997,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#database_api.list_smt_token_emissions">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#database_api.list_smt_token_emissions">API Definition</a></p>
 
 <h3 id="database_apilist_smt_tokens"><code class="highlighter-rouge">database_api.list_smt_tokens</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -2062,7 +2062,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#database_api.list_smt_tokens">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#database_api.list_smt_tokens">API Definition</a></p>
 
 <h3 id="follow_apiget_account_reputations"><code class="highlighter-rouge">follow_api.get_account_reputations</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -2092,7 +2092,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#follow_api.get_account_reputations">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#follow_api.get_account_reputations">API Definition</a></p>
 
 <h3 id="follow_apiget_blog"><code class="highlighter-rouge">follow_api.get_blog</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -2124,7 +2124,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#follow_api.get_blog">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#follow_api.get_blog">API Definition</a></p>
 
 <h3 id="follow_apiget_blog_entries"><code class="highlighter-rouge">follow_api.get_blog_entries</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -2156,7 +2156,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#follow_api.get_blog_entries">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#follow_api.get_blog_entries">API Definition</a></p>
 
 <h3 id="follow_apiget_feed"><code class="highlighter-rouge">follow_api.get_feed</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -2188,7 +2188,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#follow_api.get_feed">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#follow_api.get_feed">API Definition</a></p>
 
 <h3 id="follow_apiget_feed_entries"><code class="highlighter-rouge">follow_api.get_feed_entries</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -2220,7 +2220,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#follow_api.get_feed_entries">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#follow_api.get_feed_entries">API Definition</a></p>
 
 <h3 id="follow_apiget_followers"><code class="highlighter-rouge">follow_api.get_followers</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -2254,7 +2254,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#follow_api.get_followers">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#follow_api.get_followers">API Definition</a></p>
 
 <h3 id="follow_apiget_following"><code class="highlighter-rouge">follow_api.get_following</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -2288,7 +2288,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#follow_api.get_following">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#follow_api.get_following">API Definition</a></p>
 
 <h3 id="reputation_apiget_account_reputations"><code class="highlighter-rouge">reputation_api.get_account_reputations</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -2318,7 +2318,7 @@
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#reputation_api.get_account_reputations">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#reputation_api.get_account_reputations">API Definition</a></p>
 
 <h3 id="tags_apiget_discussions_by_author_before_date"><code class="highlighter-rouge">tags_api.get_discussions_by_author_before_date</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -2355,7 +2355,7 @@ to <code class="highlighter-rouge">get_discussions_by_blog</code> but does <em>n
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#tags_api.get_discussions_by_author_before_date">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#tags_api.get_discussions_by_author_before_date">API Definition</a></p>
 
 <h3 id="tags_apiget_replies_by_last_update"><code class="highlighter-rouge">tags_api.get_replies_by_last_update</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -2387,7 +2387,7 @@ to <code class="highlighter-rouge">get_discussions_by_blog</code> but does <em>n
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#tags_api.get_replies_by_last_update">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#tags_api.get_replies_by_last_update">API Definition</a></p>
 
 <h3 id="tags_apiget_trending_tags"><code class="highlighter-rouge">tags_api.get_trending_tags</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
@@ -2417,73 +2417,73 @@ to <code class="highlighter-rouge">get_discussions_by_blog</code> but does <em>n
 }'</span> https://api.steemit.com | jq
 </code></pre></div></div>
 
-<p>Also see: <a href="/devportal/apidefinitions/#tags_api.get_trending_tags">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#tags_api.get_trending_tags">API Definition</a></p>
 
 <h3 id="condenser_apiget_account_history"><code class="highlighter-rouge">condenser_api.get_account_history</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
 <p>See: <a href="#account_history_apiget_account_history"><code class="highlighter-rouge">account_history_api.get_account_history</code></a></p>
 
-<p>Also see: <a href="/devportal/apidefinitions/#condenser_api.get_account_history">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#condenser_api.get_account_history">API Definition</a></p>
 
 <h3 id="condenser_apiget_blog"><code class="highlighter-rouge">condenser_api.get_blog</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
 <p>See: <a href="#follow_apiget_blog"><code class="highlighter-rouge">follow_api.get_blog</code></a></p>
 
-<p>Also see: <a href="/devportal/apidefinitions/#condenser_api.get_blog">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#condenser_api.get_blog">API Definition</a></p>
 
 <h3 id="condenser_apiget_blog_entries"><code class="highlighter-rouge">condenser_api.get_blog_entries</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
 <p>See: <a href="#follow_apiget_blog_entries"><code class="highlighter-rouge">follow_api.get_blog_entries</code></a></p>
 
-<p>Also see: <a href="/devportal/apidefinitions/#condenser_api.get_blog_entries">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#condenser_api.get_blog_entries">API Definition</a></p>
 
 <h3 id="condenser_apiget_discussions_by_author_before_date"><code class="highlighter-rouge">condenser_api.get_discussions_by_author_before_date</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
 <p>See: <a href="#tags_apiget_discussions_by_author_before_date"><code class="highlighter-rouge">tags_api.get_discussions_by_author_before_date</code></a></p>
 
-<p>Also see: <a href="/devportal/apidefinitions/#condenser_api.get_discussions_by_author_before_date">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#condenser_api.get_discussions_by_author_before_date">API Definition</a></p>
 
 <h3 id="condenser_apiget_feed"><code class="highlighter-rouge">condenser_api.get_feed</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
 <p>See: <a href="#follow_apiget_feed"><code class="highlighter-rouge">follow_api.get_feed</code></a></p>
 
-<p>Also see: <a href="/devportal/apidefinitions/#condenser_api.get_feed">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#condenser_api.get_feed">API Definition</a></p>
 
 <h3 id="condenser_apiget_feed_entries"><code class="highlighter-rouge">condenser_api.get_feed_entries</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
 <p>See: <a href="#follow_apiget_feed_entries"><code class="highlighter-rouge">follow_api.get_feed_entries</code></a></p>
 
-<p>Also see: <a href="/devportal/apidefinitions/#condenser_api.get_feed_entries">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#condenser_api.get_feed_entries">API Definition</a></p>
 
 <h3 id="condenser_apiget_followers"><code class="highlighter-rouge">condenser_api.get_followers</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
 <p>See: <a href="#follow_apiget_followers"><code class="highlighter-rouge">follow_api.get_followers</code></a></p>
 
-<p>Also see: <a href="/devportal/apidefinitions/#condenser_api.get_followers">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#condenser_api.get_followers">API Definition</a></p>
 
 <h3 id="condenser_apiget_following"><code class="highlighter-rouge">condenser_api.get_following</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
 <p>See: <a href="#follow_apiget_following"><code class="highlighter-rouge">follow_api.get_following</code></a></p>
 
-<p>Also see: <a href="/devportal/apidefinitions/#condenser_api.get_following">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#condenser_api.get_following">API Definition</a></p>
 
 <h3 id="condenser_apiget_replies_by_last_update"><code class="highlighter-rouge">condenser_api.get_replies_by_last_update</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
 <p>See: <a href="#tags_apiget_replies_by_last_update"><code class="highlighter-rouge">tags_api.get_replies_by_last_update</code></a></p>
 
-<p>Also see: <a href="/devportal/apidefinitions/#condenser_api.get_replies_by_last_update">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#condenser_api.get_replies_by_last_update">API Definition</a></p>
 
 <h3 id="condenser_apiget_vesting_delegations"><code class="highlighter-rouge">condenser_api.get_vesting_delegations</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
 <p>See: <a href="#database_apilist_vesting_delegations"><code class="highlighter-rouge">database_api.list_vesting_delegations</code></a></p>
 
-<p>Also see: <a href="/devportal/apidefinitions/#condenser_api.get_vesting_delegations">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#condenser_api.get_vesting_delegations">API Definition</a></p>
 
 <h3 id="condenser_apiget_trending_tags"><code class="highlighter-rouge">condenser_api.get_trending_tags</code><a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm"></i></a></h3>
 
 <p>See: <a href="#tags_apiget_trending_tags"><code class="highlighter-rouge">tags_api.get_trending_tags</code></a></p>
 
-<p>Also see: <a href="/devportal/apidefinitions/#condenser_api.get_trending_tags">API Definition</a></p>
+<p>Also see: <a href="/hivedocs/apidefinitions/#condenser_api.get_trending_tags">API Definition</a></p>
 
 </section>
 
@@ -2500,5 +2500,5 @@ to <code class="highlighter-rouge">get_discussions_by_blog</code> but does <em>n
 </html>
 
 
-<script src="/devportal/js/adjust.js"></script>
+<script src="/hivedocs/js/adjust.js"></script>
 
