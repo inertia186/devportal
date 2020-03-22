@@ -214,12 +214,12 @@ dl dd:after {
 		transition: 0.3s color ease-in-out;
 
 		&.active {
-			color: #2196F3;
+			color: #E31337;
 			text-decoration: none;
 		}
 	}
 	a:hover, a:focus  {
-		color: #2196F3;
+		color: #E31337;
 	}
 }
 
@@ -324,8 +324,8 @@ hr {
 	-webkit-border-image: -webkit-linear-gradient(left,	#eee 0%,#eee 50%,#333333 50%);
 	border-image-slice: 1;
 	padding: 30px 0;
-	background: -webkit-linear-gradient(left,#ffffff 0%, #ffffff 50%, #27313E 50%); /* Chrome10+,Safari5.1+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#232323',GradientType=1 ); /* IE6-9 */
+	background: -webkit-linear-gradient(left,#f0f0f8 0%, #f0f0f8 50%, #27313E 50%); /* Chrome10+,Safari5.1+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f0f8', endColorstr='#232323',GradientType=1 ); /* IE6-9 */
 }
 
 .doc-content:after {
@@ -365,12 +365,12 @@ hr {
 	box-sizing: border-box;				 /* Opera/IE 8+ */
 
 	code {
-		color: whitesmoke;
+		color: #f0f0f8;
 	}
 
 	pre {
-		background: white;
-		background: #3E4956;
+		background: #f0f0f8;
+		background: #e7e7f1;
 		padding: 10px;
 		border-radius: 5px;
 	}
@@ -379,7 +379,7 @@ hr {
 		border-color: #555;
 	}
 	p {
-		color: white;
+		color: #f0f0f8;
 	}
 }
 
@@ -447,7 +447,7 @@ hr {
 	.right-code {
 		float: none;
 		width: 100%;
-		background: white;
+		background: #f0f0f8;
 		background: #232323;
 		padding: 30px 30px 10px;
 	}
@@ -477,12 +477,12 @@ header {
 	overflow-x: hidden;
 	z-index: 1;
 	background-color: $nav-background-color;
-	border-top: 4px solid #2196F3;
+	border-top: 4px solid #E31337;
 
 	h1 {
 		height: 107px;
 		box-sizing: border-box;
-		background-color: #3E4956;
+		background-color: #e7e7f1;
 		margin: 0;
 		font-size: 1.7rem;
 		line-height: 0.8;
@@ -593,7 +593,7 @@ header {
 }
 
 .logo-link {
-	color: #ffffff;
+	color: #f0f0f8;
 	font-weight: 600;
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	pointer-events: none;
@@ -621,4 +621,9 @@ blockquote {
 .steem-content img {
   max-width: 100%;
   max-height: 100%;
+}
+
+.turbolinks-progress-bar {
+  height: 5px;
+  background-color: #E31337;
 }
