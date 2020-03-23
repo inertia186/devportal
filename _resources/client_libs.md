@@ -54,3 +54,9 @@ Golang RPC client library for Steem
 **SteemClientRS** - [https://github.com/cyberpunk-ventures/steem-client-rs](https://github.com/cyberpunk-ventures/steem-client-rs)
 
 Client library for Steem blockchain built with Rust
+
+---
+
+**Ditch** - [https://github.com/Chainers/Ditch](https://github.com/Chainers/Ditch)
+
+ Create and broadcast transactions to Graphene-based blockchains, including Steem, C# using .NET standard 2 library (also see: [Ditch.Steem](https://www.nuget.org/packages/Ditch.Steem)).
