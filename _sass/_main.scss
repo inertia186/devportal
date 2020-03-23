@@ -623,7 +623,8 @@ blockquote {
   max-height: 100%;
 }
 
+// See: https://github.com/turbolinks/turbolinks#displaying-progress
 .turbolinks-progress-bar {
   height: 5px;
-  background-color: #E31337;
+  background-color: $brand-colour;
 }
