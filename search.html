@@ -26,6 +26,12 @@ data_defined_ids:
   - apidefinitions-witness-api
   - tutorials-recipes-understanding-dynamic-global-properties
   - tutorials-recipes-understanding-configuration-values
+  - glossary-index
+  - glossary-api
+  - glossary-chain-basics
+  - glossary-governance
+  - glossary-market
+  - glossary-transactions
 ---
 
 <div class="search-page">
@@ -111,9 +117,9 @@ data_defined_ids:
         {% assign added = false %}
         
         {% if field.purpose %}
-          {% assign dgpo_url = '../tutorials-recipes/understanding-dynamic-global-properties#' | append: field.name %}
+          {% assign dgpo_url = '../tutorials-recipes/understanding-dynamic-global-properties/#' | append: field.name %}
         {% else %}
-          {% assign dgpo_url = '../tutorials-recipes/understanding-dynamic-global-properties#not-covered' %}
+          {% assign dgpo_url = '../tutorials-recipes/understanding-dynamic-global-properties/#not-covered' %}
         {% endif %}
         
         "dgpo_{{ field.name | strip | slugify }}": {
@@ -136,9 +142,9 @@ data_defined_ids:
         {% assign added = false %}
         
         {% if field.purpose %}
-          {% assign config_url = '../tutorials-recipes/understanding-configuration-values#' | append: field.name %}
+          {% assign config_url = '../tutorials-recipes/understanding-configuration-values/#' | append: field.name %}
         {% else %}
-          {% assign config_url = '../tutorials-recipes/understanding-configuration-values#not-covered' %}
+          {% assign config_url = '../tutorials-recipes/understanding-configuration-values/#not-covered' %}
         {% endif %}
         
         "config_{{ field.name | strip | slugify }}": {
@@ -150,6 +156,27 @@ data_defined_ids:
           "url": "{{ config_url | relative_url }}",
           "content": {{ field.purpose | liquify | markdownify | strip_html | replace_regex: "[\s/\n]+"," " | strip | jsonify }},
           "keywords": "{{ field | keywordify: 'subtract', field.purpose }}"
+        }
+        {% assign added = true %}
+  		{% endfor %}
+  	{% endfor %}
+
+    {% for sections in site.data.glossary.index %}
+      {% for item in sections.items %}
+        {% if added %},{% endif %}
+        {% assign added = false %}
+        {% assign term_id = item.term | strip | slugify %}
+        {% assign glossary_url = '../glossary/#' | append: term_id %}
+        
+        "glossary_{{ item.term | strip | slugify }}": {
+          "id": "glossary_{{ term_id }}",
+          "title": "{{ item.term | strip | xml_escape }}",
+          "category": "glossary",
+          "description": "{{ item.term | strip | xml_escape }}",
+          "type": "glossary",
+          "url": "{{ glossary_url | relative_url }}",
+          "content": {{ item.def | liquify | markdownify | strip_html | replace_regex: "[\s/\n]+"," " | strip | jsonify }},
+          "keywords": "{{ item | keywordify: 'subtract', item.def }}"
         }
         {% assign added = true %}
   		{% endfor %}
