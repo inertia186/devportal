@@ -2,6 +2,7 @@ _site/*
 _site/.nosync
 docs/.nosync
 .sass-cache/
+.jekyll-cache/
 .idea
 vendor
 node_modules/
