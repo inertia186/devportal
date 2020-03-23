@@ -143,7 +143,7 @@ dl dd:after {
   height: 0; }
 
 .button {
-  background-color: #ddd;
+  background-color: #e7e7f1;
   border: none;
   color: black;
   padding: 5px 10px;
@@ -239,25 +239,25 @@ h3 .endpoint {
 
 hr {
   border: 0;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #e7e7f1;
   margin: 20px 0; }
 
 .error, .warning, .info, .success {
-  border-left: 5px solid #FD0;
+  border-left: 5px solid #F0E399;
   padding: 10px 15px;
   margin-left: -20px;
   margin-right: -15px;
-  background-color: #FAFAFA;
+  background-color: #f0f0f8;
   border-radius: 2px; }
 
 .info {
-  border-color: #56ADEC; }
+  border-color: #B2D2EF; }
 
 .error {
-  border-color: #F20; }
+  border-color: #F09F99; }
 
 .success {
-  border-color: #6c0; }
+  border-color: #B8DD99; }
 
 .doc-content {
   width: 100%;
@@ -989,7 +989,7 @@ code .il {
 /* Generic.Inserted & Diff Inserted */
 .highlight {
   padding: 5px;
-  background: #23323E; }
+  background: #47535F; }
 
 pre {
   color: #f0f0f8; }
@@ -1100,7 +1100,7 @@ header h1 {
     text-transform: capitalize; }
 
 .warn.deprecated {
-  background: #FD0;
+  background: #F0E399;
   font-weight: bold;
   font-size: small;
   display: inline-block;
@@ -1110,8 +1110,8 @@ header h1 {
   top: -3px; }
 
 .danger {
-  background: #dc3545;
-  color: #fff;
+  background: #F09F99;
+  color: #f0f0f8;
   font-weight: bold;
   padding: 5px; }
 
