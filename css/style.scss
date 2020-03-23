@@ -20,7 +20,7 @@ $mobile-break: 700px;
 
 .highlight {
   padding: 5px;
-  background: #23323E;
+  background: #47535F;
 }
 
 pre {
@@ -177,7 +177,7 @@ header h1 {
 }
 
 .warn.deprecated {
-  background: #FD0;
+  background: #F0E399;
   font-weight: bold;
   font-size: small;
   display:inline-block;
@@ -188,8 +188,8 @@ header h1 {
 }
 
 .danger {
-  background: #dc3545;
-  color: #fff;
+  background: #F09F99;
+  color: #f0f0f8;
   font-weight: bold;
   padding:5px;
 }
