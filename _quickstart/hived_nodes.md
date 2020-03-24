@@ -1,32 +1,25 @@
 ---
-title: steemd Nodes
+title: hived Nodes
 position: 2
 exclude: true
 ---
 
-Applications that interface directly with the Steem blockchain will need to connect to a `steemd` node. Developers may choose to use one of the public API nodes that are available, or run their own instance of a node.
+Applications that interface directly with the Hive blockchain will need to connect to a `hived` node. Developers may choose to use one of the public API nodes that are available, or run their own instance of a node.
 
 ### Public Nodes
 
-Although `steemd` fully supports WebSockets (`wss://` and `ws://`) public nodes typically do not.  All nodes listed use HTTPS (`https://`).  If you require WebSockets for your solutions, please consider setting up your own `steemd` node or proxy WebSockets to HTTPS using [lineman](https://github.com/steemit/lineman).
+Although `hived` fully supports WebSockets (`wss://` and `ws://`) public nodes typically do not.  All nodes listed use HTTPS (`https://`).  If you require WebSockets for your solutions, please consider setting up your own `hived` node or proxy WebSockets to HTTPS using [lineman](https://github.com/steemit/lineman).
 
 | URL                             | Owner          |
 | ------------------------------- | -------------- |
 | anyx.io                         | @anyx          |
-| api.steemit.com                 | @steemit       |
-| api.steem.house                 | @gtg           |
-| appbasetest.timcliff.com        | @timcliff      |
-| gtg.steem.house:8090            | @gtg           |
-| hive.anyx.io                    | @anyx          |
-| rpc.steemviz.com                | @ausbitbank    |
-| rpc.usesteem.com                | @themarkymark  |
-| steemd.minnowsupportproject.org | @followbtcnews |
-| steemd.privex.io                | @privex        |
+| api.hive.blog                   | @hiveio        |
+| api.openhive.network            | @hiveio        |
+| api.hivekings.com               | @hivekings     |
 
+For a report on the latest public full nodes, check the latest posts on [@fullnodeupdate](https://hive.blog/@fullnodeupdate) by [@holger80](https://hive.blog/@holger80).
 
-For a report on the latest public full nodes, check the latest posts on [@fullnodeupdate](https://steemit.com/@fullnodeupdate) by [@holger80](https://steemit.com/@holger80).  Another excellent tool for checking real-time full node status is [geo.steem.pl](https://geo.steem.pl) by [@jamzed](https://steemit.com/@jamzed).
-
-
+<!-- TODO investigate docker solutions
 ### Private Nodes
 
 The simplest way to get started is by deploying a pre-built dockerized container.
@@ -38,7 +31,9 @@ _To run a p2p node (ca. 2GB of memory is required at the moment):_
 ##### Dockerized Full Node
 
 _to run a node with all the data (e.g. for supporting a content website) that uses ca. 14GB of memory and growing:_
+-->
 
+<!-- TODO investigate syncing
 ### Syncing blockchain
 
 Normally syncing blockchain starts from very first, `0` genesis block. It might take long time to catch up with live network. Because it connectes to various p2p nodes in the Steem network and requests blocks from 0 to head block. It stores blocks in block log file and builds up the current state in the shared memory file. But there is a way to bootstrap syncing by using trusted `block_log` file. The block log is an external append only log of the blocks. It contains blocks that are only added to the log after they are irreversible because the log is append only.
@@ -62,10 +57,12 @@ done
 ```
 
 Above bash script drops `block_log` from the OS cache, leaving more memory free for backing the blockchain database. It might also help while running live, but measurement would be needed to determine this.
+-->
 
+<!-- TODO chainbase tricks
 ##### Few other tricks that might help: 
 
-For Linux users, virtual memory writes dirty pages of the shared file out to disk more often than is optimal which results in steemd being slowed down by redundant IO operations. These settings are recommended to optimize reindex time.
+For Linux users, virtual memory writes dirty pages of the shared file out to disk more often than is optimal which results in hived being slowed down by redundant IO operations. These settings are recommended to optimize reindex time.
 
 ```
 echo    75 | sudo tee /proc/sys/vm/dirty_background_ratio
@@ -90,4 +87,5 @@ docker run \
     steemit/steem
 
 docker logs -f steemd-full
-```  
+```
+-->
