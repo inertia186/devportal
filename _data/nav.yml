@@ -3,6 +3,11 @@ toc:
     collection: "introduction"
     url: "/"
     position: 1
+    docs:
+      - title: Welcome
+        url: "introduction/welcome"
+      - title: The Launch
+        url: "introduction/launch"
   - title: "Quickstart"
     collection: "quickstart"
     url: "/quickstart/"
