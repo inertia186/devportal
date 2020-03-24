@@ -12,6 +12,11 @@ require 'json'
 require 'yaml'
 require 'html-proofer'
 
+desc "Clean up local development environment."
+task :clean do
+  `rm -rf _site && rm -rf .sass-cache && rm -rf .jekyll-cache && rm -rf docs && git checkout -- docs`
+end
+
 namespace :scrape do
   desc "Scrape steemjs docs"
   task :javascript do
